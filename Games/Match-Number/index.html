@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match It Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<!-- Add the loading screen -->
+  <div class="loading-screen">
+    <div class="imagebox">
+      <img src="../../image/matchnumber.png">
+    </div>    
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p class="loading-progress">Loading... 0%</p>
+  </div>
+  
+    <h1>Match The Numbers</h1>
+    <a href="../../index.html" class="backbtn"><i class="material-icons">arrow_back</i> Back</a>
+    <h2 class="level-box" id="level-info"><span id="prev-level"></span> - <span id="current-level"></span> - <span id="next-level"></span></h2>
+    <div id="game-container">
+        <div id="left-panel">
+            <h2></h2>
+            <div id="left-images"></div>
+        </div>
+        <div id="right-panel">
+            <h2></h2>
+            <div id="right-images"></div>
+        </div>
+    </div>
+<div id="result-panel">
+  <h5 id="level-text">LEVEL</h5>
+  <h2 id="victory-text"></h2>
+  <div id="did-you-know-section">
+    <img id="did-you-know-image" src="" alt="Did You Know" />
+    <h4>Did you know?</h4>
+    <button id="speak-button">
+        <i class="material-icons">volume_up</i>
+    </button>
+    
+    <p id="did-you-know-text"></p>
+
+  </div>
+  <button id="next-level-button">Next Level</button>
+</div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2></h2>
+      <p id="message-TEXT">Continue from where you left</p>
+      <div class="popup-buttons">
+        <button id="continue-button">Continue</button>
+        <button id="new-game-button">New Game</button>
+      </div>
+    </div>
+  </div>
+<!-- Image popup and overlay -->
+<div class="image-popup-overlay" id="image-popup-overlay"></div>
+<div class="image-popup" id="image-popup">
+  <img src="" alt="Preview" id="preview-image">
+</div>
+
+    <audio src="SFX/match_sound.mp3" id="match-sound"></audio>
+    <audio src="SFX/non_match_sound.mp3" id="non-match-sound"></audio>
+
+    <script src="script.js"></script>
+    <script src="didyouknow.js"></script>
+</body>
+</html>

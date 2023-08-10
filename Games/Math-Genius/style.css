@@ -1,0 +1,229 @@
+body {
+  font-family: 'Comic Sans MS','Comic Sans';
+  background-color: #fce4ec; /* Light pink background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+a.backbtn {
+    display: flex;
+    padding: 2px 4px 2px 15px;
+    float: left;
+    background: #6e6e6e;
+    font-size: 12px;
+    margin-left: -20px;
+    border-right: 7px solid #cacaca;
+    border-radius: 0px 12px 12px 0px;
+    text-decoration: none;
+    box-shadow: 3px 1px 6px 1px rgba(0, 0, 0, 0.1);
+    /* border-top: 3px solid #64a19e; */
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 5px;
+    left: 10px;
+    z-index: 1;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 600px;
+  text-align: center;
+  width: 445px;
+  min-height: 600px;
+}
+
+h1 {
+  font-size: 22px; /* Larger font size for headings */
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #e91e63; /* Vibrant pink color for headings */
+}
+
+h1 span {
+  font-size: 14px;
+  opacity: 0.9;
+}
+.Containerheader {
+    display: flex;
+    align-items: baseline;
+    /* border-bottom: 2px solid hotpink; */
+    border-top: 2px solid hotpink;
+    border-bottom: 2px solid hotpink;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: -15px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #ca0045;
+}
+span#tryleft {
+    color: #f71100;
+    font-size: 20px;
+    width: 100px;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+    /* border-bottom: 2px solid hotpink; */
+}
+
+/* Add the animation for the broken heart */
+@keyframes heartBreak {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px) translateX(10px) rotate(45deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Add styles for the broken heart */
+.broken-heart {
+  color: red;
+  font-size: 20px;
+  animation: heartBreak 1s ease;
+  position: absolute;
+}
+
+.question-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.question {
+  background-color: #f8bbd0; /* Lighter pink background for questions */
+  border: 2px solid #e91e63; /* Vibrant pink border */
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 26px;
+  display: flex;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.operator {
+    color: #e91e1e;
+    font-size: 46px;
+    font-family: monospace;
+    font-weight: bolder;
+    padding: 0;
+    margin: -10px;
+}
+
+.drop-field {
+  background-color: #fce4ec; /* Light pink background for drop fields */
+  border: 2px dashed #e91e63; /* Vibrant pink dashed border */
+  border-radius: 8px;
+  width: 80px;
+  height: 45px;
+  text-align: center;
+  margin-top: 1px;
+  line-height: 52px;
+  font-size: 32px; /* Slightly larger font for drop fields */
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.drop-field.show-answer {
+  border: 2px solid #2ecc71; /* Light green border for correct answers */
+  color: #2ecc71; /* Light green color for correct answers */
+}
+
+#answer-container {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.answer {
+  background-color: #3f51b5; /* Deep blue background for answer options */
+  border: 2px solid #1a237e; /* Darker blue border */
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 10px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s; /* Add smooth transition effect */
+}
+
+.answer:hover {
+  background-color: #303f9f; /* Darker blue background on hover */
+  transform: scale(1.1); /* Slight scale-up effect on hover */
+}
+
+.next-button {
+  background-color: #4caf50; /* Green background for next button */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+.next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.try-button {
+  background-color: #c73a3a; /* redish background for tryagain button */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+
+/* Shake animation */
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 80% {
+    transform: translateX(5px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-10px);
+  }
+  40%, 60% {
+    transform: translateX(10px);
+  }
+}
+.shake {
+  animation: shake 0.4s ease-in-out;
+}

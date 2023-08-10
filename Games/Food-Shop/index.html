@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Shop Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <a href="../../index.html" class="backbtn"><i class="material-icons">arrow_back</i> Back</a>
+  <div class="main-container">
+    <h1>Food Shop Game</h1>
+      <div id="popupCard" class="popup-card">
+        <div class="popup-content">
+          <h2>How to Play the Game</h2>
+          <p>Drag and drop each food item into the correct bucket.</p>
+          <button id="closePopupBtn" class="close-popup-btn">Start Game</button>
+        </div>
+      </div>
+
+    <p id="score">Score: <span id="scoreValue">0</span></p>
+    <div class="foodbox">
+        <div id="fruitBucket" class="bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h2>Fruit</h2>
+        </div>
+
+        <div id="veggiesBucket" class="bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h2>Veggies</h2>
+        </div>
+
+        <div id="fastFoodBucket" class="bucket" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h2>Fast Food</h2>
+        </div>
+    <div id="restartContainer">
+      <p id="result"></p>
+      <button id="restartBtn" style="display: none;">Restart</button>
+    </div>         
+        <div id="foodContainer"></div>
+    </div>
+    <div class="clear"></div>
+    
+
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

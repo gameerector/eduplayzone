@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Match Shapes Game</title>
+    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="imagebox">
+            <img src="../../image/matchshape.png">
+        </div>
+        <div class="loading-bar-container">
+          <div class="loading-bar"></div>
+        </div>
+        <p class="loading-progress">Loading... 0%</p>
+    </div>
+    <a href="../../index.html" class="backbtn"><i class="material-icons">arrow_back</i> Back</a>
+    <div class="container">
+        <h1>Match Shapes Game</h1>
+        <div class="game-board">
+            <div class="level-display">Level: 1</div>
+            <div class="question">
+                <div class="question-shape"></div>
+                <div class="question-text"></div>
+            </div>
+            <div class="shapes-container">
+                <div class="shape" data-index="0"></div>
+                <div class="shape" data-index="1"></div>
+                <div class="shape" data-index="2"></div>
+            </div>
+            <button class="next-button" onclick="nextLevel()">Next Level</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

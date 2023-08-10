@@ -1,0 +1,227 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #F1F1F1;
+  text-align: center;
+}
+
+a.backbtn {
+    display: flex;
+    padding: 4px 20px;
+    float: left;
+    background: burlywood;
+    font-size: 16px;
+    margin-left: -20px;
+    border-right: 7px solid #607D8B;
+    border-radius: 0px 12px 12px 0px;
+    text-decoration: none;
+    box-shadow: 3px 1px 6px 1px rgba(0, 0, 0, 0.1);
+    /* border-top: 3px solid #64a19e; */
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+}
+
+.main-container{
+  text-align: center;
+  background-color: #F3F3F3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 520px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+  border-bottom: 3px solid #0000007d;
+}
+
+h1 {
+  color: #333333;
+  margin-bottom: 30px;
+}
+.foodbox {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.foodbox .bucket {
+    display: inline-block;
+    width: 150px;
+    height: 130px;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bucket h2 {
+    font-size: 1.3rem;
+    position: relative;
+    top: -38px;
+    padding: 4px 0;
+    background: wheat;
+    border-radius: 0px 0 12px 12px;
+}
+
+.food {
+  display: inline-block;
+  font-size: 40px; /* Adjusted font size for smaller food items */
+  margin: 5px; /* Adjusted margin for closer arrangement */
+  cursor: move;
+  user-select: none;
+}
+
+
+#foodContainer {
+    margin-top: 35px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 220px;
+    width: 380px;
+    
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.bucket {
+  display: inline-block;
+  width: 200px;
+  height: 150px;
+  border: 2px solid #333333;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Changed overflow to hidden */
+}
+
+.food {
+  display: inline-block;
+  font-size: 40px;
+  margin: 5px;
+  cursor: move;
+  user-select: none;
+   animation: rotate 2s linear infinite;
+}
+.dragging {
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.5));
+}
+.food.inside-bucket {
+  font-size: 25px; /* Changed font size for food inside the bucket */
+  margin: -7px; /* Changed margin for food inside the bucket */
+  transform: rotate(0deg);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+#submitBtn {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #333333;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #FF0000;
+  font-weight: bold;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#scoreValue {
+  font-weight: bold;
+}
+
+#restartContainer {
+  display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#restartBtn {
+  display:none ;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  align-items: center;
+  border-radius: 7px;
+}
+
+#restartBtn:hover {
+  background-color: #45a049;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+#popupCard {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 9999;
+}
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close-popup-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-popup-btn:hover {
+  background-color: #555;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="description" content="EduPlayZone offers a collection of educational games for kids to learn and have fun. Engage your child's mind with interactive and educational activities.">
+    <meta name="keywords" content="educational games, kids learning, interactive activities, educational toys, children's games">
+    <meta name="author" content="Your Name">
+    
+    <!-- Google Tags -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GOOGLE_ANALYTICS_ID_HERE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GOOGLE_ANALYTICS_ID_HERE');
+    </script>
+
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EduPlayZone - Educational Games for Kids">
+    <meta name="twitter:description" content="EduPlayZone offers a collection of educational games for kids to learn and have fun. Engage your child's mind with interactive and educational activities.">
+    <meta name="twitter:image" content="URL_TO_YOUR_WEBSITE_LOGO_OR_IMAGE">
+    <meta name="twitter:creator" content="@YourTwitterHandle">
+
+    <!-- Open Graph (OG) Tags -->
+    <meta property="og:title" content="EduPlayZone - Educational Games for Kids">
+    <meta property="og:description" content="EduPlayZone offers a collection of educational games for kids to learn and have fun. Engage your child's mind with interactive and educational activities.">
+    <meta property="og:image" content="URL_TO_YOUR_WEBSITE_LOGO_OR_IMAGE">
+    <meta property="og:url" content="URL_TO_YOUR_WEBSITE">
+    <meta property="og:site_name" content="EduPlayZone">
+    <meta property="og:type" content="website">
+
+    <!-- Other Meta Tags -->
+    <title>EduPlayZone - Educational Games for Kids</title>
+    
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="preload" as="style">
+   <!-- Font Awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preload" href="image/guessWord.png" as="image">
+  <link rel="preload" href="image/shop.png" as="image">
+  <link rel="preload" href="image/matchnumber.png" as="image">
+</head>
+<body>
+<header>  
+  <div class="container">
+    <div class="logo">
+      <img src="image/eduplayzone_logo.png">
+    </div>
+    <div class="avatar-container">
+      <span class="DotC"></span>
+      <span class="DotD"><div class="tooltip" id="tooltip">Tap to change</div></span>
+      <img class="avatar" src="https://www.pngarts.com/files/11/Avatar-PNG-Free-Download.png" alt="Avatar" id="avatar">
+      <h3 class="username" id="username">Your Name</h3>
+    </div>
+  </div>
+</header>
+    
+  <!-- Add the loading screen -->
+  <div class="loading-screen">
+    <img class="loadingImg" src="image/eduplayzone_logo.png">
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p class="loading-progress">Loading... 0%</p>
+    <span class="FromLogo">from <img src="image/Logo1 1.png"> </span>
+  </div>
+
+<div class="overlay" id="overlay">
+  <div class="popup" id="popup">
+    <h2 class="popup-title">Your Name</h2>
+    <input type="text" id="nameInput" maxlength="12" minlength="3" placeholder="Enter your name">
+    <button id="saveBtn">Save</button>
+  </div>
+</div>
+
+<div class="container-event">
+  <div class="image-cards">
+    <div class="image-card">
+      <a href="Games/Guess Word/index.html">
+        <img src="image/geo-india.png" alt="Image 1">
+        <div class="image-overlay">
+          <div class="overlay-text">Special</div>
+          <div class="overlay-title">Geo Genius Bharat</div>
+          <div class="overlay-description"></div>
+        </div>
+      </a>
+    </div>
+    <div class="image-card">
+      <img src="image/matchF.png" alt="Image 2">
+      <div class="image-overlay">
+        <div class="overlay-text">New</div>
+        <div class="overlay-title">Sort It Out</div>
+        <div class="overlay-description">A challenging game to sort objects and enhance cognitive skills.</div>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="image/matchnumber.png" alt="Image 3">
+      <div class="image-overlay">
+        <div class="overlay-text">Latest</div>
+        <div class="overlay-title">Match Number</div>
+        <div class="overlay-description">A fun game to match numbers and improve number recognition.</div>
+      </div>
+    </div>
+    <!-- Add more image cards as needed -->
+  </div>
+</div>
+
+
+ <div id="search-section" class="search-bar">
+    <input id="search-input" class="search-input" type="text" placeholder="Search...">
+    <button id="search-btn" class="search-btn">
+      <i class="material-icons">keyboard_voice</i>
+    </button>
+  </div>
+
+  <!-- Waypoint button -->
+  <button id="waypoint-button" class="waypoint-button">
+    <i class="material-icons">search</i>
+  </button> 
+
+  <div class="category">
+    <h3>Top games </h3>
+  </div>
+<main id="game-cards">
+  <div href="Games/Guess Word/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/guessWord.png" alt="Guess Word">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Guess Word</div>
+      <div class="game-description">A fun word-guessing game for all ages.</div>
+      <a href="Games/Guess Word/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Food-Shop/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/shop.png" alt="Shop Food">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Shop Food</div>
+      <div class="game-description">A shopping-themed game where you collect food items.</div>
+      <a href="Games/Food-Shop/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Match-Number/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/matchnumber.png" alt="Match Number">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Match Number</div>
+      <div class="game-description">A fun game to match numbers and improve number recognition.</div>
+      <a href="Games/Match-Number/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Alphabate/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/abc.jpg" alt="Learn word">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Learn word</div>
+      <div class="game-description">An educational game to learn new words and improve vocabulary.</div>
+      <a href="Games/Alphabate/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Match-Picture/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/matchPicture.png" alt="Match Picture">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Match Picture</div>
+      <div class="game-description">A fun game to match pictures and enhance visual recognition.</div>
+      <a href="Games/Match-Picture/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Sort-It-Out/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/matchF.png" alt="Sort It Out">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Sort It Out</div>
+      <div class="game-description">A challenging game to sort objects and enhance cognitive skills.</div>
+      <a href="Games/Sort-It-Out/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Math-Genius/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/Math Fun.png" alt="Math Genius">
+    </div>
+    <div class="game-info">
+      <div class="game-name">Math Genius</div>
+      <div class="game-description">A math-focused game to test and improve your mathematical abilities.</div>
+      <a href="Games/Math-Genius/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Match-shapes/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/matchshape.png" alt="Match Shapes">
+    </div>
+    <div class="game-info" >
+      <div class="game-name">Match Shape</div>
+      <div class="game-description">A shape-matching game to enhance spatial recognition skills.</div>
+      <a href="Games/Match-shapes/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+
+  <div href="Games/Word Swap Twist/index.html" class="game-card">
+    <div class="game-image">
+      <img src="image/oppoword.png" alt="Match Shapes">
+    </div>
+    <div class="game-info" >
+      <div class="game-name">Word Twist</div>
+      <div class="game-description">where you match words and their opposites in a fun and challenging twist!</div>
+      <a href="Games/Word Swap Twist/index.html" class="play-button">Play Now</a>
+    </div>
+  </div>
+</main>
+
+
+<footer>
+  <div class="social-icons">
+    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></i></a>
+    <!-- Add other social media icons as needed -->
+  </div>
+  <p>© 2023 EduPlayZone | GameErector. All rights reserved.</p>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

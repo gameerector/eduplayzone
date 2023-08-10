@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <title>Alphabet Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=FontName">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<body>
+<!-- Add the loading screen -->
+  <div class="loading-screen">
+    <div class="imagebox">
+      <img src="../../image/matchnumber.png">
+    </div>    
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p class="loading-progress">Loading... 0%</p>
+  </div>  
+    <a href="../../index.html" class="backbtn"><i class="material-icons">arrow_back</i> Back</a>  
+  <div id="quiz-container">
+    <h4 id="GTitle"><span id="spantitale">Alphabet Quiz Game</span></h4>
+    <div id="QNo">
+      <h1 id="QNoT"></h1>
+      <span id="question"></span>
+    </div>
+    
+    <ul id="options">
+      <li><button class="option"></button></li>
+      <li><button class="option"></button></li>
+      <li><button class="option"></button></li>
+      <li><button class="option"></button></li>
+    </ul>
+    <div id="result-container" style="display: none;">
+      <h2 id="score-text"></h2>
+      <p id="percentage-text"></p>
+      <button id="restart-btn">Restart Quiz</button>
+    </div>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background-color: #f3f3f3;
+}
+
+#gameContainer {
+      max-width: 800px;
+    margin: 10px auto;
+    background-color: #c3dd98;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ded5f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 111;
+}
+
+/*.imagebox img{
+    width: 125px;
+    position: relative;
+    top: -60px;
+    border: 3px solid whitesmoke;
+    border-radius: 20px;
+} 
+.loading-bar-container {
+  width: 200px;
+  height: 20px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid whitesmoke;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s;
+}
+
+.loading-progress {
+  font-size: 24px;
+  margin-top: 10px;
+}*/
+a.backbtn {
+    display: flex;
+    padding: 4px 10px;
+    float: left;
+    background: #fd4b4b8f;
+    font-size: 16px;
+    margin-left: -20px;
+    border-right: 7px solid #dd0f005c;
+    border-radius: 0px 12px 12px 0px;
+    text-decoration: none;
+    box-shadow: 3px 1px 6px 1px rgba(0, 0, 0, 0.1);
+    /* border-top: 3px solid #64a19e; */
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+}
+.gameTitle {
+  position: relative;
+  left: -20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: gold;
+    -webkit-text-stroke: 1px #000;
+}
+
+#bucketsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.bucket {
+    width: 30%;
+    background-color: #caf288;
+    padding: 10px;
+    border: 3px solid #e7ffbf;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0px 7px 0px #a0c660, 0px 10px 9px #7d945a;
+    margin: 11px 3px;
+}
+
+.bucket h2 {
+  margin-top: 0;
+}
+
+.bucket-inner {
+    min-height: 120px;
+    border: 2px dashed #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    background: whitesmoke;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    border-radius: 5px 5px 29px 29px;
+}
+
+@media only screen and (max-width: 768px) {
+      #bucketsContainer {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+      }
+      .bucket {
+        width: 40%;
+      }
+}
+
+#foodContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    border: 9px solid #ddf5b6;
+    border-radius: 30px;
+    height: 200px;
+    width: 350px;
+    margin: auto;
+    /* background-image: url(https://static.vecteezy.com/system/resources/previews/010/977/244/original/wooden-panel-for-game-ui-in-cartoon-style-png.png); */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-items: center;
+    align-content: center;
+    backdrop-filter: contrast(0.9);
+    background: whitesmoke;
+    box-shadow: inset 1px 0px 12px black, 0px 4px 10px #7d945a;
+}
+#foodContainer .food{
+  font-size: 35px;
+  text-shadow: 0px 5px 10px #00000054;
+}
+.food {
+  display: inline-block;
+  font-size: 24px;
+  padding: 5px;
+  cursor: move;
+}
+
+.food .dragging {
+  opacity: 0.5;
+  font-size: 46px;
+  text-shadow: 0px 5px 10px #000000;
+}
+
+#result {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: white;
+    font-size: 20px;
+}
+
+#scoreContainer {
+  text-align: center;
+}
+
+#scoreLabel {
+  font-weight: bold;
+}
+
+#scoreValue {
+  font-size: 24px;
+  font-weight: bold;
+  color: #009900;
+}
+
+#restartBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #009900;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 5px 10px #000000;
+}
+
+#restartBtn:hover {
+  background-color: #008000;
+}
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}

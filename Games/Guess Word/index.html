@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   
+  <title>Kids Learning Game</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+    <!-- Add the loading screen -->
+  <div class="loading-screen">
+    <div class="imagebox">
+      <img src="../../image/guessWord.png">
+    </div>
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+    <p class="loading-progress">Loading... 0%</p>
+  </div>
+
+    <a href="../../index.html" class="backbtn"><i class="material-icons">arrow_back</i> Back</a>
+  <div id="game-container">
+    <h2 class="gameTitle">Guess the Word</h2>
+    <h2 class="level-box" id="level-info"><span id="prev-level"></span> - <span id="current-level"></span> - <span id="next-level"></span></h2>
+    <div id="emoji-container"></div>
+    <div class="ins" id="answer-container"></div>
+    <button id="reset-button"> Clear 🗑 </button>
+    <div id="message-container"></div>
+    <div id="character-container"></div>
+    
+  </div>
+
+  <div id="game-popup">
+    <div class="popup-content">
+      <h3>Welcome!</h3>
+      <p>Do you want to continue from where you left off or start a new game?</p>
+      <div class="popup-buttons">
+        <button id="continue-button" onclick="continueGame()">Continue</button>
+        <button id="new-game-button" onclick="startNewGame()">New Game</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>

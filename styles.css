@@ -1,0 +1,617 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ded5f1;
+  overflow-x: hidden;
+}
+
+header {
+ background-color: #f0f0f0;
+  padding: 1px 0;
+  transition: top 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ded5f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.loadingImg {
+width: 221px;
+    position: relative;
+    top: 20px;
+}
+
+.FromLogo{
+    font-size: 12px;
+    position: relative;
+    bottom: -30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #4f4f4f;
+    font-weight: 500;
+}
+.FromLogo img{
+  width: 140px;
+}
+.loading-bar-container {
+    width: 200px;
+    height: 5px;
+    background-color: #F3EEFD;
+    border-radius: 19px;
+    border: 3px solid #F3EEFD;
+    overflow: hidden;
+    position: relative;
+    top: 16px;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s;
+}
+
+.loading-progress {
+    font-size: 15px;
+    margin-top: 15px;
+    position: relative;
+    top: 3px;
+    display: none;
+}
+
+h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 32px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: -20px;
+}
+
+.logo img {
+    width: 154px;
+    object-fit: cover;
+    padding: 2px 0; 
+}
+.DotC{
+    position: relative;
+    top: 16px;
+    left: -50px;
+    background-color: #ff6f51;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+}
+.DotD{
+    position: relative;
+    top: 23px;
+    left: -49px;
+    background-color: #ff6f51;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    z-index: 3;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff6f51;
+    background: whitesmoke;
+    z-index: 5;
+}
+.username {
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-family: sans-serif;
+    color: #393c54;
+    /* margin-left: 20px; */
+    padding-right: 6px;
+    width: 160px;
+    text-align: right;
+}
+
+.tooltip {
+    display: none;
+    position: relative;
+    width: 76px;
+    top: 8px;
+    right: 50px;
+    transform: translate(-50%, -50%) scaleX(0);
+    transform-origin: right center; /* Set the transform origin to the right */
+    background-color: #ff6f51a1;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 8px;
+    font-size: 12px;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: translate(-50%, -50%) scaleX(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+}
+
+h3 span {
+  color: slategrey;
+    font-family: system-ui;
+    font-size: 10px;
+    position: relative;
+    top: -7px;
+    right: 3px;
+}
+.container-event {
+  max-width: 900px;
+  margin: 100px auto 10px auto;
+  overflow-x: visible; /* Hide horizontal overflow */
+}
+
+.image-cards {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth; /* Add smooth scrolling effect */
+  -ms-overflow-style: none; /* Hide scrollbar for Edge and IE */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+    padding-left: 10px;
+}
+
+.image-cards::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.image-card {
+  flex: 0 0 280px; /* Fixed width for each card */
+  margin-right: 20px;
+}
+
+.image-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+}
+
+/* Add styles for proper UI look */
+
+
+.image-card {
+  position: relative; /* Add relative positioning for overlay */
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.image-overlay:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 30%, #000000d4 120%);
+}
+
+.overlay-text {
+    background-color: #ff6f51bd;
+    border-radius: 0 0 10px 0;
+    /* padding: 5px; */
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    top: -10px;
+    left: -10px;
+    width: fit-content;
+    padding: 3px 16px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.overlay-title {
+  font-size: 20px;
+  position: relative;
+  top: 50px;
+  z-index: 11;
+}
+
+.overlay-description {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.search-section {
+  padding: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 725px;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    right: 8px;
+    padding: 20px;    
+}
+
+.search-input {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: 0 9px 5px rgba(0, 0, 0, 0.1), 0 4px 0px #ffffff;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: -40px;
+  cursor: pointer;
+}
+
+.search-icon {
+  font-size: 24px;
+}
+/* styles.css */
+
+/* ...existing styles... */
+
+.search-btn {
+  /* Add styles for voice search button */
+}
+
+.search-btn.active {
+  /* Add styles for active state during voice search */
+  animation-name: voiceSearchAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  color: red;
+}
+
+@keyframes voiceSearchAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.category{
+    background: ;
+    max-width: 720px;
+    margin: auto;
+    border-radius: 39px 41px 14px 15px;
+}
+.category h3{
+    font-size: 20px;
+    padding: 10px;
+    color: darkslategray;
+    margin-bottom: -12px;
+}
+main {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-gap: 20px;
+  max-width: 720px;
+  margin: auto;
+}
+
+.game-card {
+  height: 160px;
+  display: flex;
+  text-decoration: none;
+  color: #000;
+  border-radius: 30px;
+/*  border: 4px solid whitesmoke;*/
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1) /*,0 5px 0px #f2ecff*/;
+}
+
+.game-card:hover {
+  transform: translateY(0px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.game-card.matched { 
+/*  border: 4px solid #00ff0a;*/
+  animation: bounceY 0.6s ease-in-out infinite; /* Adjust duration and other properties as needed */
+/*  animation-name: blinking;
+  animation-duration: 1s;
+  animation-iteration-count: 100;*/
+}
+
+@keyframes blinking {
+  50% {
+    border-color: #FFE400;
+  }
+}
+
+/* CSS animation for bouncing along the Y-axis */
+@keyframes bounceY {
+  0%, 100% {
+    transform: translateY(0); /* Initial and final position */
+  }
+  50% {
+    transform: translateY(-10px); /* Bounced up position */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .game-card {
+    height: 150px;
+  }
+  
+  .game-image {
+    height: 100px;
+  }
+}
+
+.game-image {
+  flex: 1.12;
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.game-card:hover .game-image img {
+  transform: scale(1.1);
+}
+
+.game-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+.game-name {
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: left;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.game-description {
+  font-size: 14px;
+  color: #444;
+  text-align: left;
+  position: relative;
+  top: -15px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.play-button {
+  width: fit-content;
+  position: relative;
+  left: 50px;
+  padding: 8px 20px;
+  background-color: #FF6F51;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline from the button link */
+  transition: transform 0.3s ease,box-shadow 0.3s ease;
+}
+
+/* Media Query for Mobile */
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+    .logo img {
+    width: 124px;
+  }
+  .username{
+    width: 110px;
+  }
+}
+
+@media only screen and (max-width: 390px){
+  .logo img {
+    width: 124px;
+  }
+}
+
+footer {
+  background-color: #FF6F61;
+  padding: 10px;
+  text-align: center;
+}
+
+footer p {
+  margin: 5px 0 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icon {
+  display: inline-block;
+  color: #FF6F51;
+  background-color: #f8f8f8;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #FF6F51;
+  color: #f8f8f8;
+}
+
+
+/* Styles for the waypoint button */
+.waypoint-button {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  background-color: #B199E3;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Style for the icon inside the waypoint button */
+.waypoint-button i {
+  line-height: 50px;
+  font-size: 32px;
+}
+/* Additional CSS to hide the waypoint button */
+.hidden {
+  display: none;
+}
+
+/* Add styles for the overlay and popup */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  display: none;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  max-width: 400px;
+}
+
+.popup-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #FF6F51;
+}
+
+#nameInput {
+  width: 92%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 2px solid #FF6F51;
+  border-radius: 8px;
+}
+#nameInput:invalid{
+  border: 2px solid #FF6F51;
+  background-color: #ffa5a5ab;
+} 
+#saveBtn {
+  background-color: #FF6F51;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  left: 35%;
+
+}
+
+#saveBtn:hover {
+  background-color: #FF6F51;
+}
