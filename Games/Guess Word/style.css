@@ -213,7 +213,11 @@ a.backbtn {
   transition: transform 0.4s ease-in-out;
   padding: 0;
 }
+.containerbutton{
+  display: flex;
+  justify-content: space-between;
 
+}
 #character-container {
   display: flex;
   justify-content: center;
@@ -225,10 +229,49 @@ a.backbtn {
   font-size: 20px;
   color: darkgray;
 }
+#new-game-button {
+  padding: 6px 6px;
+  font-size: 16px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 11;
+}
+.anim-div {
+  z-index: 1;
+  border-radius: 0 16px 16px 0;
+  position: relative;
+  left: -12px;
+  top: 0px;
+  /* width: 80px; */
+  font-size: 12px;
+  color: white;
+  padding: 7px 0px;
+  background: #313131;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: expandShrink 7s infinite alternate;
+}
+
+@keyframes expandShrink {
+  0%, 100% {
+    width: 0; /* Start with width of 0 and end with width of 0 */
+  }
+  50%, 75% {
+    width: 100px; /* Expand to full width */
+  }
+  25% {
+    width: 0; /* Hold at width of 0 */
+  }
+}
+
 
 #reset-button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 2px 10px;
+    font-size: 14px;
     background-color: #e33528;
     box-shadow: 0px 5px 6px #00000069;
     color: #FFFFFF;
@@ -236,9 +279,6 @@ a.backbtn {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    position: relative;
-    top: -12px;
-    right: -38%;
 }
 
 #reset-button:hover {

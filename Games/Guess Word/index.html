@@ -31,13 +31,19 @@
     <h2 class="level-box" id="level-info"><span id="prev-level"></span> - <span id="current-level"></span> - <span id="next-level"></span></h2>
     <div id="emoji-container"></div>
     <div class="ins" id="answer-container"></div>
-    <button id="reset-button"> Clear 🗑 </button>
+    <div class="containerbutton">
+      <button onclick="startNewGame()" style="background: none;
+    border: none; display: flex; "><i id="new-game-button" class="material-icons">restart_alt</i>
+        <span class="anim-div">Start New</span>
+      </button>
+      <button id="reset-button"> Clear 🗑 </button>
+    </div>
     <div id="message-container"></div>
     <div id="character-container"></div>
     
   </div>
 
-  <div id="game-popup">
+<!--   <div id="game-popup">
     <div class="popup-content">
       <h3>Welcome!</h3>
       <p>Do you want to continue from where you left off or start a new game?</p>
@@ -46,7 +52,7 @@
         <button id="new-game-button" onclick="startNewGame()">New Game</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 

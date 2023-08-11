@@ -82,7 +82,7 @@
 
     const LEVEL_STORAGE_KEY = "guessEmojisCurrentLevel";
     const POPUP_STORAGE_KEY = "guessEmojisPopupShown";
-    const FIFTEEN_MINUTES = 5 * 60 * 1000; // 15 minutes in milliseconds
+    const FIFTEEN_MINUTES = 0 * 60 * 1000; // 15 minutes in milliseconds
 
     let currentLevelIndex = 0;
     let currentWord = "";
@@ -93,14 +93,14 @@
       const storedLevelIndex = localStorage.getItem(LEVEL_STORAGE_KEY);
       const popupShownBefore = localStorage.getItem(POPUP_STORAGE_KEY);
 
-      if (!popupShownBefore || (Date.now() - parseInt(popupShownBefore)) > FIFTEEN_MINUTES) {
+/*      if (!popupShownBefore || (Date.now() - parseInt(popupShownBefore)) > FIFTEEN_MINUTES) {
           if (storedLevelIndex !== null && parseInt(storedLevelIndex) > 0) {
             showNewGamePopup();
           } else {
             startNewGame();
           }
           return;
-        }
+        }*/
 
         if (storedLevelIndex !== null) {
           currentLevelIndex = parseInt(storedLevelIndex);
@@ -245,7 +245,6 @@
           }, 1000);
         } else {
           messageContainer.textContent = "Congratulations! You guessed the word correctly!";
-          messageContainer.style.color = "green";
           setTimeout(()=>{
             playWordAudio(currentWord);
             // Confetti code
@@ -281,6 +280,7 @@
           const successMessage = document.createElement("div");
           successMessage.classList.add("success-message");
           successMessage.textContent = "Successfully Guessed!";
+          successMessage.style.color = "green"
           characterContainer.appendChild(successMessage);
         }
       }
@@ -332,7 +332,6 @@
           }, 1000);
         } else {
           messageContainer.textContent = "Congratulations! You guessed the word correctly!";
-          messageContainer.style.color = "green";
           setTimeout(()=>{
             playWordAudio(currentWord);
 
@@ -369,6 +368,7 @@
           const successMessage = document.createElement("div");
           successMessage.classList.add("success-message");
           successMessage.textContent = "Successfully Guessed!";
+          successMessage.style.color = "green";
           characterContainer.appendChild(successMessage);
         }
       }
@@ -451,18 +451,18 @@ function showContinuePopup() {
 }
 
 function continueGame() {
-  const popup = document.getElementById('game-popup');
-  const continueButton = document.getElementById('continue-button');
+/*  const popup = document.getElementById('game-popup');
+  const continueButton = document.getElementById('continue-button');*/
 
   // Load the saved level and initialize the game
   loadSavedLevel();
   initializeGame(); // Call the initializeGame() function to start the game with the saved level
 
-  // Hide the popup
+/*  // Hide the popup
   popup.style.display = 'none';
 
     // Remove the event listener from the "Continue" button
-  continueButton.removeEventListener('click', continueGame);
+  continueButton.removeEventListener('click', continueGame);*/
 }
 
 

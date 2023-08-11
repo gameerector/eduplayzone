@@ -558,6 +558,9 @@ nextLevelButton.addEventListener("click", () => {
 });
 
 function getImageURL(imageId) {
+  // Convert the imageId to lowercase
+  const lowercasedImageId = imageId.toLowerCase();
+  
   // Assuming the images are located in a folder named "images/"
   const imageUrl = `images/${imageId}.jpg`; // Adjust the file extension based on your image file format
   return imageUrl;
