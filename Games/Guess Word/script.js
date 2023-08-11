@@ -245,6 +245,7 @@
           }, 1000);
         } else {
           messageContainer.textContent = "Congratulations! You guessed the word correctly!";
+          messageContainer.style.color = "green";
           setTimeout(()=>{
             playWordAudio(currentWord);
             // Confetti code
@@ -270,11 +271,11 @@
                   spread: 120,
                   startVelocity: 45,
                 });
-          },500)
+          },1000)
           setTimeout(() => {
             messageContainer.textContent = "";  
             resetGame();
-          }, 2000);
+          }, 3000);
 
           characterContainer.innerHTML = "";
           const successMessage = document.createElement("div");
@@ -324,12 +325,14 @@
       if (checkWord()) {
         if (answerContainer.textContent !== currentWord) {
           messageContainer.textContent = "It's wrong. Try again!";
+
           setTimeout(() => {
             messageContainer.textContent = "";
             resetGame();
           }, 1000);
         } else {
           messageContainer.textContent = "Congratulations! You guessed the word correctly!";
+          messageContainer.style.color = "green";
           setTimeout(()=>{
             playWordAudio(currentWord);
 
@@ -356,11 +359,11 @@
                   spread: 120,
                   startVelocity: 45,
                 });
-          },500)
+          },1000)
           setTimeout(() => {
             messageContainer.textContent = "";
             resetGame();
-          }, 2000);
+          }, 3000);
 
           characterContainer.innerHTML = "";
           const successMessage = document.createElement("div");
@@ -451,15 +454,15 @@ function continueGame() {
   const popup = document.getElementById('game-popup');
   const continueButton = document.getElementById('continue-button');
 
-  // Remove the event listener from the "Continue" button
-  continueButton.removeEventListener('click', continueGame);
-
   // Load the saved level and initialize the game
   loadSavedLevel();
   initializeGame(); // Call the initializeGame() function to start the game with the saved level
 
   // Hide the popup
   popup.style.display = 'none';
+
+    // Remove the event listener from the "Continue" button
+  continueButton.removeEventListener('click', continueGame);
 }
 
 

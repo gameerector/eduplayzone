@@ -40,9 +40,10 @@ h1 {
 .loading-bar-container {
   width: 200px;
   height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
+  background-color: whitesmoke;
+  border-radius: 20px;
   overflow: hidden;
+  border: 3px solid whitesmoke;
 }
 
 .loading-bar {

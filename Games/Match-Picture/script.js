@@ -563,6 +563,7 @@ function getImageURL(imageId) {
   return imageUrl;
 }
 
+
 // loading scereen load all images before game start 
 document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.querySelector(".loading-screen");
@@ -604,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the loading screen and start the game
         setTimeout(() => {
           loadingScreen.style.display = "none";
-        }, 500);
+        },  500);
       }
     };
     img.src = url;
@@ -612,5 +613,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start preloading each image
   imageUrls.forEach(preloadImage);
 
-  // Setup the game after preloading the images
 });

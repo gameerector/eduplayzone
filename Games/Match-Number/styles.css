@@ -35,15 +35,14 @@ h1 {
     top: -60px;
     border: 3px solid whitesmoke;
     border-radius: 20px;
-}
-
+} 
 .loading-bar-container {
   width: 200px;
   height: 20px;
-  background-color: #F3EEFD;
+  background-color: whitesmoke;
   border-radius: 20px;
-  border: 3px solid #F3EEFD;
   overflow: hidden;
+  border: 3px solid whitesmoke;
 }
 
 .loading-bar {
