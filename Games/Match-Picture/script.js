@@ -559,7 +559,7 @@ nextLevelButton.addEventListener("click", () => {
 
 function getImageURL(imageId) {
   // Assuming the images are located in a folder named "images/"
-  const imageUrl = `images/${imageId}.jpg`; // Adjust the file extension based on your image file format
+  const imageUrl = `images/${imageId}.JPG`; // Adjust the file extension based on your image file format
   return imageUrl;
 }
 
