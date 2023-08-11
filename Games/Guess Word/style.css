@@ -253,7 +253,7 @@ a.backbtn {
   background: #313131;
   overflow: hidden;
   white-space: nowrap;
-  animation: expandShrink 7s infinite alternate;
+  animation: expandShrink 15s infinite alternate;
 }
 
 @keyframes expandShrink {
