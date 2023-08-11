@@ -25,8 +25,8 @@ let gameLevel = [
     { name: "rat", match: "hole-rat" }
   ],
   [
-    { name: "cow", match: "milk-cow" },
-    { name: "hen", match: "egg-hen" },
+    { name: "cow", match: "milk-cows" },
+    { name: "hen", match: "egg-hens" },
     { name: "sheep", match: "fur-sheep" }
   ],
   [
@@ -559,7 +559,7 @@ nextLevelButton.addEventListener("click", () => {
 
 function getImageURL(imageId) {
   // Assuming the images are located in a folder named "images/"
-  const imageUrl = `images/${imageId}.JPG`; // Adjust the file extension based on your image file format
+  const imageUrl = `images/${imageId}.jpg`; // Adjust the file extension based on your image file format
   return imageUrl;
 }
 
