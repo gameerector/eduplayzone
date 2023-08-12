@@ -349,6 +349,21 @@ h5#level-text {
 
 /* Media queries for responsive styles */
 
+@media screen and (max-width: 360px){
+    #right-panel .image{
+    background-color: #eafff8;
+    background-size: 70px;
+    width: 73px;
+    position: relative;
+    left: 20px;
+  }
+    #left-panel .image{
+   background-size: 126px;
+    width: 136px;
+  }
+
+}
+
 @media screen and (min-width: 390px){
   #right-panel {
     min-width: 20%;

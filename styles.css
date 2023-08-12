@@ -465,7 +465,7 @@ main {
 .play-button {
   width: fit-content;
   position: relative;
-  left: 50px;
+  left: 35%;
   padding: 8px 20px;
   background-color: #FF6F51;
   color: #fff;
@@ -480,7 +480,7 @@ main {
 /* Media Query for Mobile */
 @media only screen and (max-width: 768px) {
   main {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
     .logo img {
     width: 124px;
@@ -493,6 +493,22 @@ main {
 @media only screen and (max-width: 390px){
   .logo img {
     width: 124px;
+  }
+}
+
+/* Media Query for Mobile */
+@media only screen and (max-width: 540px) {
+  main {
+    grid-template-columns: 1fr;
+    width: 365px;
+
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  main {
+    grid-template-columns: 1fr;
+    width: auto;
   }
 }
 
