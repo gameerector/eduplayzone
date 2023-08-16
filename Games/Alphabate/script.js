@@ -244,6 +244,18 @@ const answerAudio = {
 let currentQuestion = 0;
 let score = 0;
 
+// Preload all audio files
+function preloadAudio() {
+  for (const option in answerAudio) {
+    const audioElement = new Audio(answerAudio[option]);
+    audioElement.preload = "auto";
+  }
+}
+
+// Call preloadAudio before initializing the quiz
+preloadAudio();
+
+
 // Function to initialize the quiz
 function initializeQuiz() {
   currentQuestion = 0;
@@ -332,6 +344,10 @@ function clearOptionStyles() {
 function nextQuestion() {
   clearOptionStyles();
 
+  // Cancel any ongoing speech synthesis
+  const speechSynthesis = window.speechSynthesis;
+  speechSynthesis.cancel();
+
   currentQuestion++;
 
   if (currentQuestion < questions.length) {
@@ -340,6 +356,7 @@ function nextQuestion() {
     showResult();
   }
 }
+
 
 // Function to show the final score
 function showResult() {
@@ -386,30 +403,26 @@ function speakText(text, rate = 0.8) {
       let loadingTime = 0;
 
       // Function to update the loading progress
-      function updateLoadingProgress() {
-        loadingTime += 10; // Increase by 10 milliseconds (adjust as needed for smoother progress)
-        const progress = Math.min((loadingTime / loadingDuration) * 100, 100);
+      function updateLoadingProgress(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsedTime = timestamp - startTime;
+
+        const progress = Math.min((elapsedTime / loadingDuration) * 100, 100);
         loadingBar.style.width = progress + "%";
         loadingProgress.textContent = `Loading... ${progress.toFixed(0)}%`;
 
-        // Check if loading is complete
-        if (loadingTime >= loadingDuration) {
-          // Hide the loading screen
-          setTimeout(() => {
-            loadingScreen.style.display = "none";
-            // Start the quiz
-            initializeQuiz();            
-          }, 1000); // Add a 1-second delay before hiding the loading screen
-
-          // Call your setupGame() function or perform any other actions after loading here.
-          // For demonstration, let's log a message when the loading is complete.
-          console.log("Loading complete!");
+        if (progress < 100) {
+          requestAnimationFrame(updateLoadingProgress);
         } else {
-          // Update progress again after a short delay
-          setTimeout(updateLoadingProgress, 10); // Repeat every 10 milliseconds (adjust as needed)
+          // Hide the loading screen
+          loadingScreen.style.display = "none";
+          // Start the quiz
+          initializeQuiz();
         }
       }
 
-      // Start updating the loading progress
-      updateLoadingProgress();
+      // Call updateLoadingProgress to start the loading animation
+      let startTime;
+      requestAnimationFrame(updateLoadingProgress);
+
     });

@@ -564,7 +564,6 @@ function getImageURL(imageId) {
 }
 
 
-// loading scereen load all images before game start 
 document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.querySelector(".loading-screen");
   const loadingBar = document.querySelector(".loading-bar");
@@ -583,11 +582,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }, []);
   }
 
-  // Iterate through each level and get the image URLs
-  gameLevel.forEach((level) => {
-    const levelImageUrls = getLevelImageUrls(level);
-    imageUrls.push(...levelImageUrls);
-  });
+  // Divide the levels into first 5 and the rest
+  const firstFiveLevels = gameLevel.slice(0, 5);
+  const remainingLevels = gameLevel.slice(5);
+
+  // Get image URLs for the first 5 levels
+  const firstFiveImageUrls = firstFiveLevels.flatMap(getLevelImageUrls);
+  imageUrls.push(...firstFiveImageUrls);
 
   let loadedImageCount = 0;
 
@@ -605,12 +606,26 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the loading screen and start the game
         setTimeout(() => {
           loadingScreen.style.display = "none";
-        },  500);
+          // Call the function to start loading remaining images in the background
+          loadRemainingImagesInBackground();
+        }, 500);
       }
     };
     img.src = url;
   }
-  // Start preloading each image
+
+  // Start preloading images for the first 5 levels
   imageUrls.forEach(preloadImage);
 
+  // Function to load remaining images in the background
+  function loadRemainingImagesInBackground() {
+    // Get image URLs for the remaining levels
+    const remainingImageUrls = remainingLevels.flatMap(getLevelImageUrls);
+    
+    // Start preloading images for the remaining levels in the background
+    remainingImageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }
 });
