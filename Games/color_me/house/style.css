@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  cursor: none;
+}
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+a.backbtn {
+  display: flex;
+  padding: 5px 12px 5px 40px;
+  float: left;
+  background: #fd4b4b8f;
+  font-size: 16px;
+  margin-left: -20px;
+  border-right: 7px solid #dd0f005c;
+  border-radius: 0px 12px 12px 0px;
+  text-decoration: none;
+  box-shadow: 3px 1px 6px 1px rgba(0, 0, 0, 0.1);
+  /* border-top: 3px solid #64a19e; */
+  flex-wrap: nowrap;
+  color: white;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 15px;
+  z-index: 11;
+}
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 100%;
+  padding-block: 60px;
+}
+
+.cursor {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border: 2px solid rgb(88, 88, 88);
+  background-color: grey;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+.click {
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+}
+
+svg {
+  height: 45%;
+}
+
+.section {
+  fill: white;
+}
+
+.color-palette {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px -4px 10px rgba(97, 97, 97, 0.336);
+  height: 60px;
+}
+
+.color-palette span {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-inline: 8px;
+  background-color: whitesmoke;
+}
+
+.color-palette input[type="color"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+#colorPicker {
+  background: #c6ffdd; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f7797d,
+    #fbd786,
+    #c6ffdd
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f7797d,
+    #fbd786,
+    #c6ffdd
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border: 2px solid lightgrey;
+}
+.brown {
+  background-color: rgb(128, 0, 0) !important;
+}
+.amber {
+  background-color: #fc0 !important;
+}
+.lightyellow {
+  background-color: #fdf0b2 !important;
+}
+.coral {
+  background-color: #d38d5f !important;
+}
+.chocolate {
+  background-color: #a05a2c !important;
+}
+
+@media screen and (min-width: 568px) {
+  svg {
+    height: 60%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  svg {
+    height: 80%;
+  }
+}
