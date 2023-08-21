@@ -5,11 +5,10 @@ let colorPalette = document.getElementsByClassName("color");
 let colorPicker = document.getElementById("colorPicker");
 let colorPickerInput = document.getElementById("colorPickerInput");
 
-fishSections = Array.from(fish);
-colors = Array.from(colorPalette);
+let fishSections = Array.from(fish); // Declare fishSections variable here
+let colors = Array.from(colorPalette);
 
 fishSections.forEach((section) =>
-  // console.log(section.getAttribute("data-identifier"))
   section.addEventListener("click", () => {
     let identifier = section.getAttribute("data-identifier");
     section.style.fill = currentColor;
