@@ -197,55 +197,75 @@ if ('webkitSpeechRecognition' in window) {
 });
 
       //-------user name---------//
+ 
+// Get references to the username element, overlay, input element, and the save button
+const usernameElement = document.getElementById('username');
+const overlay = document.getElementById('overlay');
+const popup = document.getElementById('popup');
+const nameInput = document.getElementById('nameInput');
+const saveBtn = document.getElementById('saveBtn');
 
-// Get references to the username element, overlay, and the popup
-  const usernameElement = document.getElementById('username');
-  const overlay = document.getElementById('overlay');
-  const popup = document.getElementById('popup');
+// Load the username from local storage if available
+const savedUsername = localStorage.getItem('username');
+if (savedUsername) {
+  usernameElement.textContent = savedUsername;
+}
 
-  // Load the username from local storage if available
-  const savedUsername = localStorage.getItem('username');
-  if (savedUsername) {
-    usernameElement.textContent = savedUsername;
+// Function to show the popup
+function showPopup() {
+  overlay.style.display = 'flex';
+  popup.style.display = 'block';
+  nameInput.focus(); // Focus on the input field
+}
+
+// Show the popup when user clicks on the username
+usernameElement.addEventListener('click', showPopup);
+
+// Function to check if the input value is valid
+function isInputValid(inputValue) {
+  return /^[A-Za-z\s]{2,}$/.test(inputValue);
+}
+
+// Update the save button's disabled state based on input validity
+function updateSaveButtonState() {
+  const inputValue = nameInput.value.trim();
+  const isValid = isInputValid(inputValue);
+
+  saveBtn.disabled = !isValid;
+  saveBtn.style.opacity = isValid ? 1 : 0.7; // Change opacity based on validity
+}
+
+// Check the input validity when the user types or leaves the input field
+nameInput.addEventListener('input', updateSaveButtonState);
+nameInput.addEventListener('blur', updateSaveButtonState);
+
+// Save the new username when user clicks the save button
+saveBtn.addEventListener('click', () => {
+  const newName = nameInput.value.trim();
+  if (newName) {
+    usernameElement.textContent = newName;
+    localStorage.setItem('username', newName);
   }
+  // Hide the popup after saving
+  overlay.style.display = 'none';
+  popup.style.display = 'none';
+});
 
-  // Function to show the popup
-  function showPopup() {
-    overlay.style.display = 'flex';
-    popup.style.display = 'block';
-    nameInput.focus(); // Focus on the input field
-  }
-
-  // Show the popup when user clicks on the username
-  usernameElement.addEventListener('click', showPopup);
-
-  // Save the new username when user clicks the save button
-  saveBtn.addEventListener('click', () => {
-    const newName = nameInput.value.trim();
-    if (newName) {
-      usernameElement.textContent = newName;
-      localStorage.setItem('username', newName);
-    }
-    // Hide the popup after saving
+// Hide the popup when clicking outside the popup
+overlay.addEventListener('click', (event) => {
+  if (event.target === overlay) {
     overlay.style.display = 'none';
     popup.style.display = 'none';
-  });
-
-  // Hide the popup when clicking outside the popup
-  overlay.addEventListener('click', (event) => {
-    if (event.target === overlay) {
-      overlay.style.display = 'none';
-      popup.style.display = 'none';
-    }
-  });
-
-  // Check if the user name is empty in local storage on page load
-  if (!savedUsername) {
-    showPopup();
-  } else {
-    overlay.style.display = 'none';
-    popup.style.display = 'none';
   }
+});
+
+// Check if the user name is empty in local storage on page load
+if (!savedUsername) {
+  showPopup();
+} else {
+  overlay.style.display = 'none';
+  popup.style.display = 'none';
+}
 
    // Get the header element 
   const header = document.querySelector("header");
@@ -273,12 +293,12 @@ if ('webkitSpeechRecognition' in window) {
 
 //---------profile Photo Section-----------
 
-// Get the avatar image element
-const avatarImg = document.getElementById("avatar");
+// Get the avatar image elements and tooltip
+const avatarImg1 = document.getElementById("avatar1");
+const avatarImg2 = document.getElementById("avatar2");
 const tooltip = document.getElementById("tooltip");
 
-// Function to handle the click event on the avatar image
-function onAvatarClick() {
+function onAvatarClick1() {
   // Create an input element of type 'file'
   const input = document.createElement("input");
   input.type = "file";
@@ -291,6 +311,38 @@ function onAvatarClick() {
   input.click();
 }
 
+// Function to handle the click event on the avatar images
+function onAvatarClick2() {
+  // Create an input element of type 'file'
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+
+  // Listen for the 'change' event when the user selects an image
+  input.addEventListener("change", handleImageSelection);
+
+  // Trigger the file input dialog
+  input.click();
+}
+
+// Attach the onAvatarClick functions to the click events of the avatar images
+avatarImg1.addEventListener("click", onAvatarClick1);
+avatarImg2.addEventListener("click", onAvatarClick2);
+
+// Load the saved image from local storage, if available
+const savedImage = localStorage.getItem("avatarImage");
+if (savedImage) {
+  avatarImg1.src = savedImage;
+  avatarImg2.src = savedImage; // Sync the second avatar image
+}
+
+// Synchronize image changes between the two avatars
+function synchronizeAvatars(imageData) {
+  avatarImg1.src = imageData;
+  avatarImg2.src = imageData;
+  localStorage.setItem("avatarImage", imageData); // Save to local storage
+}
+
 // Function to handle the image selection
 function handleImageSelection(event) {
   const file = event.target.files[0];
@@ -299,25 +351,16 @@ function handleImageSelection(event) {
   const reader = new FileReader();
 
   reader.onload = function (e) {
-    // Set the selected image as the source for the avatar image
-    avatarImg.src = e.target.result;
+    const imageData = e.target.result;
 
-    // Save the image data to local storage
-    localStorage.setItem("avatarImage", e.target.result);
+    // Set the selected image as the source for both avatar images
+    synchronizeAvatars(imageData);
   };
 
   // Read the selected image as a data URL
   reader.readAsDataURL(file);
 }
 
-// Attach the onAvatarClick function to the click event of the avatar image
-avatarImg.addEventListener("click", onAvatarClick);
-
-// Load the saved image from local storage, if available
-const savedImage = localStorage.getItem("avatarImage");
-if (savedImage) {
-  avatarImg.src = savedImage;
-}
 
 showTooltip(); 
 
