@@ -1,0 +1,224 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+a.backbtn {
+    display: flex;
+    padding: 4px 6px 4px 25px;
+    float: left;
+    background: #ff7b4a;
+    font-size: 14px;
+    margin-left: -20px;
+    border-right: 7px solid #1b1b1b38;
+    border-radius: 0px 12px 12px 0px;
+    text-decoration: none;
+    box-shadow: 3px 1px 6px 1px rgba(0, 0, 0, 0.1);
+    /* border-top: 3px solid #64a19e; */
+    flex-wrap: nowrap;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 111px;
+    z-index: 1;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 150px;
+}
+
+h1 {
+    color: #ff6f69;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.main-container {
+    height: fit-content;
+    margin-top: 75px;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    padding-bottom: 20px;
+     position: relative;
+}
+
+.top-bar {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#question {
+    height: 60px;
+    font-size: 38px;
+    color: #333;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-out;
+    padding: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: crimson;
+    background-color: lightsteelblue;
+    border-radius: 30px 30px 0px 0px;
+}
+
+#options {
+    display: flex;
+    gap: 16px;
+    padding-top: 12px;
+    flex-direction: column;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
+
+button {
+  position: relative;
+    padding: 10px 20px;
+    background-color: lightsteelblue;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: lightsteelblue;
+    color: #fff;
+}
+#score{
+  display: none;
+    font-size: 18px;
+    color: #333;
+    margin: 5px 5px 25px;
+}
+
+#highest-score {
+    font-size: 18px;
+    color: #333;
+    display: none;
+    margin: 5px;
+}
+
+#retry {
+
+}
+
+#timer {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+    animation: pulse 1s infinite;
+}
+
+#score {
+    font-size: 20px;
+    color: #ff6f69;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.fall-text {
+    z-index: 11;
+    position: absolute;
+    left: -10px;
+    font-size: 25px;
+    color: red;
+    animation: fallAnimation 1s ease-in-out forwards;
+    transform: translate(-50%, -50%,); /* Adjust horizontal position to be centered */
+       font-weight: 600;
+}
+
+.up-text {
+    z-index: 11;
+    position: absolute;
+    left: -10px;
+    font-size: 25px;
+    color: limegreen;
+    animation: upAnimation 1s ease-in-out forwards;
+    transform: translate(-50%, -50%,); /* Adjust horizontal position to be centered */
+    font-weight: 600;
+}
+
+@keyframes fallAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+@keyframes upAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+.Hs-text{
+    z-index: 11;
+    position: absolute;
+    top: -80px;
+    font-size: 30px;
+    color: orange;
+    animation: upAnimationScale 3s ease-in-out forwards;
+    transform: translate(-50%, -50%,); /* Adjust horizontal position to be centered */
+    font-weight: 600;
+}
+
+@keyframes upAnimationScale {
+    0% {
+        opacity: 0;
+        scale: 0.8;
+        transform: translateY(0);
+    }
+    25% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0px);
+    }
+    100%{
+      scale: 1;
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+}
