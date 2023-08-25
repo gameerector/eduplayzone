@@ -693,7 +693,8 @@ footer p {
   background-color: #FF6F51;
 }
 
-button#addToHomeScreen {
+#addToHomeScreen {
+    display: block;
     position: absolute;
     background-color: antiquewhite;
     border: 2px solid;
@@ -706,4 +707,8 @@ button#addToHomeScreen {
     background-repeat: repeat-x;
     top: 7px;
     right: 7px;
+    cursor: pointer;
+}
+#addToHomeScreen:hover{
+    background-color: lightpink;
 }

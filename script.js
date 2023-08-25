@@ -378,7 +378,7 @@ showTooltip();
     setInterval(showTooltip, 10000); // 10 second in milliseconds
  }  
 
-
+// Icon set up 
     let deferredPrompt; // Initialize the deferredPrompt variable
 
     window.addEventListener('beforeinstallprompt', (e) => {
