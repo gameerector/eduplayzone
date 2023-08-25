@@ -512,6 +512,26 @@ main {
   }
 }
 
+@media only screen and (max-width: 360px){
+  .game-name{
+    font-size: 18px;
+  }
+  .play-button{
+    width: fit-content;
+    position: relative;
+    left: 34%;
+    padding: 6px 16px;
+    background-color: #FF6F51;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+  }
+}
+
 footer {
   background-color: #FF6F61;
   padding: 10px;
@@ -671,4 +691,19 @@ footer p {
 
 #saveBtn:hover {
   background-color: #FF6F51;
+}
+
+button#addToHomeScreen {
+    position: absolute;
+    background-color: antiquewhite;
+    border: 2px solid;
+    border-radius: 50%;
+    background-image: url(image/add-to-home.png);
+    background-size: 22px;
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-repeat: repeat-x;
+    top: 7px;
+    right: 7px;
 }

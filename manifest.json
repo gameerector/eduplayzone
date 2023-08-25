@@ -1,0 +1,16 @@
+{
+    "name": "EduPlayZone - Exploring, Learning, and Growing Through Play",
+    "short_name": "EduPlayZone",
+    "description": "EduPlayZone offers a collection of educational games for kids to learn and have fun. Engage your child's mind with interactive and educational activities.",
+    "icons": [
+        {
+            "src": "https://eduplayzone.online/image/icon_large2.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000"
+}

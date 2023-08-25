@@ -355,11 +355,16 @@ h5#level-text {
     background-size: 70px;
     width: 73px;
     position: relative;
-    left: 20px;
+    left: 6px;
   }
     #left-panel .image{
-   background-size: 126px;
-    width: 136px;
+      background-size: 175px;
+      width: 170px;
+  }
+
+  .image-popup{
+        width: 95%;
+        padding: 8px;
   }
 
 }
@@ -384,7 +389,7 @@ h5#level-text {
   }
 
     .image-popup {
-    width: 90%;
+    width: 85%;
   }
 }
 
@@ -405,7 +410,7 @@ h5#level-text {
   }
 
   .image-popup {
-    width: 90%;
+    width: 60%;
   }
 }
 
@@ -420,7 +425,7 @@ h5#level-text {
     max-width: 450px;
   }
   .image-popup {
-    width: 90%;
+    width: 60%;
   }
 }
 

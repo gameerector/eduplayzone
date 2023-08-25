@@ -377,3 +377,36 @@ showTooltip();
         // Show the tooltip automatically on every 1-minute interval
     setInterval(showTooltip, 10000); // 10 second in milliseconds
  }  
+
+
+    let deferredPrompt; // Initialize the deferredPrompt variable
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the default prompt from showing
+        e.preventDefault();
+
+        // Store the event for later use
+        deferredPrompt = e;
+
+        // Show your custom "Add to Home Screen" button
+        document.getElementById('addToHomeScreen').style.display = 'block';
+    });
+
+    // Handle button click to show the installation prompt
+    const addToHomeScreenButton = document.getElementById('addToHomeScreen');
+    addToHomeScreenButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+            // Show the installation prompt
+            deferredPrompt.prompt();
+
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null; // Reset the deferredPrompt
+            });
+        }
+    });
