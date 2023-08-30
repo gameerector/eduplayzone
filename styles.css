@@ -170,6 +170,36 @@ h1 {
     }
 }
 
+@keyframes scaleInOut {
+    0%, 100% {
+        transform: translate(-50%, -50%) scaleX(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) scaleX(1);
+    }
+}
+
+.tooltip2 {
+    /*display: none;*/
+    position: relative;
+    width: 76px;
+    top: 10px;
+    right: 55px;
+    transform: translate(-50%, -50%) scaleX(0);
+    transform-origin: right center; /* Set the transform origin to the right */
+    background-color: #191919a1;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 8px;
+    font-size: 12px;
+    transition: 0.5s;
+}
+
+#addToHomeScreen:hover .tooltip2{
+  transform: translate(-50%, -50%) scaleX(1);
+  
+}
+
 h3 span {
   color: slategrey;
     font-family: system-ui;
