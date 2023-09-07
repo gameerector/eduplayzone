@@ -1,0 +1,32 @@
+[
+  {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "Do you like ice cream?",
+    "correctOrder": ["ଆପଣ", "ଆଇସ୍କ୍ରିମ୍", "ପସନ୍ଦ", "କରନ୍ତି", "କି?"]
+  },
+  {
+    "task": "Translate this sentence to English",
+    "question": "ମୋର ସାଙ୍ଗମାନେ ବହୁତ ଭଲ |",
+    "correctOrder": ["My", "friends", "are", "very", "good."]
+  },
+    {
+    "task": "Translate this sentence to English",
+    "question": "ତୁମର ନାମ କଣ ?",
+    "correctOrder": ["what", "is", "your", "name?"]
+  },
+  {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "What is your favorite color?",
+    "correctOrder": ["ତୁମର", "ପ୍ରିୟ", "ରଙ୍ଗ", "କ’ଣ?"]
+  },
+   {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "how are you feeling today?",
+    "correctOrder" : ["ଆଜି", "ତୁମେ", "କେମିତି", "ଅନୁଭବ", "କରୁଛନ୍ତି ?"]
+   },
+   {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "Can you help me with my homework?",
+    "correctOrder" : ["ତୁମେ", "ମୋର", "ହୋମୱର୍କରେ" ,"ମୋତେ", "ସାହାଜ୍ୟ", "କରିପାରିବ", "କି?"]
+   }
+]

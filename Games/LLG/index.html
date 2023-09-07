@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>English Learning Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+<div class="container" id="mainContainer">
+        <h1>English Learning Game</h1>
+
+            <div class="task-container">
+                <span id="level-no">1</span>
+                <h4 id="task-text"></h4>
+            </div>
+        <div id="question-container">
+                        <div id="progress-container">
+                <div id="progress-bar"></div>
+            </div> 
+            <img id="game-image" >
+            <div class="question-line">
+                <button id="speak-btn"><span class="material-symbols-outlined">volume_up</span></button>
+                <p id="question"></p>
+            </div>
+        <div id="answer-field"></div>
+        <div id="word-options" class="word-options"></div>
+        <button id="check-btn">Check</button>
+    </div>
+</div>
+    <div id="result-container" style="display: none;">
+        <p id="result"></p>
+        <h3 id="correct-answer-c">Correct one is: <span class="correct-answer"></span></h3>
+        <button id="next-btn">Next</button>
+    </div>
+<div id="language-selection" class="language-selection">
+        <h2>Choose a Language <span style="color: dimgray; font-size: 16px;">Beta test build</span></h2>
+        <div class="language-cards">
+            <div class="language-card" data-language="Eng-Hindi">
+                <h3>Hindi</h3>
+            </div>
+            <div class="language-card " data-language="Eng-Odia">
+                <h3>Odia</h3>
+            </div>
+
+            <div class="language-card soonA" data-language="tamil">
+                <h3> <span style="color: #FF5722; font-size: 42px;">10+</span><br>more Language</h3>
+                <h4>Coming Soon</h4>
+
+            </div>
+
+        </div>
+        <button id="startGameButton">Start Game</button>
+</div>
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

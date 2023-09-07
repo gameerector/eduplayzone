@@ -1,0 +1,560 @@
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("font/ComicSansMS3.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Lilita One';
+   src: url("font/LilitaOne-Regular.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add this CSS to center the .container element */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the container covers the full viewport height */
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to left top, #eee3d1, #f3e8d9, #f7ede1, #fbf3e9, #fff8f1);
+}
+
+.container {
+    font-family: 'Comic Sans MS';
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+     width: 620px; /* Set the width to your desired fixed width */
+    height: fit-content; /* Set the height to your desired fixed height */
+    margin: 0 auto; /* Center the container horizontally within the viewport */
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #3498db;
+}
+
+#progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #dddddd70;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: #4CAF50; /* Green color for the progress bar */
+    width: 0;
+    transition: width 0.5s; /* Add a smooth animation effect */
+}
+
+/* Default styles for the progress bar */
+#progress-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #4CAF50 0%, #FF5733 100%);
+    transition: width 0.3s;
+}
+
+
+.task-container{
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+#level-no {
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 31px;
+    background-image: url(star.png);
+    background-position: center;
+    padding: 8px;
+    background-size: 30px;
+    color: #1818188f;
+    font-size: 14px;
+}
+
+#task-text {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #595959;
+}
+
+#question-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    height: 155px;
+    top: 2px;
+    position: absolute;
+    left: 2px;
+    border-radius: 10px;
+}
+
+#question {    
+    font-size: 16px;
+    margin: 0;
+    text-align: left;
+    justify-content: flex;
+}
+
+#word-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.word-option {
+    padding: 6px 17px;
+    background-color: whitesmoke;
+    color: black;
+    /* border: none; */
+    cursor: pointer;
+    border-radius: 12px;
+    border: 3px solid lightgray;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-family: 'Comic Sans MS';
+    font-weight: 600;
+}
+
+.word-option:hover {
+    background-color: white;
+}
+
+
+#answer-field {
+    font-size: 18px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+    transition: 1s;
+    height: 46px;
+    margin-left: 85px;
+    position: relative; /* Add position relative to enable pseudo-elements */
+}
+
+#answer-field::before,
+#answer-field::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Adjust the line thickness as needed */
+    background-color: darkgray;
+}
+
+#answer-field::before {
+    top: 44px;
+}
+
+#answer-field::after {
+    bottom: -44px;
+}
+
+
+/* Add this new rule for the selected word style */
+.selected-word {
+    padding: 6px 17px;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 12px;
+    border: 3px solid lightgray;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 1s ease-in-out; /* Add this line */
+    cursor: pointer;
+}
+
+#speak-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: gray;
+    position: relative;
+    top: 0px;
+    left: -10px;
+}
+
+.question-line {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid lightgray;
+    margin: auto;
+    padding: 7px;
+    border-radius: 15px;
+    animation: float 5s ease-in-out infinite;
+    position: relative;
+    left: 11px;
+    top: 30px;
+}
+
+.question-line:after{
+    content: "";
+    position: absolute;
+    top: 28px;
+    height: 22px;
+    border-radius: 35px;
+    width: 22px;
+    border: 2px solid lightgray;
+    left: -28px;
+    animation: float2 5s ease-in-out infinite;
+}
+
+.question-line:before{
+    content: "";
+    top: 45px;
+    position: absolute;
+    height: 12px;
+    border-radius: 35px;
+    width: 12px;
+    border: 2px solid lightgray;
+    left: -42px;
+    animation: float2 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-15px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-10px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}
+#check-btn {
+    margin: auto;
+    padding: 5px 36px;
+    margin-top: 10px;
+    font-family: 'Lilita One';
+    background-color: #ffa307;
+    color: #ffffff;
+    border: 2px solid #919191;
+    border-bottom: 5px solid #919191;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    transition: all 0.3s;
+    animation: slide-up 0.5s ease-in-out; /* Use the 'slide-up' animation */
+    
+}
+
+#check-btn:hover {
+    background-color: #f66b10;
+}
+
+/* Add this CSS for the result container animation */
+#result-container {
+    font-family: 'Lilita One', cursive;
+    display: none;
+    height: 210px;
+    margin-top: 20px;
+    color: #333;
+    position: fixed;
+    bottom: 0; /* Start at the bottom of the screen */
+    left: 0;
+    right: 0;
+    background: rgba(255, 217, 212, 0.9); /* Semi-transparent white background */
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    animation: slide-up 0.5s ease-in-out; /* Use the 'slide-up' animation */
+    ustify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100%); /* Start off the screen */
+    }
+    75% {
+        transform: translateY(-5%); /* Slide up to the bottom of the screen */
+    }
+    100% {
+        transform: translateY(0); /* Slide up to the bottom of the screen */
+    }
+}
+
+#next-btn {
+    padding: 5px 41px;
+    margin-top: 10px;
+    font-family: 'Lilita One';
+    background-color: #ffc1074f;
+    color: #303030;
+    border: 2px solid #919191;
+    border-bottom: 5px solid #919191;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s;
+}
+
+#next-btn:hover {
+    border-bottom: 2px solid #919191;
+    transform: translateY(3px);
+}
+
+#correct-answer-c {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #FF3E35;
+    font-size: 16px;
+
+}
+span.correct-answer {
+    color: #FF3E35;
+    display: block;
+    font-size: 20px;
+}
+
+p#result {
+    font-size: 20px;
+    color: rgba(37, 37, 37, 0.3);;
+    margin: 0 auto;
+    padding: 5px;
+    width: 50%;
+    border-radius: 2px 2px 15px 15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+@keyframes upAnimationScale {
+    0% {
+        transform: translateY(-45px);
+    }
+    75% {
+        transform: translateY(-45px);
+    }
+    100%{
+        transform: translateY(-1px);
+    }
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    #question-container {
+        padding: 10px;
+    }
+    .question-line{
+        left: 52px;
+    }
+
+    #question {
+        font-size: 18px;
+    }
+
+    .word-option {
+        font-size: 14px;
+    }
+
+    #answer-field {
+        font-size: 16px;
+    }
+
+    #check-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #next-btn {
+        font-size: 20px;
+        padding: 8px 16px;
+        width: 90%;
+    }
+
+    #result {
+        font-size: 18px;
+    }
+
+    .selected-word {
+        font-size: 14px;
+    }
+
+}
+
+/* Styles for extra-small screens (e.g., smaller smartphones) */
+@media (max-width: 320px) {
+    /* Add styles for extra-small screens here */
+}
+
+/* Styles for small screens (e.g., smartphones) */
+@media (min-width: 321px) and (max-width: 576px) {
+    /* Add styles for small screens here */
+}
+
+/* Styles for medium screens (e.g., tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+    /* Add styles for medium screens here */
+}
+
+/* Styles for large screens (e.g., desktops) */
+@media (min-width: 993px) {
+    /* Add styles for large screens here */
+}
+
+/* Styles for extra-large screens (e.g., large desktops) */
+@media (min-width: 1200px) {
+    /* Add styles for extra-large screens here */
+}
+
+/* Your existing CSS styles */
+/* Your existing CSS styles */
+
+/* Full-page language selection */
+.language-selection {
+    font-family: 'Comic Sans MS';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-image: linear-gradient(to right top, #eee3d1, #f3e8d9, #f7ede1, #fbf3e9, #fff8f1);
+    z-index: 1;
+    align-content: center;
+    align-items: center;
+}
+
+.language-selection h2 {
+    font-size: 32px;
+    color: lightsalmon; /* White text color */
+    margin-bottom: 16px;
+}
+
+.language-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    max-width: 800px; /* Adjust the max-width as needed */
+    gap: 16px; /* Spacing between cards */
+    justify-content: center;
+}
+
+.language-card {
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border: 3px solid transparent; /* Add transparent border by default */
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
+    flex: auto; /* Allow cards to grow and take equal space */
+    box-shadow:  0px 0.9px 2.2px -26px rgba(0, 0, 0, 0.009),  0px 2.2px 5.3px -26px rgba(0, 0, 0, 0.017),
+  0px 4.1px 10px -26px rgba(0, 0, 0, 0.025),
+  0px 7.4px 17.9px -26px rgba(0, 0, 0, 0.033),
+  0px 13.8px 33.4px -26px rgba(0, 0, 0, 0.045),
+  0px 33px 80px -26px rgba(0, 0, 0, 0.07);
+}
+
+.language-card:hover {
+    transform: scale(1.05);
+}
+
+/* Add an outline to the selected card */
+.language-card.selected {
+    border-color: #f39c12; /* Yellow outline color */
+}
+
+.language-card h3 {
+    font-size: 24px;
+    margin-top: 8px;
+    color: #333; /* Dark text color */
+}
+
+.language-card img {
+    max-width: 100px; /* Adjust the max-width as needed */
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Image shadow for depth */
+}
+
+.hidden {
+    display: none;
+    transition: 1s;
+}
+
+/* Additional CSS styles for transitions */
+.container {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.show-game {
+    opacity: 1;
+    transition: 2s;
+}
+
+button#startGameButton {
+    margin: 40px;
+    background-color: yellow;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 3px solid;
+    border-bottom: 6px solid;
+}
+
+.soonA{
+    opacity: 0.7;
+    pointer-events: none;
+}
