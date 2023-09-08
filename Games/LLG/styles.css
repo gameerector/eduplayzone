@@ -148,7 +148,7 @@ img {
 
 #answer-field {
     font-size: 18px;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-bottom: 20px;
     color: #333;
     display: flex;
@@ -309,7 +309,7 @@ img {
     border-top: 1px solid #ccc;
     padding: 10px;
     animation: slide-up 0.5s ease-in-out; /* Use the 'slide-up' animation */
-    ustify-content: center;
+    justify-content: center;
     flex-direction: column;
     align-content: center;
     align-items: center;
@@ -401,7 +401,10 @@ p#result {
     #question {
         font-size: 18px;
     }
-
+    .word-options{
+        min-height: 86px;
+        align-items: center;
+    }
     .word-option {
         font-size: 14px;
     }
@@ -411,8 +414,8 @@ p#result {
     }
 
     #check-btn {
-        font-size: 14px;
-        padding: 8px 16px;
+        font-size: 16px;
+        padding: 10px 22px;
     }
 
     #next-btn {
@@ -428,12 +431,63 @@ p#result {
     .selected-word {
         font-size: 14px;
     }
+    #answer-field::before {
+        top: 34px;
+    }
+    
+    #answer-field::after {
+        bottom: -29px;
+    }
+    .language-selection h2{
+        font-size: 24px;
+    }
+    .language-cards{
+        align-items: center;
+        
+    }
+    .language-card{
+        width: 100px;
+    }
+    .language-selection h2{
+        font-size: 22px;
+    }
 
 }
 
 /* Styles for extra-small screens (e.g., smaller smartphones) */
 @media (max-width: 320px) {
     /* Add styles for extra-small screens here */
+}
+
+@media (max-width: 425px) {
+    .container{
+        padding: 5px;
+    }
+    img {
+        height: 145px;
+        left: 1px;
+    }
+    .question-line{
+        left: 55px;
+        top: 25px;
+        padding: 5px;
+    }
+    #question {
+        font-size: 16px;
+        max-width: 170px;
+    }
+    #answer-field{
+        margin-left: 0;
+        gap: 5px;
+    }
+    .selected-word{
+        font-size: 14px;
+        padding: 4px 9px;
+        border-radius: 10px;
+    }
+    .language-selection h2{
+        font-size: 22px;
+    }
 }
 
 /* Styles for small screens (e.g., smartphones) */
@@ -477,7 +531,7 @@ p#result {
 }
 
 .language-selection h2 {
-    font-size: 32px;
+    font-size: 28px;
     color: lightsalmon; /* White text color */
     margin-bottom: 16px;
 }
@@ -488,14 +542,16 @@ p#result {
     max-width: 800px; /* Adjust the max-width as needed */
     gap: 16px; /* Spacing between cards */
     justify-content: center;
+    align-items: center;
 }
 
 .language-card {
-    width: 200px;
+    width: 120px;
+    height: 125px;
     background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
     border: 3px solid transparent; /* Add transparent border by default */
     border-radius: 8px;
-    padding: 16px;
+    padding: 8px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
@@ -521,7 +577,9 @@ p#result {
     margin-top: 8px;
     color: #333; /* Dark text color */
 }
-
+.ComingL{
+    font-size: 22px;
+}
 .language-card img {
     max-width: 100px; /* Adjust the max-width as needed */
     height: auto;
