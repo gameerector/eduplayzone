@@ -276,13 +276,14 @@ function speakWord(word, language) {
     } else if (language === 'en-IN') {
         // Use an Indian English voice
         selectedVoice = voices.find(voice => voice.lang === 'en-IN');
-    } else if (language === 'mr') {
-        // Use an Indian Marathi voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-    } else if (language === 'bn') {
-        // Use an Indian Bengali voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
     }
+    // else if (language === 'mr') {
+    //     // Use an Indian Marathi voice if available
+    //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
+    // } else if (language === 'bn') {
+    //     // Use an Indian Bengali voice if available
+    //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
+    // }
 
     if (selectedVoice) {
         utterance.voice = selectedVoice;
@@ -431,13 +432,14 @@ function speakQuestion() {
     } else if (language === 'en-IN') {
         // Use an Indian English voice
         selectedVoice = voices.find(voice => voice.lang === 'en-IN');
-    } else if (language === 'mr') {
-        // Use an Indian Marathi voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-    } else if (language === 'bn') {
-        // Use an Indian Bengali voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
     }
+    // else if (language === 'mr') {
+    //     // Use an Indian Marathi voice if available
+    //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
+    // } else if (language === 'bn') {
+    //     // Use an Indian Bengali voice if available
+    //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
+    // }
 
 
     if (selectedVoice) {
