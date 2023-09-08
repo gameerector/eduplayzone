@@ -12,6 +12,7 @@ const questionContainer = document.getElementById('question-container');
 const correctAnswerElement = document.querySelector('.correct-answer');
 const correctAnswerH3 = document.getElementById('correct-answer-c');
 const gameImage = document.getElementById('game-image');
+const QuestionLine = document.getElementById('.question-line');
 
 // Add this code to update the progress bar
 const progressBar = document.getElementById('progress-bar');
@@ -75,7 +76,10 @@ languageCards.forEach(card => {
 const speakButton = document.getElementById('speak-btn');
 
 // Add an event listener to the speak button
-speakButton.addEventListener('click', speakQuestion);
+speakButton.addEventListener('click', () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    speakQuestion(currentQuestion.question);
+});
 
 checkButton.addEventListener('click', checkOrder);
       
@@ -209,14 +213,28 @@ function isAnswerCorrect(selectedWords, correctOrder) {
 
 function loadQuestion(index) {
     const currentQuestion = questions[index];
-    questionElement.textContent = currentQuestion.question;
     task.textContent = currentQuestion.task;
     levelNo.textContent = `${index + 1}`; // Display the level number
     answerField.innerHTML = ''; // Clear the answer field
-    
-    // Automatically speak the question when it's loaded
-    speakQuestion();
-    
+
+    if (currentQuestion.voicequestion) {
+        // Automatically play the voice question
+        speakQuestion(currentQuestion.voicequestion);
+
+        // If it's a voice question, hide the question line
+        document.querySelector('.question-line').style.display = 'none';
+        // Show the "Play Voice Question" button
+        document.getElementById('play-voice-question').style.display = 'block';
+    } else {
+        // If it's not a voice question, show the question line
+        document.querySelector('.question-line').style.display = 'flex';
+        // Hide the "Play Voice Question" button
+        document.getElementById('play-voice-question').style.display = 'none';
+        // Speak the text question
+        speakQuestion(currentQuestion.question);
+        questionElement.textContent = currentQuestion.question;
+    }
+
     selectedWords = selectedWordsByQuestion[index] || [];
     updateAnswerField();
 
@@ -233,9 +251,16 @@ function loadQuestion(index) {
 
     resultContainer.style.display = 'none';
 
-     // Update the progress bar
+    // Update the progress bar
     updateProgressBar();
 }
+
+
+document.getElementById('play-voice-question').addEventListener('click', () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    speakQuestion(currentQuestion.voicequestion);
+});
+
 
 function selectWord(word) {
     const wordIndex = selectedWords.indexOf(word);
@@ -427,12 +452,18 @@ function shuffleArray(array) {
     return array;
 }
 
-function speakQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
-    const utterance = new SpeechSynthesisUtterance(currentQuestion.question);
+
+// Modify the speakQuestion function to accept a parameter for the question
+function speakQuestion(question) {
+    // Cancel the previous speech synthesis if it's still speaking
+    if (currentUtterance && speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(question);
 
     // Determine the language of the current question
-    const language = detectLanguage(currentQuestion.question);
+    const language = detectLanguage(question);
 
     // Set the voice based on the language
     const voices = speechSynthesis.getVoices();
@@ -456,7 +487,6 @@ function speakQuestion() {
     //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
     // }
 
-
     if (selectedVoice) {
         utterance.voice = selectedVoice;
     }
@@ -472,9 +502,11 @@ function speakQuestion() {
         }
     };
 
+    // Set the current utterance to the new one
+    currentUtterance = utterance;
+
     speechSynthesis.speak(utterance);
 }
-
 
 // Function to detect the language of a text (Hindi, Odia, or English)
 function detectLanguage(text) {
