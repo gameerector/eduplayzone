@@ -280,6 +280,57 @@ function selectWord(word) {
 }
 let currentUtterance = null; // Declare a variable to store the current utterance
 
+// function speakWord(word, language) {
+//     // Cancel the previous speech synthesis if it's still speaking
+//     if (currentUtterance && speechSynthesis.speaking) {
+//         speechSynthesis.cancel();
+//     }
+
+//     const utterance = new SpeechSynthesisUtterance(word);
+
+//     // Determine the language of the current word
+//     const voices = speechSynthesis.getVoices();
+//     let selectedVoice = null;
+
+//     if (language === 'hi') {
+//         // Use an Indian Hindi voice
+//         selectedVoice = voices.find(voice => voice.lang === 'hi-IN');
+//     } else if (language === 'odia') {
+//         // Use an Odia voice if available
+//         selectedVoice = voices.find(voice => voice.lang === 'or-IN');
+//     } else if (language === 'en-IN') {
+//         // Use an Indian English voice
+//         selectedVoice = voices.find(voice => voice.lang === 'en-IN');
+//     }
+//     // else if (language === 'mr') {
+//     //     // Use an Indian Marathi voice if available
+//     //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
+//     // } else if (language === 'bn') {
+//     //     // Use an Indian Bengali voice if available
+//     //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
+//     // }
+
+//     if (selectedVoice) {
+//         utterance.voice = selectedVoice;
+//     }
+
+//     // Add a short delay between words
+//     utterance.rate = 0.8; // Adjust the rate as needed
+//     utterance.onboundary = (event) => {
+//         if (event.name === 'word') {
+//             setTimeout(() => {
+//                 speechSynthesis.pause();
+//                 speechSynthesis.resume();
+//             }, 100); // Delay between words in milliseconds
+//         }
+//     };
+
+//     // Set the current utterance to the new one
+//     currentUtterance = utterance;
+
+//     speechSynthesis.speak(utterance);
+// }
+
 function speakWord(word, language) {
     // Cancel the previous speech synthesis if it's still speaking
     if (currentUtterance && speechSynthesis.speaking) {
@@ -292,43 +343,31 @@ function speakWord(word, language) {
     const voices = speechSynthesis.getVoices();
     let selectedVoice = null;
 
-    if (language === 'hi') {
-        // Use an Indian Hindi voice
-        selectedVoice = voices.find(voice => voice.lang === 'hi-IN');
-    } else if (language === 'odia') {
-        // Use an Odia voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'or-IN');
-    } else if (language === 'en-IN') {
-        // Use an Indian English voice
-        selectedVoice = voices.find(voice => voice.lang === 'en-IN');
-    }
-    // else if (language === 'mr') {
-    //     // Use an Indian Marathi voice if available
-    //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-    // } else if (language === 'bn') {
-    //     // Use an Indian Bengali voice if available
-    //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
-    // }
+    // Find an English voice (en-IN)
+    selectedVoice = voices.find(voice => voice.lang === 'en-IN');
 
     if (selectedVoice) {
         utterance.voice = selectedVoice;
+
+        // Add a short delay between words
+        utterance.rate = 0.8; // Adjust the rate as needed
+        utterance.onboundary = (event) => {
+            if (event.name === 'word') {
+                setTimeout(() => {
+                    speechSynthesis.pause();
+                    speechSynthesis.resume();
+                }, 100); // Delay between words in milliseconds
+            }
+        };
+
+        // Set the current utterance to the new one
+        currentUtterance = utterance;
+
+        speechSynthesis.speak(utterance);
+    } else {
+        // If no English voice is found, log an error
+        console.error(`No suitable English voice found.`);
     }
-
-    // Add a short delay between words
-    utterance.rate = 0.8; // Adjust the rate as needed
-    utterance.onboundary = (event) => {
-        if (event.name === 'word') {
-            setTimeout(() => {
-                speechSynthesis.pause();
-                speechSynthesis.resume();
-            }, 100); // Delay between words in milliseconds
-        }
-    };
-
-    // Set the current utterance to the new one
-    currentUtterance = utterance;
-
-    speechSynthesis.speak(utterance);
 }
 
 
