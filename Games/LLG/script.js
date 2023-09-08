@@ -343,6 +343,20 @@ function returnWord(word) {
 const correctMessages = ['👏 Nice!', '🌟 Very good!', '🎉 Awesome!', '👍 Well done!', '🏆 Excellent!', '👌 You got it!', '🙌 Perfect!'];
 const incorrectMessages = ['❌ Failed.', '❗ Not quite right.', '🚫 Keep practicing.', '😬 Oops!', '❎ Incorrect.', '🤔 Not there yet.'];
 
+// Create audio elements for correct and incorrect audio
+const correctAudio = new Audio('Audio/correct.wav');
+const incorrectAudio = new Audio('Audio/incorrect.wav');
+
+// Function to play correct audio
+function playCorrectAudio() {
+    correctAudio.play();
+}
+
+// Function to play incorrect audio
+function playIncorrectAudio() {
+    incorrectAudio.play();
+}
+
 
 function checkOrder() {
     const currentQuestion = questions[currentQuestionIndex];
@@ -360,6 +374,7 @@ function checkOrder() {
     if (userAnswer === currentQuestion.correctOrder.join(' ')) {
         // Change the image to a success image
          conditionImages = successImages;
+         playCorrectAudio();
 
         mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
         resultElement.textContent = getRandomMessage(correctMessages);
@@ -371,7 +386,7 @@ function checkOrder() {
     } else {
         // Change the image to a lose image
         conditionImages = loseImages;
-
+        playIncorrectAudio();
         mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
         resultElement.textContent = getRandomMessage(incorrectMessages);
         resultElement.style.color ='rgb(236 58 45 / 95%)';
