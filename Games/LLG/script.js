@@ -181,7 +181,12 @@ function showFinalResult() {
         window.location.reload(); // Reload the page
     });
 }
+
 function isAnswerCorrect(selectedWords, correctOrder) {
+    if (!Array.isArray(selectedWords) || !Array.isArray(correctOrder)) {
+        return false; // Return false if either selectedWords or correctOrder is not an array
+    }
+    
     if (selectedWords.length !== correctOrder.length) {
         return false;
     }
@@ -194,6 +199,8 @@ function isAnswerCorrect(selectedWords, correctOrder) {
     
     return true;
 }
+
+
 let isMcqQuestion = false;
 let selectedMcqOption; // To store the selected MCQ option index
 
@@ -229,8 +236,11 @@ function loadQuestion(index) {
     task.textContent = currentQuestion.task;
     levelNo.textContent = `${index + 1}`; // Display the level number
     answerField.innerHTML = ''; // Clear the answer field
-
+    console.log('Total No of level :'+ questions.length); 
+    
     if (currentQuestion.voicequestion) {
+        wordOptionsElement.style.flexDirection = '';
+        wordOptionsElement.style.alignItems = '';
         // Automatically play the voice question
         speakQuestion(currentQuestion.voicequestion);
 
@@ -240,11 +250,14 @@ function loadQuestion(index) {
         document.getElementById('play-voice-question').style.display = 'block';
     } else if (currentQuestion.Mcquestion) {
         isMcqQuestion = true; // Set to true for multiple-choice questions
+        speakQuestion(currentQuestion.Mcquestion);
         // Handle multiple-choice questions
         document.querySelector('.question-line').style.display = 'flex'; // Hide the question line
         document.getElementById('play-voice-question').style.display = 'none'; // Hide the "Play Voice Question" button
         questionElement.textContent = currentQuestion.Mcquestion; // Display the multiple-choice question
-    
+        
+        wordOptionsElement.style.flexDirection = 'column';
+        wordOptionsElement.style.alignItems = 'center';
         // Check if the 'options' property exists
         if (currentQuestion.options && currentQuestion.options.length > 0) {
             // Generate and display multiple-choice options
@@ -260,6 +273,8 @@ function loadQuestion(index) {
         }
     }
      else {
+        wordOptionsElement.style.flexDirection = '';
+        wordOptionsElement.style.alignItems = '';
         // Handle other question types (e.g., ordering words)
         document.querySelector('.question-line').style.display = 'flex'; // Show the question line
         document.getElementById('play-voice-question').style.display = 'none'; // Hide the "Play Voice Question" button
@@ -268,9 +283,10 @@ function loadQuestion(index) {
         questionElement.textContent = currentQuestion.question;
     }
 
-    selectedWords = selectedWordsByQuestion[index] || [];
-    updateAnswerField();
+    selectedWords = selectedWordsByQuestion[index] || []; // Load selected words for the current question
+    selectedWordsByQuestion[currentQuestionIndex] = selectedWords.slice(); // Initialize selectedWordsByQuestion
 
+    updateAnswerField();
     // Check if the 'correctOrder' property exists before using it
     if (currentQuestion.correctOrder) {
         const shuffledWords = shuffleArray(currentQuestion.correctOrder.slice());
@@ -293,6 +309,17 @@ function loadQuestion(index) {
 
 function selectMcqOption(optionIndex) {
     selectedMcqOption = optionIndex; // Set the selected MCQ option
+
+    // Remove the class 'word-option-selected' from all MCQ option buttons
+    const mcqOptionButtons = wordOptionsElement.querySelectorAll('.word-option');
+    mcqOptionButtons.forEach(button => {
+        button.classList.remove('word-option-selected');
+    });
+
+    // Add the class 'word-option-selected' to the selected MCQ option button
+    const selectedOptionButton = mcqOptionButtons[optionIndex];
+    selectedOptionButton.classList.add('word-option-selected');
+
     showNextButton(); // Call showNextButton after selecting an option
 }
 
@@ -343,12 +370,17 @@ function selectWord(word) {
         speakWord(word, language);
 
         selectedWords.push(word);
+
+        // Store selected word for the current question
+        selectedWordsByQuestion[currentQuestionIndex] = selectedWords.slice();
+
         updateAnswerField();
         const selectedButton = wordOptionsElement.querySelector(`button[value="${word}"]`);
         selectedButton.style.display = 'none';
         showNextButton(); // Call this function after selecting a word
     }
 }
+
 let currentUtterance = null; // Declare a variable to store the current utterance
 
 // function speakWord(word, language) {
@@ -611,6 +643,10 @@ function shuffleArray(array) {
 
 // Modify the speakQuestion function to accept a parameter for the question
 function speakQuestion(question) {
+
+     // Replace underscores with spaces
+     question = question.replace(/_/g, ' ');
+     
     // Cancel the previous speech synthesis if it's still speaking
     if (currentUtterance && speechSynthesis.speaking) {
         speechSynthesis.cancel();

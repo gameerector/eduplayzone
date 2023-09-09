@@ -169,10 +169,10 @@ img {
     font-weight: 600;
 }
 
-.word-option:hover {
-    background-color: white;
+.word-option-selected {
+    background-color: #f3ccfa;
+    border: 3px solid #c48af9;
 }
-
 
 #answer-field {
     font-size: 18px;
