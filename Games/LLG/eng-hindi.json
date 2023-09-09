@@ -1,8 +1,14 @@
-[
+[  
   {
     "task": "इस वाक्य का अनुवाद करें",
     "question": "Do you like ice cream?",
     "correctOrder": ["क्या", "तुम्हें", "आइसक्रीम", "पसंद", "है?"]
+  },
+  {
+    "task": "Choose the correct answer",
+    "Mcquestion": "Do you like ice cream?",
+    "options": ["Yes, I love ice cream.", "It's a sunny day.", "I like listening to music."],
+    "correctOption": "0"
   },
   {
     "task": "इस वाक्य का अनुवाद करें",
@@ -37,7 +43,7 @@
   {
     "task": "इस वाक्य का अनुवाद करें",
     "question": "Can you help me with my homework?",
-    "correctOrder": ["क्या", "तुम", "मेरे", "होमवर्क", "मदद", "कर", "सकते", "हो?"]
+    "correctOrder": ["क्या", "तुम", "मेरे", "होमवर्क", "में", "मदद", "कर", "सकते", "हो?"]
   },
   {
     "task": "Translate this sentence to English",
@@ -54,5 +60,4 @@
     "question": "वह बहुत ही समझदार है।",
     "correctOrder": ["She", "is", "very", "intelligent."]
   }
-
 ]

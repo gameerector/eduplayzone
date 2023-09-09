@@ -149,22 +149,6 @@ function updateProgressBar() {
     
     progressBar.style.background = gradientColor;
 }
-
-// Add this function to show the "Check" button when all words are selected
-function showNextButton() {
-    const currentQuestion = questions[currentQuestionIndex];
-    if (selectedWords.length === currentQuestion.correctOrder.length) {
-        checkButton.style.display = 'block';
-    } else {
-        checkButton.style.display = 'none';
-    }
-    // Hide the answer container for incorrect answers
-    answerField.style.display = 'flex';
-    mainContainer.style.background = 'lightyellow';
-    correctAnswerH3.style.display = 'flex'; 
-
-}
-
 function showFinalResult() {
     questionContainer.style.display = 'none'; // Hide the question container
     resultContainer.style.display = 'flex';
@@ -210,6 +194,35 @@ function isAnswerCorrect(selectedWords, correctOrder) {
     
     return true;
 }
+let isMcqQuestion = false;
+let selectedMcqOption; // To store the selected MCQ option index
+
+// Modify the showNextButton function to handle multiple-choice questions
+function showNextButton() {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    // Check if it's a multiple-choice question
+    if (currentQuestion.Mcquestion) {
+        // Check if an option is selected
+        if (selectedMcqOption !== undefined) {
+            checkButton.style.display = 'block';
+        } else {
+            checkButton.style.display = 'none';
+        }
+    } else {
+        // For other question types, check if words are selected
+        if (selectedWords.length === currentQuestion.correctOrder.length) {
+            checkButton.style.display = 'block';
+        } else {
+            checkButton.style.display = 'none';
+        }
+    }
+
+    // Hide the answer container for incorrect answers
+    answerField.style.display = 'flex';
+    mainContainer.style.background = 'lightyellow';
+    correctAnswerH3.style.display = 'flex';
+}
 
 function loadQuestion(index) {
     const currentQuestion = questions[index];
@@ -225,11 +238,31 @@ function loadQuestion(index) {
         document.querySelector('.question-line').style.display = 'none';
         // Show the "Play Voice Question" button
         document.getElementById('play-voice-question').style.display = 'block';
-    } else {
-        // If it's not a voice question, show the question line
-        document.querySelector('.question-line').style.display = 'flex';
-        // Hide the "Play Voice Question" button
-        document.getElementById('play-voice-question').style.display = 'none';
+    } else if (currentQuestion.Mcquestion) {
+        isMcqQuestion = true; // Set to true for multiple-choice questions
+        // Handle multiple-choice questions
+        document.querySelector('.question-line').style.display = 'flex'; // Hide the question line
+        document.getElementById('play-voice-question').style.display = 'none'; // Hide the "Play Voice Question" button
+        questionElement.textContent = currentQuestion.Mcquestion; // Display the multiple-choice question
+    
+        // Check if the 'options' property exists
+        if (currentQuestion.options && currentQuestion.options.length > 0) {
+            // Generate and display multiple-choice options
+            wordOptionsElement.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.textContent = option;
+                optionButton.value = index;
+                optionButton.classList.add('word-option');
+                optionButton.addEventListener('click', () => selectMcqOption(index));
+                wordOptionsElement.appendChild(optionButton);
+            });
+        }
+    }
+     else {
+        // Handle other question types (e.g., ordering words)
+        document.querySelector('.question-line').style.display = 'flex'; // Show the question line
+        document.getElementById('play-voice-question').style.display = 'none'; // Hide the "Play Voice Question" button
         // Speak the text question
         speakQuestion(currentQuestion.question);
         questionElement.textContent = currentQuestion.question;
@@ -238,16 +271,19 @@ function loadQuestion(index) {
     selectedWords = selectedWordsByQuestion[index] || [];
     updateAnswerField();
 
-    const shuffledWords = shuffleArray(currentQuestion.correctOrder.slice());
-    wordOptionsElement.innerHTML = '';
-    shuffledWords.forEach(word => {
-        const wordButton = document.createElement('button');
-        wordButton.textContent = word;
-        wordButton.value = word;
-        wordButton.classList.add('word-option');
-        wordButton.addEventListener('click', () => selectWord(word, index));
-        wordOptionsElement.appendChild(wordButton);
-    });
+    // Check if the 'correctOrder' property exists before using it
+    if (currentQuestion.correctOrder) {
+        const shuffledWords = shuffleArray(currentQuestion.correctOrder.slice());
+        wordOptionsElement.innerHTML = '';
+        shuffledWords.forEach(word => {
+            const wordButton = document.createElement('button');
+            wordButton.textContent = word;
+            wordButton.value = word;
+            wordButton.classList.add('word-option');
+            wordButton.addEventListener('click', () => selectWord(word));
+            wordOptionsElement.appendChild(wordButton);
+        });
+    }
 
     resultContainer.style.display = 'none';
 
@@ -255,6 +291,41 @@ function loadQuestion(index) {
     updateProgressBar();
 }
 
+function selectMcqOption(optionIndex) {
+    selectedMcqOption = optionIndex; // Set the selected MCQ option
+    showNextButton(); // Call showNextButton after selecting an option
+}
+
+
+function checkMultipleChoiceAnswer(selectedOption, correctOption) {
+    if (selectedOption === correctOption) {
+        // Handle correct answer
+        conditionImages = successImages;
+        playCorrectAudio();
+        mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
+        resultElement.textContent = getRandomMessage(correctMessages);
+        resultElement.style.color = 'rgb(236 58 45 / 95%)';
+        correctAnswers++;
+        correctAnswerH3.style.display = 'none';
+        correctAnswerElement.textContent = 'Correct';
+        resultContainer.style.background = 'rgba(197 236 174 / 76%)';
+    } else {
+        // Handle incorrect answer
+        conditionImages = loseImages;
+        playIncorrectAudio();
+        mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
+        resultElement.textContent = getRandomMessage(incorrectMessages);
+        resultElement.style.color = 'rgb(236 58 45 / 95%)';
+        incorrectAnswers++;
+        resultContainer.style.background = 'rgba(255, 217, 212, 0.9)';
+    }
+
+    // Randomly select an image for the condition
+    const randomImage = conditionImages[Math.floor(Math.random() * conditionImages.length)];
+    gameImage.src = randomImage;
+
+    resultContainer.style.display = 'flex';
+}
 
 document.getElementById('play-voice-question').addEventListener('click', () => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -421,11 +492,14 @@ function playIncorrectAudio() {
     incorrectAudio.play();
 }
 
-
 function checkOrder() {
     const currentQuestion = questions[currentQuestionIndex];
-    const userAnswer = selectedWords.join(' ');
-    
+
+    // Initialize selectedWords if it's undefined
+    if (!selectedWords) {
+        selectedWords = [];
+    }
+
     // Disable pointer events on elements within the answerField
     answerField.childNodes.forEach(wordSpan => {
         if (wordSpan instanceof HTMLElement) {
@@ -435,42 +509,85 @@ function checkOrder() {
 
     checkButton.style.display = 'none';
 
-    if (userAnswer === currentQuestion.correctOrder.join(' ')) {
-        // Change the image to a success image
-         conditionImages = successImages;
-         playCorrectAudio();
+    if (currentQuestion.Mcquestion) {
+        // Handle multiple-choice question here
+        if (selectedMcqOption !== undefined) {
+            // Get the selected option and correct option
+            const selectedOption = currentQuestion.options[selectedMcqOption];
+            const correctOption = currentQuestion.options[currentQuestion.correctOption];
 
-        mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
-        resultElement.textContent = getRandomMessage(correctMessages);
-        resultElement.style.color ='rgb(236 58 45 / 95%)';
-        correctAnswers++;
-        correctAnswerH3.style.display = 'none';
-        correctAnswerElement.textContent = 'Correct';
-        resultContainer.style.background = 'rgba(197 236 174 / 76%)';
+            if (selectedOption === correctOption) {
+                // Change the image to a success image
+                conditionImages = successImages;
+                playCorrectAudio();
+
+                mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
+                resultElement.textContent = getRandomMessage(correctMessages);
+                resultElement.style.color = 'rgb(236 58 45 / 95%)';
+                correctAnswers++;
+                correctAnswerH3.style.display = 'none';
+                correctAnswerElement.textContent = 'Correct';
+                resultContainer.style.background = 'rgba(197 236 174 / 76%)';
+            } else {
+                // Change the image to a lose image
+                conditionImages = loseImages;
+                playIncorrectAudio();
+                mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
+                resultElement.textContent = getRandomMessage(incorrectMessages);
+                resultElement.style.color = 'rgb(236 58 45 / 95%)';
+                incorrectAnswers++;
+                resultContainer.style.background = 'rgba(255, 217, 212, 0.9)';
+
+                correctAnswerElement.textContent = correctOption;
+            }
+
+            // Randomly select an image for the condition
+            const randomImage = conditionImages[Math.floor(Math.random() * conditionImages.length)];
+            gameImage.src = randomImage;
+
+            resultContainer.style.display = 'flex';
+        }
     } else {
-        // Change the image to a lose image
-        conditionImages = loseImages;
-        playIncorrectAudio();
-        mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
-        resultElement.textContent = getRandomMessage(incorrectMessages);
-        resultElement.style.color ='rgb(236 58 45 / 95%)';
-        incorrectAnswers++;
-        
-        resultContainer.style.background = 'rgba(255, 217, 212, 0.9)';
+        // Handle other question types here
+        const userAnswer = selectedWords.join(' ');
 
-        // Hide the answer container for incorrect answers
-        //answerField.style.display = 'none';
+        if (userAnswer === currentQuestion.correctOrder.join(' ')) {
+            // Change the image to a success image
+            conditionImages = successImages;
+            playCorrectAudio();
 
-        // Show the correct answer
-        showCorrectAnswer(currentQuestion.correctOrder);
-    }
+            mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
+            resultElement.textContent = getRandomMessage(correctMessages);
+            resultElement.style.color = 'rgb(236 58 45 / 95%)';
+            correctAnswers++;
+            correctAnswerH3.style.display = 'none';
+            correctAnswerElement.textContent = 'Correct';
+            resultContainer.style.background = 'rgba(197 236 174 / 76%)';
+        } else {
+            // Change the image to a lose image
+            conditionImages = loseImages;
+            playIncorrectAudio();
+            mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
+            resultElement.textContent = getRandomMessage(incorrectMessages);
+            resultElement.style.color = 'rgb(236 58 45 / 95%)';
+            incorrectAnswers++;
+            resultContainer.style.background = 'rgba(255, 217, 212, 0.9)';
+
+            // Hide the answer container for incorrect answers
+            //answerField.style.display = 'none';
+
+            // Show the correct answer
+            showCorrectAnswer(currentQuestion.correctOrder);
+        }
+
         // Randomly select an image for the condition
-    const randomImage = conditionImages[Math.floor(Math.random() * conditionImages.length)];
-    gameImage.src = randomImage;
+        const randomImage = conditionImages[Math.floor(Math.random() * conditionImages.length)];
+        gameImage.src = randomImage;
 
-        
-    resultContainer.style.display = 'flex';
+        resultContainer.style.display = 'flex';
+    }
 }
+
 
 function showCorrectAnswer(correctOrder) {
     correctAnswerElement.textContent = correctOrder.join(' ');
