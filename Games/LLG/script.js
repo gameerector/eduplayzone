@@ -155,20 +155,11 @@ function showFinalResult() {
 
     const totalQuestions = questions.length;
 
-    for (let i = 0; i < totalQuestions; i++) {
-        const selectedWords = selectedWordsByQuestion[i] || [];
-        const question = questions[i];
-
-        if (isAnswerCorrect(selectedWords, question.correctOrder)) {
-            correctAnswers++;
-        }
-    }
-
+    const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
     const percentage = (correctAnswers / totalQuestions) * 100;
 
     resultElement.innerHTML = `Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
-    
     correctAnswerElement.style.display = "none";
     correctAnswerH3.style.display = "none";
     resultElement.style.color = "#353535f2";
@@ -180,6 +171,27 @@ function showFinalResult() {
     nextButton.addEventListener('click', () => {
         window.location.reload(); // Reload the page
     });
+}
+
+function calculateCorrectAnswers() {
+    let correctCount = 0;
+    for (let i = 0; i < questions.length; i++) {
+        const selectedWords = selectedWordsByQuestion[i] || [];
+        const question = questions[i];
+
+        if (question.Mcquestion) {
+            // For multiple-choice questions, check if the selected option is correct
+            if (
+                selectedWords.length === 1 &&
+                selectedWords[0] === question.correctOption.toString()
+            ) {
+                correctCount++;
+            }
+        } else if (isAnswerCorrect(selectedWords, question.correctOrder)) {
+            correctCount++;
+        }
+    }
+    return correctCount;
 }
 
 function isAnswerCorrect(selectedWords, correctOrder) {
@@ -316,6 +328,12 @@ function selectMcqOption(optionIndex) {
         button.classList.remove('word-option-selected');
     });
 
+    // Update selectedWordsByQuestion for multiple-choice questions
+    const currentQuestion = questions[currentQuestionIndex];
+    if (currentQuestion.Mcquestion) {
+        selectedWordsByQuestion[currentQuestionIndex] = [optionIndex.toString()];
+    }
+
     // Add the class 'word-option-selected' to the selected MCQ option button
     const selectedOptionButton = mcqOptionButtons[optionIndex];
     selectedOptionButton.classList.add('word-option-selected');
@@ -323,36 +341,6 @@ function selectMcqOption(optionIndex) {
     showNextButton(); // Call showNextButton after selecting an option
 }
 
-
-function checkMultipleChoiceAnswer(selectedOption, correctOption) {
-    if (selectedOption === correctOption) {
-        // Handle correct answer
-        conditionImages = successImages;
-        playCorrectAudio();
-        mainContainer.style.background = 'linear-gradient(0deg, rgba(77,224,1,1) 0%, rgba(200,255,177,1) 35%, rgba(255,255,255,1) 100%)';
-        resultElement.textContent = getRandomMessage(correctMessages);
-        resultElement.style.color = 'rgb(236 58 45 / 95%)';
-        correctAnswers++;
-        correctAnswerH3.style.display = 'none';
-        correctAnswerElement.textContent = 'Correct';
-        resultContainer.style.background = 'rgba(197 236 174 / 76%)';
-    } else {
-        // Handle incorrect answer
-        conditionImages = loseImages;
-        playIncorrectAudio();
-        mainContainer.style.background = 'linear-gradient(0deg, rgba(224,1,1,1) 0%, rgba(255,177,177,1) 35%, rgba(255,255,255,1) 100%)';
-        resultElement.textContent = getRandomMessage(incorrectMessages);
-        resultElement.style.color = 'rgb(236 58 45 / 95%)';
-        incorrectAnswers++;
-        resultContainer.style.background = 'rgba(255, 217, 212, 0.9)';
-    }
-
-    // Randomly select an image for the condition
-    const randomImage = conditionImages[Math.floor(Math.random() * conditionImages.length)];
-    gameImage.src = randomImage;
-
-    resultContainer.style.display = 'flex';
-}
 
 document.getElementById('play-voice-question').addEventListener('click', () => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -382,57 +370,6 @@ function selectWord(word) {
 }
 
 let currentUtterance = null; // Declare a variable to store the current utterance
-
-// function speakWord(word, language) {
-//     // Cancel the previous speech synthesis if it's still speaking
-//     if (currentUtterance && speechSynthesis.speaking) {
-//         speechSynthesis.cancel();
-//     }
-
-//     const utterance = new SpeechSynthesisUtterance(word);
-
-//     // Determine the language of the current word
-//     const voices = speechSynthesis.getVoices();
-//     let selectedVoice = null;
-
-//     if (language === 'hi') {
-//         // Use an Indian Hindi voice
-//         selectedVoice = voices.find(voice => voice.lang === 'hi-IN');
-//     } else if (language === 'odia') {
-//         // Use an Odia voice if available
-//         selectedVoice = voices.find(voice => voice.lang === 'or-IN');
-//     } else if (language === 'en-IN') {
-//         // Use an Indian English voice
-//         selectedVoice = voices.find(voice => voice.lang === 'en-IN');
-//     }
-//     // else if (language === 'mr') {
-//     //     // Use an Indian Marathi voice if available
-//     //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-//     // } else if (language === 'bn') {
-//     //     // Use an Indian Bengali voice if available
-//     //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
-//     // }
-
-//     if (selectedVoice) {
-//         utterance.voice = selectedVoice;
-//     }
-
-//     // Add a short delay between words
-//     utterance.rate = 0.8; // Adjust the rate as needed
-//     utterance.onboundary = (event) => {
-//         if (event.name === 'word') {
-//             setTimeout(() => {
-//                 speechSynthesis.pause();
-//                 speechSynthesis.resume();
-//             }, 100); // Delay between words in milliseconds
-//         }
-//     };
-
-//     // Set the current utterance to the new one
-//     currentUtterance = utterance;
-
-//     speechSynthesis.speak(utterance);
-// }
 
 function speakWord(word, language) {
     // Cancel the previous speech synthesis if it's still speaking
@@ -620,7 +557,6 @@ function checkOrder() {
     }
 }
 
-
 function showCorrectAnswer(correctOrder) {
     correctAnswerElement.textContent = correctOrder.join(' ');
 }
@@ -645,7 +581,7 @@ function shuffleArray(array) {
 function speakQuestion(question) {
 
      // Replace underscores with spaces
-     question = question.replace(/_/g, ' ');
+     question = question.replace(/___/g, 'Dash');
      
     // Cancel the previous speech synthesis if it's still speaking
     if (currentUtterance && speechSynthesis.speaking) {
@@ -674,10 +610,10 @@ function speakQuestion(question) {
     // else if (language === 'mr') {
     //     // Use an Indian Marathi voice if available
     //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-    // } else if (language === 'bn') {
-    //     // Use an Indian Bengali voice if available
-    //     selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
-    // }
+    else if (language === 'bn') {
+         // Use an Indian Bengali voice if available
+         selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
+     }
 
     if (selectedVoice) {
         utterance.voice = selectedVoice;

@@ -1,0 +1,29 @@
+[
+    {
+      "task": "এই বাক্যটি অনুবাদ করুন",
+      "question": "The cat is sleeping.",
+      "correctOrder": ["বিড়াল", "ঘুমাচ্ছে।"]
+    },
+    {
+      "task": "সঠিক বিকল্প চেনে রিক্ত স্থানটি পূরণ করুন",
+      "Mcquestion": "I ___ my homework yesterday.",
+      "options": ["do", "did", "does"],
+      "correctOption": "1"
+    },
+    {
+      "task": "এই বাক্যটি অনুবাদ করুন",
+      "question": "Do you like ice cream?",
+      "correctOrder": ["আপনি", "আইসক্রীম", "পছন্দ", "করেন?"]
+    },
+    {
+      "task": "Translate this sentence to English:",
+      "question": "আমার বন্ধুরা মাঠে খেলছে।",
+      "correctOrder": ["My", "friends", "are", "playing", "in", "the", "field."]
+    },
+    {
+      "task": "Translate this sentence to English:",
+      "question": "তিনি তার বন্ধুদের সাথে খেলছেন।",
+      "correctOrder": ["He", "is", "playing", "with", "his", "friends."]
+    }
+  ]
+  
