@@ -13,7 +13,7 @@ const correctAnswerElement = document.querySelector('.correct-answer');
 const correctAnswerH3 = document.getElementById('correct-answer-c');
 const gameImage = document.getElementById('game-image');
 const QuestionLine = document.getElementById('.question-line');
-
+const closeButton = document.getElementById('close-btn')
 // Add this code to update the progress bar
 const progressBar = document.getElementById('progress-bar');
 
@@ -79,6 +79,10 @@ const speakButton = document.getElementById('speak-btn');
 speakButton.addEventListener('click', () => {
     const currentQuestion = questions[currentQuestionIndex];
     speakQuestion(currentQuestion.question);
+});
+
+closeButton.addEventListener('click', () =>{
+    window.location.reload(); // Reload the page
 });
 
 checkButton.addEventListener('click', checkOrder);

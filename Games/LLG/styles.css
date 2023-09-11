@@ -23,6 +23,16 @@ body {
     background-image: linear-gradient(to left top, #eee3d1, #f3e8d9, #f7ede1, #fbf3e9, #fff8f1);
 }
 
+.game-nameh2 {
+    position: absolute;
+    top: 26px;
+    font-family: 'Comic Sans MS';
+    font-size: 28px;
+    color: lightsalmon; /* White text color */
+    margin-bottom: 16px;
+    text-align: center;
+}
+
 .container {
     font-family: 'Comic Sans MS';
     text-align: center;
@@ -34,12 +44,20 @@ body {
     height: fit-content; /* Set the height to your desired fixed height */
     margin: 0 auto; /* Center the container horizontally within the viewport */
     overflow: hidden;
+    position: relative;
 }
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #3498db;
+button#close-btn {
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    color: #f2b962;
+    background: #0000000d;
+    border-radius: 0px 0 0 10px;
+    padding: 2px;
+    height: 30px;
+    width: 30px;
 }
 
 #progress-container {
@@ -71,6 +89,7 @@ h1 {
 .task-container{
     display: flex;
     align-items: center;
+    margin-top: 10px;
     margin-left: 22px;
     margin-bottom: -12px;
 }
