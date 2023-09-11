@@ -576,65 +576,57 @@ function shuffleArray(array) {
     return array;
 }
 
-
 // Modify the speakQuestion function to accept a parameter for the question
 function speakQuestion(question) {
-
-     // Replace underscores with spaces
-     question = question.replace(/___/g, 'Dash');
-     
-    // Cancel the previous speech synthesis if it's still speaking
-    if (currentUtterance && speechSynthesis.speaking) {
-        speechSynthesis.cancel();
-    }
-
-    const utterance = new SpeechSynthesisUtterance(question);
-
+    // Replace underscores with spaces
+    question = question.replace(/___/g, 'Dash');
+    
     // Determine the language of the current question
     const language = detectLanguage(question);
 
-    // Set the voice based on the language
-    const voices = speechSynthesis.getVoices();
-    let selectedVoice = null;
-
-    if (language === 'hi') {
-        // Use an Indian Hindi voice
-        selectedVoice = voices.find(voice => voice.lang === 'hi-IN');
-    } else if (language === 'odia') {
-        // Use an Odia voice if available
-        selectedVoice = voices.find(voice => voice.lang === 'or-IN');
-    } else if (language === 'en-IN') {
-        // Use an Indian English voice
-        selectedVoice = voices.find(voice => voice.lang === 'en-IN');
-    }
-    // else if (language === 'mr') {
-    //     // Use an Indian Marathi voice if available
-    //     selectedVoice = voices.find(voice => voice.lang === 'mr-IN');
-    else if (language === 'bn') {
-         // Use an Indian Bengali voice if available
-         selectedVoice = voices.find(voice => voice.lang === 'bn-IN');
-     }
-
-    if (selectedVoice) {
-        utterance.voice = selectedVoice;
-    }
-
-    // Add a short delay between words
-    utterance.rate = 0.8; // Adjust the rate as needed
-    utterance.onboundary = (event) => {
-        if (event.name === 'word') {
-            setTimeout(() => {
-                speechSynthesis.pause();
-                speechSynthesis.resume();
-            }, 100); // Delay between words in milliseconds
+    // Check if the language is English or Hindi before speaking
+    if (language === 'en' || language === 'hi') {
+        // Cancel the previous speech synthesis if it's still speaking
+        if (currentUtterance && speechSynthesis.speaking) {
+            speechSynthesis.cancel();
         }
-    };
 
-    // Set the current utterance to the new one
-    currentUtterance = utterance;
+        const utterance = new SpeechSynthesisUtterance(question);
 
-    speechSynthesis.speak(utterance);
+        // Set the voice based on the language
+        const voices = speechSynthesis.getVoices();
+        let selectedVoice = null;
+
+        if (language === 'hi') {
+            // Use an Indian Hindi voice
+            selectedVoice = voices.find(voice => voice.lang === 'hi-IN');
+        } else if (language === 'en') {
+            // Use an Indian English voice
+            selectedVoice = voices.find(voice => voice.lang === 'en-IN');
+        }
+
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+        }
+
+        // Add a short delay between words
+        utterance.rate = 0.8; // Adjust the rate as needed
+        utterance.onboundary = (event) => {
+            if (event.name === 'word') {
+                setTimeout(() => {
+                    speechSynthesis.pause();
+                    speechSynthesis.resume();
+                }, 100); // Delay between words in milliseconds
+            }
+        };
+
+        // Set the current utterance to the new one
+        currentUtterance = utterance;
+
+        speechSynthesis.speak(utterance);
+    }
 }
+
 
 // Function to detect the language of a text (Hindi, Odia, or English)
 function detectLanguage(text) {
