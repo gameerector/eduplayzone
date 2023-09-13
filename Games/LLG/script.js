@@ -158,8 +158,8 @@ function updateProgressBar() {
     
     progressBar.style.background = gradientColor;
 }
+let PercentageValue;
 
-const percentage = '';
 function showFinalResult() {
     questionContainer.style.display = 'none'; // Hide the question container
     resultContainer.style.display = 'flex';
@@ -174,11 +174,12 @@ function showFinalResult() {
     resultContainer.style.alignItems = 'flex-start';
     resultContainer.style.height = '100px';
     resultContainer.style.flexDirection = 'row-reverse';
-
-
+    
     const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
-    percentage = (correctAnswers / totalQuestions) * 100;
+    const percentage = (correctAnswers / totalQuestions) * 100;
+
+    PercentageValue = percentage;
 
     if (percentage<=30) {
         resultText = "faild";
@@ -191,6 +192,9 @@ function showFinalResult() {
     resultContainer.style.background = "#fff8bf";
 
     nextButton.textContent = "Back Home";
+
+   // const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo quiz!'; 
+   // console.log(myResult);
 
     // Add a click event listener to the Next button to reload the page
     nextButton.addEventListener('click', () => {
@@ -681,7 +685,7 @@ captureAndShareButton.addEventListener('click', () => {
     canvas.toBlob((blob) => {
       // Create a shareable file from the Blob
       const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
-      const myResult = 'I scored ' + percentage.toFixed(2) + '% in the Learn Lingo quiz!'; 
+      const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!'; 
       console.log(myResult); 
       // Check if the Web Share API is supported
       if (navigator.share) {
