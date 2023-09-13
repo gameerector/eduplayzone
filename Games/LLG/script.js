@@ -666,32 +666,30 @@ function detectLanguage(text) {
 const captureAndShareButton = document.getElementById('screenshot-btn');
 captureAndShareButton.textContent = 'Share';
 
+
 // Add an event listener to the capture and share button
 captureAndShareButton.addEventListener('click', () => {
-    // Fallback, Tries to use API only
-            // if navigator.share function is
-            // available
-            if (navigator.share) {
-                navigator.share({
- 
-                    // Title that occurs over
-                    // web share dialog
-                    title: 'Learn Lingo',
- 
-                    // URL to share
-                    url: 'https://eduplayzone.online'
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                }).catch(err => {
- 
-                    // Handle errors, if occurred
-                    console.log(
-                    "Error while using Web share API:");
-                    console.log(err);
-                });
-            } else {
- 
-                // Alerts user if API not available
-                alert("Browser doesn't support this API !");
-            }
+  // Capture the full screen as an image
+  html2canvas(document.body).then(function (canvas) {
+    // Convert the captured canvas to a Blob object
+    canvas.toBlob((blob) => {
+      // Create a shareable file from the Blob
+      const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
+
+      // Check if the Web Share API is supported
+      if (navigator.share) {
+        navigator
+          .share({
+            title: 'Shared Screenshot',
+            text: 'Check out this screenshot!',
+            files: [shareableFile],
+          })
+          .then(() => console.log('Shared successfully'))
+          .catch((error) => console.error('Error sharing:', error));
+      } else {
+        // Fallback for browsers that do not support Web Share API
+        alert('Web Share API is not supported in your browser. You can manually share the image.');
+      }
+    }, 'image/png');
+  });
 });
