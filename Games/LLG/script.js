@@ -681,8 +681,22 @@ captureAndShareButton.textContent = 'Share';
 captureAndShareButton.addEventListener('click', () => {
     // Capture the full screen as an image
     html2canvas(document.body).then(function (canvas) {
-      // Convert the captured canvas to a Blob object
-      canvas.toBlob((blob) => {
+      // Crop the image to 500px by 500px from the center
+      const ctx = canvas.getContext('2d');
+      const sourceX = (canvas.width - 500) / 2;
+      const sourceY = (canvas.height - 500) / 2;
+      const sourceWidth = 500;
+      const sourceHeight = 500;
+  
+      const croppedCanvas = document.createElement('canvas');
+      croppedCanvas.width = sourceWidth;
+      croppedCanvas.height = sourceHeight;
+  
+      const croppedCtx = croppedCanvas.getContext('2d');
+      croppedCtx.drawImage(canvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
+  
+      // Convert the cropped canvas to a Blob object
+      croppedCanvas.toBlob((blob) => {
         // Create a shareable file from the Blob
         const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
         const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
@@ -690,6 +704,7 @@ captureAndShareButton.addEventListener('click', () => {
           title: 'Check out my Learn Lingo result!',
           text: myResult,
           url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
+          files: [shareableFile],
         };
         console.log(myResult);
   
@@ -706,4 +721,4 @@ captureAndShareButton.addEventListener('click', () => {
       }, 'image/png');
     });
   });
-  
+   
