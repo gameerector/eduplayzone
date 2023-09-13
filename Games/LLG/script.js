@@ -163,11 +163,16 @@ function showFinalResult() {
     resultContainer.style.display = 'flex';
     FinalresultElement.style.display = 'block';
     resultElement.style.display = 'none';
+    captureAndShareButton.style.display = 'block';
     mainContainer.style.background = 'lightyellow';
     const totalQuestions = questions.length;
     let resultText = new String('Passed');    
-
     task.textContent = 'Results of ' + subject;
+
+    resultContainer.style.alignItems = 'flex-start';
+    resultContainer.style.height = '100px';
+    resultContainer.style.flexDirection = 'row-reverse';
+
 
     const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
@@ -674,13 +679,15 @@ captureAndShareButton.addEventListener('click', () => {
     canvas.toBlob((blob) => {
       // Create a shareable file from the Blob
       const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
-
+      const myResult = 'I scored '+ percentage.toFixed(2)% +' in the Learn Lingo quiz!'; 
+      console.log(myResult); 
       // Check if the Web Share API is supported
       if (navigator.share) {
         navigator
           .share({
-            title: 'Check out Learn Lingo',
-            text: 'lets play here ',
+            title: 'Check out my Learn Lingo result!',
+            text: myResult,
+            url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
             files: [shareableFile],
           })
           .then(() => console.log('Shared successfully'))

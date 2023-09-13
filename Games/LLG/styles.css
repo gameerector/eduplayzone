@@ -361,6 +361,14 @@ img {
     align-content: center;
     align-items: center;
 }
+.finalpage-add{
+    display: flex;
+    background: rgb(255, 248, 191);
+    align-content: center;
+    align-items: flex-start;
+    height: 100px;
+    flex-direction: row-reverse;
+}
 
 p#final-result {
     width: 230px;
@@ -379,7 +387,30 @@ p#final-result {
     font-size: 20px;
     transform: rotate(353deg);
 }
-
+#screenshot-btn{
+    display: none;
+    background-image: url(images/share_icon.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-color: #c48af9;
+    /* padding: 6px 12px; */
+    padding: 5px 10px;
+    margin-top: 14px;
+    font-family: 'Lilita One';
+    /* background-color: #ffc1074f; */
+    color: #303030;
+    border: 2px solid #919191;
+    border-bottom: 5px solid #919191;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s;
+    margin-left: 15px;
+    background-origin: content-box;
+    background-position-x: -10px;
+    width: 90px;
+    text-align: right;
+}
 .resulttext{
     color: red;
     font-size: 25px;
