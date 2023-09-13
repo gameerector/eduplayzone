@@ -13,7 +13,7 @@ const questionContainer = document.getElementById('question-container');
 const correctAnswerElement = document.querySelector('.correct-answer');
 const correctAnswerH3 = document.getElementById('correct-answer-c');
 const gameImage = document.getElementById('game-image');
-const QuestionLine = document.getElementById('.question-line');
+const QuestionLine = document.getElementById('question-line');
 const closeButton = document.getElementById('close-btn')
 // Add this code to update the progress bar
 const progressBar = document.getElementById('progress-bar');
@@ -181,15 +181,21 @@ function showFinalResult() {
 
     PercentageValue = percentage;
 
-    if (percentage<=30) {
-        resultText = "faild";
-    }
 
-    FinalresultElement.innerHTML = ` <span class ="resulttext" >Result : ${resultText}</span> <br> Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
+    FinalresultElement.innerHTML = `<span class ="NTitle" >Learn Lingo</span> <span id ="resulttext" >Result : ${resultText}</span> <br> Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
     correctAnswerElement.style.display = "none";
     correctAnswerH3.style.display = "none";
     resultElement.style.color = "#353535f2";
     resultContainer.style.background = "#fff8bf";
+
+    const resulttextT = document.getElementById('resulttext');
+
+    resulttextT.style.color = 'yellowgreen';
+
+    if (percentage<=30) {
+        resultText = "faild";
+        resulttextT.style.color = 'red';
+    }
 
     nextButton.textContent = "Back Home";
 
@@ -703,7 +709,7 @@ captureAndShareButton.addEventListener('click', () => {
         const shareData = {
           title: 'Check out my Learn Lingo result!',
           text: myResult,
-          url: myResult +' https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
+          url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
           files: [shareableFile],
         };
         console.log(myResult);
