@@ -703,7 +703,7 @@ captureAndShareButton.addEventListener('click', () => {
         const shareData = {
           title: 'Check out my Learn Lingo result!',
           text: myResult,
-          url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
+          url: myResult +' https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
           files: [shareableFile],
         };
         console.log(myResult);
