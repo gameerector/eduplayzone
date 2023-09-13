@@ -666,7 +666,6 @@ function detectLanguage(text) {
 const captureAndShareButton = document.getElementById('screenshot-btn');
 captureAndShareButton.textContent = 'Share';
 
-
 // Add an event listener to the capture and share button
 captureAndShareButton.addEventListener('click', () => {
   // Capture the full screen as an image
@@ -680,8 +679,8 @@ captureAndShareButton.addEventListener('click', () => {
       if (navigator.share) {
         navigator
           .share({
-            title: 'Shared Screenshot',
-            text: 'Check out this screenshot!',
+            title: 'Check out Learn Lingo',
+            text: 'lets play here ',
             files: [shareableFile],
           })
           .then(() => console.log('Shared successfully'))
