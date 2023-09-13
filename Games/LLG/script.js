@@ -679,29 +679,31 @@ captureAndShareButton.textContent = 'Share';
 
 // Add an event listener to the capture and share button
 captureAndShareButton.addEventListener('click', () => {
-  // Capture the full screen as an image
-  html2canvas(document.body).then(function (canvas) {
-    // Convert the captured canvas to a Blob object
-    canvas.toBlob((blob) => {
-      // Create a shareable file from the Blob
-      const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
-      const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!'; 
-      console.log(myResult); 
-      // Check if the Web Share API is supported
-      if (navigator.share) {
-        navigator
-          .share({
-            title: 'Check out my Learn Lingo result!',
-            text: myResult,
-            url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
-            files: [shareableFile],
-          })
-          .then(() => console.log('Shared successfully'))
-          .catch((error) => console.error('Error sharing:', error));
-      } else {
-        // Fallback for browsers that do not support Web Share API
-        alert('Web Share API is not supported in your browser. You can manually share the image.');
-      }
-    }, 'image/png');
+    // Capture the full screen as an image
+    html2canvas(document.body).then(function (canvas) {
+      // Convert the captured canvas to a Blob object
+      canvas.toBlob((blob) => {
+        // Create a shareable file from the Blob
+        const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
+        const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
+        const shareData = {
+          title: 'Check out my Learn Lingo result!',
+          text: myResult,
+          url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
+        };
+        console.log(myResult);
+  
+        // Check if the Web Share API is supported
+        if (navigator.share) {
+          navigator
+            .share(shareData)
+            .then(() => console.log('Shared successfully'))
+            .catch((error) => console.error('Error sharing:', error));
+        } else {
+          // Fallback for browsers that do not support Web Share API
+          alert('Web Share API is not supported in your browser. You can manually share the image.');
+        }
+      }, 'image/png');
+    });
   });
-});
+  
