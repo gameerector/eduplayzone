@@ -7,6 +7,7 @@ const answerField = document.getElementById('answer-field');
 const checkButton = document.getElementById('check-btn');
 const resultContainer = document.getElementById('result-container');
 const resultElement = document.getElementById('result');
+const FinalresultElement = document.getElementById('final-result');
 const nextButton = document.getElementById('next-btn');
 const questionContainer = document.getElementById('question-container');
 const correctAnswerElement = document.querySelector('.correct-answer');
@@ -25,6 +26,8 @@ let incorrectAnswers = 0;
 
 // Declare the variable for questions
 let questions = [];
+
+let subject;
 
 // Function to load questions from a JSON file
 function loadQuestions(jsonFileURL) {
@@ -48,6 +51,8 @@ document.getElementById('startGameButton').addEventListener('click', () => {
     if (selectedLanguage) {
         const languageCode = selectedLanguage.getAttribute('data-language');
         const jsonFileURL = `${languageCode}.json`;
+
+        subject = languageCode;
 
         // Hide the language selection and show the game section
         document.getElementById('language-selection').classList.add('hidden');
@@ -156,14 +161,23 @@ function updateProgressBar() {
 function showFinalResult() {
     questionContainer.style.display = 'none'; // Hide the question container
     resultContainer.style.display = 'flex';
-
+    FinalresultElement.style.display = 'block';
+    resultElement.style.display = 'none';
+    mainContainer.style.background = 'lightyellow';
     const totalQuestions = questions.length;
+    let resultText = new String('Passed');    
+
+    task.textContent = 'Results of ' + subject;
 
     const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
     const percentage = (correctAnswers / totalQuestions) * 100;
 
-    resultElement.innerHTML = `Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
+    if (percentage<=30) {
+        resultText = "faild";
+    }
+
+    FinalresultElement.innerHTML = ` <span class ="resulttext" >Result : ${resultText}</span> <br> Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
     correctAnswerElement.style.display = "none";
     correctAnswerH3.style.display = "none";
     resultElement.style.color = "#353535f2";
@@ -648,3 +662,45 @@ function detectLanguage(text) {
         return 'en'; // English
     }
 }
+// Create a button for capturing and sharing
+const captureAndShareButton = document.createElement('button');
+captureAndShareButton.textContent = 'Capture and Share';
+document.body.appendChild(captureAndShareButton);
+
+// Add an event listener to the capture and share button
+captureAndShareButton.addEventListener('click', () => {
+  // Capture the full screen as an image
+  html2canvas(document.body).then(function (canvas) {
+    // Crop the image to 500px by 500px from the center
+    const ctx = canvas.getContext('2d');
+    const sourceX = (canvas.width - 500) / 2; // X-coordinate of the top-left corner of the crop
+    const sourceY = (canvas.height - 500) / 2; // Y-coordinate of the top-left corner of the crop
+    const sourceWidth = 500; // Width of the crop
+    const sourceHeight = 500; // Height of the crop
+
+    const croppedCanvas = document.createElement('canvas');
+    croppedCanvas.width = sourceWidth;
+    croppedCanvas.height = sourceHeight;
+
+    const croppedCtx = croppedCanvas.getContext('2d');
+    croppedCtx.drawImage(canvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
+
+    // Convert the cropped canvas to a Blob object
+    croppedCanvas.toBlob((blob) => {
+      // Share the captured and cropped image
+      if (navigator.share) {
+        navigator
+          .share({
+            title: 'Shared Image',
+            text: 'Check out this image!',
+            files: [new File([blob], 'image.png')],
+          })
+          .then(() => console.log('Shared successfully'))
+          .catch((error) => console.error('Error sharing:', error));
+      } else {
+        // Fallback for browsers that do not support Web Share API
+        alert('Web Share API is not supported in your browser. You can manually share the image.');
+      }
+    }, 'image/png');
+  });
+});

@@ -362,6 +362,30 @@ img {
     align-items: center;
 }
 
+p#final-result {
+    width: 230px;
+    height: 200px;
+    border: 6px solid white;
+    text-align: left;
+    background: whitesmoke;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 33px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    transform: rotate(353deg);
+}
+
+.resulttext{
+    color: red;
+    font-size: 25px;
+    font-family: 'Lilita One';
+}
+
 @keyframes slide-up {
     0% {
         transform: translateY(100%); /* Start off the screen */
@@ -646,13 +670,13 @@ img.language-selection-img {
 
 /* Additional CSS styles for transitions */
 .container {
-    transition: opacity 0.5s ease-in-out;
+    /* transition: opacity 0.5s ease-in-out; */
     opacity: 0;
 }
 
 .show-game {
     opacity: 1;
-    transition: 2s;
+    /* transition: 2s; */
 }
 
 button#startGameButton {
