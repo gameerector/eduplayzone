@@ -158,6 +158,8 @@ function updateProgressBar() {
     
     progressBar.style.background = gradientColor;
 }
+
+const percentage = '';
 function showFinalResult() {
     questionContainer.style.display = 'none'; // Hide the question container
     resultContainer.style.display = 'flex';
@@ -176,7 +178,7 @@ function showFinalResult() {
 
     const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
-    const percentage = (correctAnswers / totalQuestions) * 100;
+    percentage = (correctAnswers / totalQuestions) * 100;
 
     if (percentage<=30) {
         resultText = "faild";
@@ -679,7 +681,7 @@ captureAndShareButton.addEventListener('click', () => {
     canvas.toBlob((blob) => {
       // Create a shareable file from the Blob
       const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
-      const myResult = 'I scored '+ percentage.toFixed(2)% +' in the Learn Lingo quiz!'; 
+      const myResult = 'I scored ' + percentage.toFixed(2) + '% in the Learn Lingo quiz!'; 
       console.log(myResult); 
       // Check if the Web Share API is supported
       if (navigator.share) {
