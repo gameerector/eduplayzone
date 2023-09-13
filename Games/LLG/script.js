@@ -663,44 +663,35 @@ function detectLanguage(text) {
     }
 }
 // Create a button for capturing and sharing
-const captureAndShareButton = document.createElement('button');
-captureAndShareButton.textContent = 'Capture and Share';
-document.body.appendChild(captureAndShareButton);
+const captureAndShareButton = document.getElementById('screenshot-btn');
+captureAndShareButton.textContent = 'Share';
 
 // Add an event listener to the capture and share button
 captureAndShareButton.addEventListener('click', () => {
-  // Capture the full screen as an image
-  html2canvas(document.body).then(function (canvas) {
-    // Crop the image to 500px by 500px from the center
-    const ctx = canvas.getContext('2d');
-    const sourceX = (canvas.width - 500) / 2; // X-coordinate of the top-left corner of the crop
-    const sourceY = (canvas.height - 500) / 2; // Y-coordinate of the top-left corner of the crop
-    const sourceWidth = 500; // Width of the crop
-    const sourceHeight = 500; // Height of the crop
-
-    const croppedCanvas = document.createElement('canvas');
-    croppedCanvas.width = sourceWidth;
-    croppedCanvas.height = sourceHeight;
-
-    const croppedCtx = croppedCanvas.getContext('2d');
-    croppedCtx.drawImage(canvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
-
-    // Convert the cropped canvas to a Blob object
-    croppedCanvas.toBlob((blob) => {
-      // Share the captured and cropped image
-      if (navigator.share) {
-        navigator
-          .share({
-            title: 'Shared Image',
-            text: 'Check out this image!',
-            files: [new File([blob], 'image.png')],
-          })
-          .then(() => console.log('Shared successfully'))
-          .catch((error) => console.error('Error sharing:', error));
-      } else {
-        // Fallback for browsers that do not support Web Share API
-        alert('Web Share API is not supported in your browser. You can manually share the image.');
-      }
-    }, 'image/png');
-  });
+    // Fallback, Tries to use API only
+            // if navigator.share function is
+            // available
+            if (navigator.share) {
+                navigator.share({
+ 
+                    // Title that occurs over
+                    // web share dialog
+                    title: 'Learn Lingo',
+ 
+                    // URL to share
+                    url: 'https://eduplayzone.online'
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(err => {
+ 
+                    // Handle errors, if occurred
+                    console.log(
+                    "Error while using Web share API:");
+                    console.log(err);
+                });
+            } else {
+ 
+                // Alerts user if API not available
+                alert("Browser doesn't support this API !");
+            }
 });
