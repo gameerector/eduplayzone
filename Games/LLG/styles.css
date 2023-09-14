@@ -427,6 +427,18 @@ p#final-result {
     color: yellowgreen;
     font-size: 25px;
     font-family: 'Lilita One';
+    animation: stamp 1s ease-out;
+}
+ 
+@keyframes stamp {
+    0% {
+        opacity: 0;
+        scale: 2;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
 }
 
 @keyframes slide-up {

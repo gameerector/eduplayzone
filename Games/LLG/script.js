@@ -168,19 +168,21 @@ function showFinalResult() {
     captureAndShareButton.style.display = 'block';
     mainContainer.style.background = 'lightyellow';
     const totalQuestions = questions.length;
-    let resultText = new String('Passed');    
     task.textContent = 'Results of ' + subject;
 
     resultContainer.style.alignItems = 'flex-start';
     resultContainer.style.height = '100px';
     resultContainer.style.flexDirection = 'row-reverse';
+    let resultText = new String('Passed');    
     
     const correctAnswers = calculateCorrectAnswers();
     const incorrectAnswers = totalQuestions - correctAnswers;
     const percentage = (correctAnswers / totalQuestions) * 100;
 
     PercentageValue = percentage;
-
+    if (percentage<=30) {
+        resultText = "Failed";
+    }
 
     FinalresultElement.innerHTML = `<span class ="NTitle" >Learn Lingo</span> <span id ="resulttext" >Result : ${resultText}</span> <br> Correct: ${correctAnswers}<br>Incorrect: ${incorrectAnswers}<br>Percentage: ${percentage.toFixed(2)}%`;
     correctAnswerElement.style.display = "none";
@@ -193,7 +195,6 @@ function showFinalResult() {
     resulttextT.style.color = 'yellowgreen';
 
     if (percentage<=30) {
-        resultText = "faild";
         resulttextT.style.color = 'red';
     }
 
@@ -706,25 +707,30 @@ captureAndShareButton.addEventListener('click', () => {
         // Create a shareable file from the Blob
         const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
         const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
-        const shareData = {
-          title: 'Check out my Learn Lingo result!',
-          text: myResult,
-          url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
-          files: [shareableFile],
-        };
-        console.log(myResult);
+        const shareText = myResult + '\n\nCheck out my result: https://eduplayzone.online/Games/LLG/';
   
-        // Check if the Web Share API is supported
+        // Create a temporary anchor element to trigger the download
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(shareableFile);
+        //link.download = 'screenshot.png';
+        //link.style.display = 'none';
+        //document.body.appendChild(link);
+        //link.click();
+        //document.body.removeChild(link);
+  
+        // Share the text using the built-in share dialog
         if (navigator.share) {
           navigator
-            .share(shareData)
+            .share({
+              text: shareText,
+            })
             .then(() => console.log('Shared successfully'))
             .catch((error) => console.error('Error sharing:', error));
         } else {
           // Fallback for browsers that do not support Web Share API
-          alert('Web Share API is not supported in your browser. You can manually share the image.');
+          alert('Web Share API is not supported in your browser. You can manually share the text.');
         }
       }, 'image/png');
     });
   });
-   
+     
