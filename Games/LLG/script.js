@@ -683,7 +683,6 @@ function detectLanguage(text) {
 // Create a button for capturing and sharing
 const captureAndShareButton = document.getElementById('screenshot-btn');
 captureAndShareButton.textContent = 'Share';
-
 // Add an event listener to the capture and share button
 captureAndShareButton.addEventListener('click', () => {
     // Capture the full screen as an image
@@ -709,20 +708,16 @@ captureAndShareButton.addEventListener('click', () => {
         const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
         const shareText = myResult + '\n\nCheck out my result: https://eduplayzone.online/Games/LLG/';
   
-        // Create a temporary anchor element to trigger the download
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(shareableFile);
-        //link.download = 'screenshot.png';
-        //link.style.display = 'none';
-        //document.body.appendChild(link);
-        //link.click();
-        //document.body.removeChild(link);
+        // Create an array to hold both text and files
+        const shareData = [shareText, shareableFile];
   
-        // Share the text using the built-in share dialog
+        // Share the text and the image using the built-in share dialog
         if (navigator.share) {
           navigator
             .share({
+              title: 'Check out my Learn Lingo result!',
               text: shareText,
+              files: [shareableFile],
             })
             .then(() => console.log('Shared successfully'))
             .catch((error) => console.error('Error sharing:', error));
@@ -733,4 +728,4 @@ captureAndShareButton.addEventListener('click', () => {
       }, 'image/png');
     });
   });
-     
+  
