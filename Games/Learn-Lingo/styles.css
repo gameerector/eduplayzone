@@ -98,7 +98,7 @@ button#close-btn {
     background-repeat: no-repeat;
     height: 40px;
     width: 40px;
-    background-image: url(star.png);
+    background-image: url(images/star.png);
     background-position: center;
     padding: 9px;
     background-size: 30px;
@@ -111,6 +111,23 @@ button#close-btn {
     margin-left: 10px;
     font-size: 16px;
     color: #595959;
+}
+
+a.back-btn {
+    background: #e7e4d9;
+    padding: 3px 6px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    font-family: 'Lilita One';
+    align-items: center;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-bottom: 2px solid #333;
+    border-right: 3px solid #333;
+    text-decoration: none;
 }
 
 #question-container {
