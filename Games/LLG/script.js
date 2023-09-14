@@ -165,7 +165,7 @@ function showFinalResult() {
     resultContainer.style.display = 'flex';
     FinalresultElement.style.display = 'block';
     resultElement.style.display = 'none';
-    captureAndShareButton.style.display = 'block';
+    ShareButton.style.display = 'block';
     mainContainer.style.background = 'lightyellow';
     const totalQuestions = questions.length;
     task.textContent = 'Results of ' + subject;
@@ -681,60 +681,25 @@ function detectLanguage(text) {
     }
 }
 // Create a button for capturing and sharing
-const captureAndShareButton = document.getElementById('screenshot-btn');
-captureAndShareButton.textContent = 'Share';
+const ShareButton = document.getElementById('screenshot-btn');
+ShareButton.textContent = 'Share';
+
 // Add an event listener to the capture and share button
-captureAndShareButton.addEventListener('click', () => {
-    // Capture the full screen as an image
-    html2canvas(document.body).then(function (canvas) {
-      // Crop the image to 500px by 500px from the center
-      const ctx = canvas.getContext('2d');
-      const sourceX = (canvas.width - 500) / 2;
-      const sourceY = (canvas.height - 500) / 2;
-      const sourceWidth = 500;
-      const sourceHeight = 500;
-  
-      const croppedCanvas = document.createElement('canvas');
-      croppedCanvas.width = sourceWidth;
-      croppedCanvas.height = sourceHeight;
-  
-      const croppedCtx = croppedCanvas.getContext('2d');
-      croppedCtx.drawImage(canvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
-  
-      // Convert the cropped canvas to a Blob object
-      croppedCanvas.toBlob((blob) => {
-        // Create a shareable file from the Blob
-        const shareableFile = new File([blob], 'screenshot.png', { type: 'image/png' });
-        const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
-        const shareText = myResult + '\n\nCan you beat my score and become the ultimate language master? 🚀';
-  
-        // Try to share both text and image
-        if (navigator.share) {
-          navigator
-            .share({
-              title: 'Check out my Learn Lingo result!',
-              text: shareText,
-              url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
-              files: [shareableFile],
-            })
-            .then(() => console.log('Shared successfully'))
-            .catch((error) => {
-              console.error('Error sharing with text and image:', error);
-              // If sharing with text and image fails, try sharing only the image
-              navigator
-                .share({
-                  title: 'Check out my Learn Lingo result!',
-                  url: 'https://eduplayzone.online/Games/LLG/', // Add the URL you want to share
-                  files: [shareableFile],
-                })
-                .then(() => console.log('Shared successfully (image only)'))
-                .catch((error) => console.error('Error sharing image only:', error));
-            });
-        } else {
-          // Fallback for browsers that do not support Web Share API
-          alert('Web Share API is not supported in your browser. You can manually share the text.');
-        }
-      }, 'image/png');
-    });
-  });
-  
+ShareButton.addEventListener('click', () => {
+      const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
+      const shareText = myResult + '\n\nCan you beat my score and become the ultimate language master? 🚀\n\nJoin the challenge now: https://eduplayzone.online/Games/LLG/';
+
+      // Share the text using the built-in share dialog
+      if (navigator.share) {
+        navigator
+          .share({
+            text: shareText
+          })
+          .then(() => console.log('Shared successfully'))
+          .catch((error) => console.error('Error sharing:', error));
+      } else {
+        // Fallback for browsers that do not support Web Share API
+        alert('Web Share API is not supported in your browser. You can manually share the text.');
+      }
+});
+   
