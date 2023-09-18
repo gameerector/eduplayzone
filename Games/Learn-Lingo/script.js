@@ -53,10 +53,9 @@ document.getElementById('startGameButton').addEventListener('click', () => {
         const jsonFileURL = `${languageCode}.json`;
 
         subject = languageCode;
-
-        // Hide the language selection and show the game section
-        document.getElementById('language-selection').classList.add('hidden');
-        document.getElementById('mainContainer').classList.add('show-game');
+            // Hide the language selection and show the game section
+            document.getElementById('language-selection').classList.add('hidden');
+            document.getElementById('mainContainer').classList.add('show-game');
 
         // Call the function to load questions
         loadQuestions(jsonFileURL);
@@ -687,7 +686,7 @@ ShareButton.textContent = 'Share';
 // Add an event listener to the capture and share button
 ShareButton.addEventListener('click', () => {
       const myResult = 'I scored ' + PercentageValue.toFixed(2) + '% in the Learn Lingo Game!';
-      const shareText = myResult + '\n\nCan you beat my score and become the ultimate language master? 🚀\n\nJoin the challenge now: https://eduplayzone.online/Games/LLG/';
+      const shareText = myResult + '\n\nCan you beat my score and become the ultimate language master? 🚀\n\nJoin the challenge now: https://eduplayzone.online/Games/Learn-Lingo';
 
       // Share the text using the built-in share dialog
       if (navigator.share) {
