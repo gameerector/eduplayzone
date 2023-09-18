@@ -14,6 +14,7 @@
 
 /* Add this CSS to center the .container element */
 body {
+    outline: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -203,6 +204,7 @@ img {
     transition: background-color 0.3s;
     font-family: 'Comic Sans MS';
     font-weight: 600;
+    outline: none;
 }
 
 .word-option-selected {
@@ -267,7 +269,7 @@ img {
 }
 
 .question-line {
-    background-color: #e6e6fa;
+    background-color: #e487f438;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -286,7 +288,7 @@ img {
 }
 
 .question-line:after{
-    background-color: #e6e6fa;
+    background-color: #e487f438;
     content: "";
     position: absolute;
     top: 28px;
@@ -299,7 +301,7 @@ img {
 }
 
 .question-line:before{
-    background-color: #e6e6fa;
+    background-color: #e487f438;
     content: "";
     top: 45px;
     position: absolute;

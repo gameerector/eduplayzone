@@ -9,9 +9,74 @@
     "question": "ମୋର ସାଙ୍ଗମାନେ ବହୁତ ଭଲ |",
     "correctOrder": ["My", "friends", "are", "very", "good."]
   },
-    {
-    "task": "Translate this sentence to English",
-    "question": "ତୁମର ନାମ କଣ ?",
-    "correctOrder": ["what", "is", "your", "name?"]
-  }
+  {
+    "task": "ଶବ୍ଦ ଶୁଣି ବାକ୍ୟକୁ ଅନୁବାଦ କର |",
+    "voicequestion": "What is Your name ?",
+    "correctOrder": ["ତୁମର", "ନାମ", "କଣ?"]
+  },
+  {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "What is your favorite color?",
+    "correctOrder": ["ତୁମର", "ପ୍ରିୟ", "ରଙ୍ଗ", "କ’ଣ?"]
+  },
+  {
+    "task": "ଶବ୍ଦ ଶୁଣି ବାକ୍ୟକୁ ଅନୁବାଦ କର |",
+    "voicequestion": "She is reading a book.",
+    "correctOrder": ["ସେ", "ଏକ", "ବହି", "ପଡ଼ୁଛନ୍ତି"]
+  },
+   {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "how are you feeling today?",
+    "correctOrder" : ["ଆଜି", "ତୁମେ", "କେମିତି", "ଅନୁଭବ", "କରୁଛନ୍ତି ?"]
+   },
+   {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "Can you help me with my homework?",
+    "correctOrder" : ["ତୁମେ", "ମୋର", "ହୋମୱର୍କରେ" ,"ମୋତେ", "ସାହାଜ୍ୟ", "କରିପାରିବ", "କି?"]
+   },
+  {
+    "task": "ଏହି ବାକ୍ୟ ର ଅନୁବାଦ କର ",
+    "question": "We will visit the museum next week.?",
+    "correctOrder": ["ଆସନ୍ତା", "ସପ୍ତାହରେ", "ଆମେ", "ସଂଗ୍ରହାଳୟ", "ପରିଦର୍ଶନ", "କରିବୁ"]
+  },
+  {
+    "task": "ଏକ ସଠିକ ବିକଳ୍ପ ବାଛନ୍ତୁ ",
+    "Mcquestion": "ତୁମେ କିପରି ବିଦ୍ୟାଳୟକୁ ଯିବ?",
+    "options": ["I'm good at drawing.", "I take the school bus.", "My favorite book is about space."],
+    "correctOption": "1"
+  },
+  {
+    "task": "ଏକ ସଠିକ ବିକଳ୍ପ ବାଛନ୍ତୁ",
+    "Mcquestion": "What is your favorite sport?",
+    "options": ["ମୋର ପ୍ରିୟ ବିଷୟ ହେଉଛି ଗଣିତ |", "ମୋର ପ୍ରିୟ ରଙ୍ଗ ନୀଳ |", "ମୋର ପ୍ରିୟ ଖେଳ ହେଉଛି କ୍ରିକେଟ୍ |"],
+    "correctOption": "2"
+  },
+  {
+    "task": "ଶବ୍ଦ ଶୁଣି ବାକ୍ୟକୁ ଅନୁବାଦ କର |",
+    "voicequestion": "They are playing football in the park.",
+    "correctOrder": ["ସେମାନେ", "ପାର୍କରେ", "ଫୁଟବଲ୍", "ଖେଳୁଛନ୍ତି"]
+  },
+  {
+    "task": "ଏକ ସଠିକ ବିକଳ୍ପ ବାଛନ୍ତୁ",
+    "Mcquestion": "The cat is ___ the chair.",
+    "options": ["in", "on", "under"],
+    "correctOption": "1"
+  },
+  {
+    "task": "ଏକ ସଠିକ ବିକଳ୍ପ ବାଛନ୍ତୁ",
+    "Mcquestion": "She placed the book ___ the shelf.",
+    "options": ["on", "in", "under"],
+    "correctOption": "2"
+  },
+  {
+    "task": "ଏକ ସଠିକ ବିକଳ୍ପ ବାଛନ୍ତୁ",
+    "Mcquestion": "The ball rolled ____ the bed.",
+    "options": ["beside", "across", "on"],
+    "correctOption": "1"
+  },
+  {
+    "task": "ଶବ୍ଦ ଶୁଣି ବାକ୍ୟକୁ ଅନୁବାଦ କର",
+    "voicequestion": "I did my homework yesterday.",
+    "correctOrder": ["ମୁଁ", "ଗତକାଲି", "ମୋର", "ହୋମୱାର୍କ", "କରିଥିଲି"]
+  } 
 ]
