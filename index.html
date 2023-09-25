@@ -96,8 +96,27 @@
       </div>
     </div>
     <button id="saveBtn">Save</button>
-    <button id="addToHomeScreen"><div class="tooltip2" id="tooltip2">Get App 👉 </div></button>
+    <!-- <button id="addToHomeScreen"><div class="tooltip2" id="tooltip2">Get App 👉 </div></button> -->
 
+  </div>
+</div>
+
+<!-- PWA app setup popup -->
+<div class="add-to-home-popup" id="add-to-home-popup">
+  <div class="popup-content">
+    <div class="app-icon">
+      <img src="image/icon.png" alt="App Icon">
+    </div>
+    <div class="popup-text">
+      <span style="display: flex;align-items: flex-start;align-items: flex-start;text-align: left;font-size: 16px;">Edu play zone</span>
+      <p style="
+      font-size: 14px;
+      margin-top: 7px;
+      margin-bottom: 20px;
+  ">Install EduPlayZone on your device for quick access.</p>
+      <button id="install-button">Add to Home Screen</button>
+      <button id="dismiss-button"><span class="material-icons">close</span></button>
+    </div>
   </div>
 </div>
 
@@ -118,7 +137,7 @@
         <div class="image-overlay">
           <div class="overlay-text">Latest</div>
           <div class="overlay-title">Match Picture</div>
-          <div class="overlay-description">A fun game to match pictures and enhance visual recognition.</div>
+          <div class="overlay-description"><!-- A fun game to match pictures and enhance visual recognition. --></div>
         </div>
       </a>
     </div>
@@ -128,7 +147,7 @@
         <div class="image-overlay">
           <div class="overlay-text">Latest</div>
           <div class="overlay-title">Math Genius</div>
-          <div class="overlay-description">A math-focused game to test and improve your mathematical abilities.</div>
+          <div class="overlay-description"><!--A math-focused game to test and improve your mathematical abilities.--></div>
         </div>
       </a>
     </div>
@@ -138,7 +157,7 @@
       <div class="image-overlay">
         <div class="overlay-text">Latest</div>
         <div class="overlay-title">Match Number</div>
-        <div class="overlay-description">A fun game to match numbers and improve number recognition.</div>
+        <div class="overlay-description"><!--A fun game to match numbers and improve number recognition.--></div>
       </div>
       </a>
     </div>
@@ -154,10 +173,16 @@
     </button>
   </div>
 
+
   <!-- Waypoint button -->
   <button id="waypoint-button" class="waypoint-button">
     <i class="material-icons">search</i>
   </button> 
+
+  <!-- <div class="videoHead">
+    <Video src="image/EduPlayZone.mp4" loop autoplay>
+    </Video>
+  </div> -->
 
   <div class="category">
     <h3>Top games </h3>

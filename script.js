@@ -378,36 +378,64 @@ showTooltip();
     setInterval(showTooltip, 10000); // 10 second in milliseconds
  }  
 
-// Icon set up 
-    let deferredPrompt; // Initialize the deferredPrompt variable
+// // Icon set up 
+//     let deferredPrompt; // Initialize the deferredPrompt variable
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the default prompt from showing
-        e.preventDefault();
+//     window.addEventListener('beforeinstallprompt', (e) => {
+//         // Prevent the default prompt from showing
+//         e.preventDefault();
 
-        // Store the event for later use
-        deferredPrompt = e;
+//         // Store the event for later use
+//         deferredPrompt = e;
 
-        // Show your custom "Add to Home Screen" button
-        document.getElementById('addToHomeScreen').style.display = 'block';
-    });
+//         // Show your custom "Add to Home Screen" button
+//         document.getElementById('addToHomeScreen').style.display = 'block';
+//     });
 
-    // Handle button click to show the installation prompt
-    const addToHomeScreenButton = document.getElementById('addToHomeScreen');
-    addToHomeScreenButton.addEventListener('click', () => {
-        if (deferredPrompt) {
-            // Show the installation prompt
-            deferredPrompt.prompt();
+//     // Handle button click to show the installation prompt
+//     const addToHomeScreenButton = document.getElementById('addToHomeScreen');
+//     addToHomeScreenButton.addEventListener('click', () => {
+//         if (deferredPrompt) {
+//             // Show the installation prompt
+//             deferredPrompt.prompt();
 
-            // Wait for the user to respond to the prompt
-            deferredPrompt.userChoice.then(choiceResult => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                deferredPrompt = null; // Reset the deferredPrompt
-            });
-        }
-    });
+//             // Wait for the user to respond to the prompt
+//             deferredPrompt.userChoice.then(choiceResult => {
+//                 if (choiceResult.outcome === 'accepted') {
+//                     console.log('User accepted the install prompt');
+//                 } else {
+//                     console.log('User dismissed the install prompt');
+//                 }
+//                 deferredPrompt = null; // Reset the deferredPrompt
+//             });
+//         }
+//     });
+
+// Get references to the popup and buttons
+const addToHomePopup = document.getElementById('add-to-home-popup');
+const installButton = document.getElementById('install-button');
+const dismissButton = document.getElementById('dismiss-button');
+
+// Check if the app is already installed
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  addToHomePopup.style.display = 'none'; // Hide the popup if already installed
+} else {
+  // Show the popup if the app is not installed
+  addToHomePopup.style.display = 'block';
+}
+
+// Add a click event listener to the "Add to Home Screen" button
+installButton.addEventListener('click', () => {
+  // Trigger the installation prompt if available
+  deferredInstallPrompt.prompt();
+  // Hide the popup
+  addToHomePopup.style.display = 'none';
+});
+
+// Add a click event listener to the "Dismiss" button
+dismissButton.addEventListener('click', () => {
+  // Hide the popup
+  addToHomePopup.style.display = 'none';
+});
+
 

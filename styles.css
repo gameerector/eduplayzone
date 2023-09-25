@@ -290,7 +290,7 @@ h3 span {
 .overlay-title {
   font-size: 20px;
   position: relative;
-  top: 50px;
+  top: 70px;
   z-index: 11;
 }
 
@@ -344,9 +344,6 @@ h3 span {
 
 /* ...existing styles... */
 
-.search-btn {
-  /* Add styles for voice search button */
-}
 
 .search-btn.active {
   /* Add styles for active state during voice search */
@@ -367,6 +364,28 @@ h3 span {
   100% {
     transform: scale(1);
   }
+}
+
+.videoHead {
+  margin: auto;
+  height: 100px;
+  width: 47%;
+  /* background-color: #bbb7c4; */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 5px solid black;
+  border-top: 5px solid;
+  padding: 0 16px;
+}
+
+.videoHead video {
+  height: 192px;
+    /* opacity: 0.5; */
+    filter: opacity(0.9);
+    box-shadow: 0px 4px 9px #000000c2;
 }
 
 .category{
@@ -518,6 +537,27 @@ main {
   .username{
     width: 110px;
   }
+  
+  .videoHead {
+    margin: auto;
+    height: 80px;
+    width: 83%;
+    /* background-color: #bbb7c4; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 5px solid black;
+    border-top: 5px solid;
+    padding: 0 10px;
+  }
+
+.videoHead video {
+    height: 125px;
+}
+
+
 }
 
 @media only screen and (max-width: 390px){
@@ -540,6 +580,26 @@ main {
     grid-template-columns: 1fr;
     width: auto;
   }
+  
+  .videoHead {
+    margin: auto;
+    height: 80px;
+    width: 83%;
+    /* background-color: #bbb7c4; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 5px solid black;
+    border-top: 5px solid;
+    padding: 0 10px;
+}
+
+.videoHead video {
+    height: 125px;
+}
+
 }
 
 @media only screen and (max-width: 360px){
@@ -560,6 +620,26 @@ main {
     text-decoration: none;
     transition: transform 0.3s ease,box-shadow 0.3s ease;
   }
+
+  .videoHead {
+    margin: auto;
+    height: 80px;
+    width: 83%;
+    /* background-color: #bbb7c4; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 5px solid black;
+    border-top: 5px solid;
+    padding: 0 10px;
+}
+
+.videoHead video {
+    height: 125px;
+}
+
 }
 
 footer {
@@ -615,7 +695,7 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 998;
 }
 
 /* Style for the icon inside the waypoint button */
@@ -723,22 +803,90 @@ footer p {
   background-color: #FF6F51;
 }
 
-#addToHomeScreen {
-    display: block;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 2px solid;
-    border-radius: 50%;
-    background-image: url(image/add-to-home.png);
-    background-size: 22px;
-    height: 30px;
-    width: 30px;
-    background-position: center;
-    background-repeat: repeat-x;
-    top: 7px;
-    right: 7px;
-    cursor: pointer;
+/* Add this CSS to your existing styles or a separate stylesheet */
+.add-to-home-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: beige;
+  color: #000;
+  display: none;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+  border: 1px solid darkgray;
 }
-#addToHomeScreen:hover{
-    background-color: lightpink;
+
+.popup-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 20px;
+  align-content: flex-start;
+
+}
+
+.app-icon img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 30%;
+  background-color: #8e8e8e;
+  padding: 3px;
+}
+
+.popup-text {
+  padding-top: 5px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#install-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0056b3;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 30%;
+}
+
+#dismiss-button {
+  position: absolute;
+  background-color: #3737374d;
+  outline: none;
+  border: none;
+  top: 0;
+  right: 0;
+  padding: 3px;
+  color: white;
+  border-bottom-left-radius: 7px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .add-to-home-popup {
+    font-size: 14px;
+  }
+
+  .popup-content {
+    padding: 15px;
+  }
+
+  .app-icon img {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    margin-top: 10px;
+  }
+
+  #install-button{
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }
