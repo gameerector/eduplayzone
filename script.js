@@ -410,17 +410,35 @@ showTooltip();
 //             });
 //         }
 //     });
-
 // Get references to the popup and buttons
 const addToHomePopup = document.getElementById('add-to-home-popup');
 const installButton = document.getElementById('install-button');
 const dismissButton = document.getElementById('dismiss-button');
 let deferredInstallPrompt; // Define deferredInstallPrompt variable
 
+// Function to check if the app is installed
+function isAppInstalled() {
+  return (
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true
+  );
+}
+
+// Function to open the installed app
+function openInstalledApp() {
+  // Check if the app is installed
+  if (isAppInstalled()) {
+    // Redirect to the PWA URL (replace with your PWA URL)
+    window.location.href = 'https://eduplayzone.online/'; // Replace with your actual PWA URL
+  } else {
+    // Handle this case as needed (e.g., show an error message)
+    console.log('The app is not installed.');
+  }
+}
+
 // Check if the app is already installed
-if (window.matchMedia('(display-mode: standalone)').matches) {
-  // If already installed, change the button text to "Open App"
-  installButton.textContent = 'Open in Eduplayzone';
+if (isAppInstalled()) {
+  openInstalledApp(); // Open the installed app
 } else {
   // Show the popup if the app is not installed
   addToHomePopup.style.display = 'block';
@@ -428,20 +446,14 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 
 // Add a click event listener to the "Add to Home Screen" button
 installButton.addEventListener('click', () => {
-  // If already installed, you can perform the "Open App" action here
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    // Handle opening the app (e.g., navigate to the app's start page)
-    // Replace 'app-url' with the actual URL of your PWA
-    window.location.href = 'app-url';
-  } else if (deferredInstallPrompt) {
-    // Trigger the installation prompt if available
+  // Trigger the installation prompt if available
+  if (deferredInstallPrompt) {
     deferredInstallPrompt.prompt();
     // Wait for the user to respond to the prompt
     deferredInstallPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the installation prompt');
-        // Change the button text to "Open App" after installation
-        installButton.textContent = 'Open in Eduplayzone';
+        openInstalledApp(); // Open the installed app
       }
       // Reset deferredInstallPrompt to null
       deferredInstallPrompt = null;
@@ -465,9 +477,4 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredInstallPrompt = e;
   // Show your custom install button or UI element
   installButton.style.display = 'block';
-  
-  // Change the button text to "Open App" if already installed
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    installButton.textContent = 'Open in Eduplayzone';
-  }
 });
