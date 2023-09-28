@@ -410,35 +410,16 @@ showTooltip();
 //             });
 //         }
 //     });
+
 // Get references to the popup and buttons
 const addToHomePopup = document.getElementById('add-to-home-popup');
 const installButton = document.getElementById('install-button');
 const dismissButton = document.getElementById('dismiss-button');
 let deferredInstallPrompt; // Define deferredInstallPrompt variable
 
-// Function to check if the app is installed
-function isAppInstalled() {
-  return (
-    window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true
-  );
-}
-
-// Function to open the installed app
-function openInstalledApp() {
-  // Check if the app is installed
-  if (isAppInstalled()) {
-    // Redirect to the PWA URL (replace with your PWA URL)
-    window.location.href = 'https://eduplayzone.online/'; // Replace with your actual PWA URL
-  } else {
-    // Handle this case as needed (e.g., show an error message)
-    console.log('The app is not installed.');
-  }
-}
-
 // Check if the app is already installed
-if (isAppInstalled()) {
-  openInstalledApp(); // Open the installed app
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  addToHomePopup.style.display = 'none'; // Hide the popup if already installed
 } else {
   // Show the popup if the app is not installed
   addToHomePopup.style.display = 'block';
@@ -453,7 +434,6 @@ installButton.addEventListener('click', () => {
     deferredInstallPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the installation prompt');
-        openInstalledApp(); // Open the installed app
       }
       // Reset deferredInstallPrompt to null
       deferredInstallPrompt = null;
