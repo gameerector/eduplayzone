@@ -419,7 +419,8 @@ let deferredInstallPrompt; // Define deferredInstallPrompt variable
 
 // Check if the app is already installed
 if (window.matchMedia('(display-mode: standalone)').matches) {
-  addToHomePopup.style.display = 'none'; // Hide the popup if already installed
+  // If already installed, change the button text to "Open App"
+  installButton.textContent = 'Open in Eduplayzone';
 } else {
   // Show the popup if the app is not installed
   addToHomePopup.style.display = 'block';
@@ -427,13 +428,20 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 
 // Add a click event listener to the "Add to Home Screen" button
 installButton.addEventListener('click', () => {
-  // Trigger the installation prompt if available
-  if (deferredInstallPrompt) {
+  // If already installed, you can perform the "Open App" action here
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    // Handle opening the app (e.g., navigate to the app's start page)
+    // Replace 'app-url' with the actual URL of your PWA
+    window.location.href = 'app-url';
+  } else if (deferredInstallPrompt) {
+    // Trigger the installation prompt if available
     deferredInstallPrompt.prompt();
     // Wait for the user to respond to the prompt
     deferredInstallPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the installation prompt');
+        // Change the button text to "Open App" after installation
+        installButton.textContent = 'Open in Eduplayzone';
       }
       // Reset deferredInstallPrompt to null
       deferredInstallPrompt = null;
@@ -457,4 +465,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
   deferredInstallPrompt = e;
   // Show your custom install button or UI element
   installButton.style.display = 'block';
+  
+  // Change the button text to "Open App" if already installed
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    installButton.textContent = 'Open in Eduplayzone';
+  }
 });
