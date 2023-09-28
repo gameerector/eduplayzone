@@ -415,6 +415,7 @@ showTooltip();
 const addToHomePopup = document.getElementById('add-to-home-popup');
 const installButton = document.getElementById('install-button');
 const dismissButton = document.getElementById('dismiss-button');
+let deferredInstallPrompt; // Define deferredInstallPrompt variable
 
 // Check if the app is already installed
 if (window.matchMedia('(display-mode: standalone)').matches) {
@@ -427,7 +428,17 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 // Add a click event listener to the "Add to Home Screen" button
 installButton.addEventListener('click', () => {
   // Trigger the installation prompt if available
-  deferredInstallPrompt.prompt();
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredInstallPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the installation prompt');
+      }
+      // Reset deferredInstallPrompt to null
+      deferredInstallPrompt = null;
+    });
+  }
   // Hide the popup
   addToHomePopup.style.display = 'none';
 });
@@ -438,4 +449,12 @@ dismissButton.addEventListener('click', () => {
   addToHomePopup.style.display = 'none';
 });
 
-
+// Listen for the "beforeinstallprompt" event to capture the installation prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the default browser install prompt
+  e.preventDefault();
+  // Store the event for later use
+  deferredInstallPrompt = e;
+  // Show your custom install button or UI element
+  installButton.style.display = 'block';
+});
