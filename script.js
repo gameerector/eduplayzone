@@ -418,7 +418,7 @@ const dismissButton = document.getElementById('dismiss-button');
 let deferredInstallPrompt; // Define deferredInstallPrompt variable
 
 // Check if the app is already installed
-if (window.matchMedia('(display-mode: standalone)').matches) {
+if (window.matchMedia('(display-mode: standalone)').matches || localStorage.getItem('appInstalled')) {
   addToHomePopup.style.display = 'none'; // Hide the popup if already installed
 } else {
   // Show the popup if the app is not installed
@@ -434,6 +434,8 @@ installButton.addEventListener('click', () => {
     deferredInstallPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the installation prompt');
+        // Set a flag in local storage indicating that the app has been installed
+        localStorage.setItem('appInstalled', 'true');
       }
       // Reset deferredInstallPrompt to null
       deferredInstallPrompt = null;
