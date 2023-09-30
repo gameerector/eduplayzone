@@ -101,8 +101,20 @@ function requestMicrophonePermission() {
   return navigator.mediaDevices.getUserMedia({ audio: true });
 }
 
+// Get references to the search input and the search section
+const searchInput = document.getElementById('search-input');
+const searchSection = document.getElementById('search-section');
+
+// Add a click event listener to the search input
+searchInput.addEventListener('click', () => {
+  // Scroll to the top of the search section
+  searchSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+
 // Event listener for search input
 document.getElementById('search-input').addEventListener('input', function () {
+
   const searchInput = this.value.trim();
 
   // Check if search input has at least 3 characters
