@@ -108,7 +108,7 @@ const searchSection = document.getElementById('search-section');
 // Add a click event listener to the search input
 searchInput.addEventListener('click', () => {
   // Scroll to the top of the search section
-  searchSection.scrollIntoView({ behavior: 'smooth' });
+  searchSection.scrollIntoView();
 });
 
 
