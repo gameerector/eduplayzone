@@ -68,12 +68,12 @@ function filterGameCards(searchInput) {
   // Create an array to store the matched cards
   const matchedCards = [];
 
-  // Loop through each game card and check for a match
+  // Loop through each game card and check for a match in both game name and description
   gameCards.forEach(function (card) {
-    const gameName = card.querySelector('.game-name');
-    const cardName = gameName.textContent.toLowerCase();
+    const gameName = card.querySelector('.game-name').textContent.toLowerCase();
+    const gameDescription = card.querySelector('.game-description').textContent.toLowerCase();
 
-    if (cardName.includes(searchInput)) {
+    if (gameName.includes(searchInput) || gameDescription.includes(searchInput)) {
       matchedCards.push(card);
     }
   });
