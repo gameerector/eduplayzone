@@ -766,7 +766,6 @@ footer p {
 
 .popup-title {
     font-size: 19px;
-    margin-bottom: ;
     text-align: left;
     color: #424242;
     position: relative;
@@ -781,7 +780,6 @@ footer p {
     font-size: 16px;
     border: none;
     border-bottom: 5px dotted black;
-    /* border-radius: 8px; */
     position: relative;
     bottom: 12px;
     background: none;
@@ -802,9 +800,8 @@ footer p {
   cursor: pointer;
   transition: background-color 0.3s ease;
   position: absolute;
-    bottom: -23px;
-    right: -15px;
-
+  bottom: -23px;
+  right: -15px;
 }
 
 #saveBtn:hover {
