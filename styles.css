@@ -210,7 +210,7 @@ h3 span {
 }
 .container-event {
   max-width: 900px;
-  margin: 100px auto 10px auto;
+  margin: 80px auto 10px auto;
   overflow-x: visible; /* Hide horizontal overflow */
 }
 
@@ -318,7 +318,8 @@ h3 span {
     margin: auto;
     position: relative;
     right: 8px;
-    padding: 20px;    
+    padding: 20px; 
+    margin-top: -15px;   
 }
 
 .search-input {
@@ -406,7 +407,8 @@ h3 span {
     font-size: 20px;
     padding: 10px;
     color: darkslategray;
-    margin-bottom: -12px;
+    margin-bottom: -15px;
+    margin-top: -5px;
 }
 main {
   padding: 20px;
