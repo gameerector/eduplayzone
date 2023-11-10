@@ -34,15 +34,19 @@ header {
   z-index: 9999;
 }
 .loadingImg {
-width: 221px;
+    width: 221px;
     position: relative;
-    top: 20px;
+    top: 100px;
 }
-
+img.EventImg {
+  height: 450px;
+  position: absolute;
+  top: 35px;
+}
 .FromLogo{
     font-size: 12px;
     position: relative;
-    bottom: -30%;
+    bottom: -40%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -61,7 +65,7 @@ width: 221px;
     border: 3px solid #F3EEFD;
     overflow: hidden;
     position: relative;
-    top: 16px;
+    top: 94px;
 }
 
 .loading-bar {

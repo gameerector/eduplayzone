@@ -1,0 +1,102 @@
+[  
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "Pinku wakes up to the birds' chirping.",
+    "correctOrder": ["पिंकू", "पक्षियों", "की", "चहचहाहट से", "जाग", "जाता है"]
+  },
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "He gets ready in his school uniform",
+    "correctOrder": ["वह", "अपनी", "स्कूल", "यूनिफॉर्म में", "तैयार हो", "जाता", "है"]
+  },
+  {
+    "task": "Translate this sentence to English:",
+    "question": "वह माँ के साथ नाश्ते का आनंद लेता है।",
+    "correctOrder": ["Enjoys", "a", "breakfast", "with", "mom"]
+  },
+  {
+    "task": "सही विकल्प चुनकर रिक्त स्थान भरें",
+    "Mcquestion": "He Grabs his ___ and checks for books",
+    "options": ["Backpack", "Lunch Box", "Geometry box"],
+    "correctOption": "0"
+  },
+  {
+    "task": "सुनकर शब्द चुने",
+    "voicequestion": "Walks to the bus stop with friends",
+    "correctOrder": ["Walks", "to", "the", "bus", "stop", "with", "friends"]
+  },
+  {
+    "task": "शब्द सुनकर वाक्य का अनुवाद करें",
+    "voicequestion": "Yes the bus is coming!",
+    "correctOrder": ["हां", "बस", "आ", "रही", "है!"]
+  },
+  {
+    "task": "Translate this sentence to English:",
+    "question": "स्कूल जाने का समय हो गया!",
+    "correctOrder": ["It's", "time", "to", "go", "to", "school!"]
+  },
+  {
+    "task": "एक सही विकल्प चुनें ",
+    "Mcquestion": "Do you like ice cream?",
+    "options": ["Yes, I love ice cream.", "It's a sunny day.", "I like listening to music."],
+    "correctOption": "0"
+  },
+  {
+    "task": "शब्द सुनकर वाक्य का अनुवाद करें",
+    "voicequestion": "The weather is nice today.",
+    "correctOrder": ["आज", "मौसम", "अच्छा", "है।"]
+  },
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "Can you help me with my homework?",
+    "correctOrder": ["क्या", "तुम", "मेरे", "होमवर्क", "में", "मदद", "कर", "सकते", "हो?"]
+  },
+  {
+    "task": "सुनकर शब्द चुने",
+    "voicequestion": "I did my homework yesterday.",
+    "correctOrder": ["I", "did", "my", "homework", "yesterday"]
+  },  
+  {
+    "task": "Translate this sentence to English",
+    "question": "मैं अपने माता-पिता के साथ बाजार गया।",
+    "correctOrder": ["I", "went", "to", "the", "market", "with", "my", "parents."]
+  },
+  {
+    "task": "शब्द सुनकर वाक्य का अनुवाद करें",
+    "voicequestion": "Why are you so late?",
+    "correctOrder": ["तुम", "इतने", "देर", "क्यों", "हुए?"]
+  },
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "वह बहुत ही समझदार है।",
+    "correctOrder": ["She", "is", "very", "intelligent."]
+  },
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "She is reading a book.",
+    "correctOrder": ["वह", "एक", "किताब", "पढ़", "रही", "है।"]
+  },
+  {
+    "task": "एक सही विकल्प चुनें ",
+    "Mcquestion": "How do you get to school?",
+    "options": ["I'm good at drawing.", "I take the school bus.", "My favorite book is about space."],
+    "correctOption": "1"
+  },
+  {
+    "task": "एक सही विकल्प चुनें ",
+    "Mcquestion": "What is your favorite sport?",
+    "options": ["मेरा पसंदीदा विषय है गणित।", "मेरा पसंदीदा रंग है नीला।", "मेरा पसंदीदा खेल क्रिकेट है।"],
+    "correctOption": "2"
+  },
+  {
+    "task": "सही विकल्प चुनकर रिक्त स्थान भरें",
+    "Mcquestion": "The cat is ___ the chair.",
+    "options": ["in", "on", "under"],
+    "correctOption": "1"
+  },  
+  {
+    "task": "सुनकर शब्द चुने",
+    "voicequestion": "They are playing football in the park.",
+    "correctOrder": ["They", "are", "playing", "football", "in", "the", "park"]
+  }     
+]
