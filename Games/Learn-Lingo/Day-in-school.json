@@ -33,7 +33,7 @@
   {
     "task": "Translate this sentence to English:",
     "question": "स्कूल जाने का समय हो गया!",
-    "correctOrder": ["It's", "time", "to", "go", "to", "school!"]
+    "correctOrder": ["Its", "time", "to", "go", "to", "school!"]
   },
   {
     "task": "एक सही विकल्प चुनें ",
