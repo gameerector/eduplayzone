@@ -1,4 +1,4 @@
-[  
+[ 
   {
     "task": "इस वाक्य का अनुवाद करें",
     "question": "Pinku wakes up to the birds' chirping.",
@@ -31,31 +31,28 @@
     "correctOrder": ["हां", "बस", "आ", "रही", "है!"]
   },
   {
-    "task": "Translate this sentence to English:",
-    "question": "स्कूल जाने का समय हो गया!",
-    "correctOrder": ["Its", "time", "to", "go", "to", "school!"]
+    "task": "शब्द सुनकर वाक्य का अनुवाद करें",
+    "question": "Its time to go to school!",
+    "correctOrder": ["स्कूल", "जाने", "का", "समय", "हो", "गया!"]
   },
   {
     "task": "एक सही विकल्प चुनें ",
-    "Mcquestion": "Do you like ice cream?",
-    "options": ["Yes, I love ice cream.", "It's a sunny day.", "I like listening to music."],
+    "Mcquestion": "What's the name of our planet?",
+    "options": ["Earth🌏", "Moon🌙", "Mars🌕"],
     "correctOption": "0"
-  },
-  {
-    "task": "शब्द सुनकर वाक्य का अनुवाद करें",
-    "voicequestion": "The weather is nice today.",
-    "correctOrder": ["आज", "मौसम", "अच्छा", "है।"]
-  },
-  {
-    "task": "इस वाक्य का अनुवाद करें",
-    "question": "Can you help me with my homework?",
-    "correctOrder": ["क्या", "तुम", "मेरे", "होमवर्क", "में", "मदद", "कर", "सकते", "हो?"]
   },
   {
     "task": "सुनकर शब्द चुने",
     "voicequestion": "I did my homework yesterday.",
     "correctOrder": ["I", "did", "my", "homework", "yesterday"]
   },  
+
+  {
+    "task": "इस वाक्य का अनुवाद करें",
+    "question": "Can you help me with my homework?",
+    "correctOrder": ["क्या", "तुम", "मेरे", "होमवर्क", "में", "मदद", "कर", "सकते", "हो?"]
+  },
+ 
   {
     "task": "Translate this sentence to English",
     "question": "मैं अपने माता-पिता के साथ बाजार गया।",

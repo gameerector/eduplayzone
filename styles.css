@@ -787,8 +787,9 @@ footer p {
     background: whitesmoke;
     z-index: 5;
     position: relative;
-    left: -5px;
+    left: 45px;
 }
+
 
 .popup-title {
     font-size: 19px;

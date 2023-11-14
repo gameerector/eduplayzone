@@ -1,0 +1,15 @@
+{
+    "name": "EduPlayZone - guess word",
+    "short_name": "guess word",
+    "description": "EduPlayZone offers a collection of educational games for kids to learn and have fun. Engage your child's mind with interactive and educational activities.",
+    "icons": [
+        {
+          "src": "android-launchericon-512-512.png",
+          "sizes": "512x512"
+        }
+      ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000"
+}
