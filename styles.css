@@ -840,16 +840,17 @@ footer p {
 .add-to-home-popup {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: beige;
+  left: 50%;
+  background-color: #89c9e4;
   color: #000;
   display: none;
-  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px -9px 16px rgb(221 210 246);
   z-index: 999;
   border-radius: 15px 15px 0 0;
   overflow: hidden;
-  border: 1px solid darkgray;
+  border: 2px solid #f4f4f4;
+  width: auto;
+  transform: translate(-50%, 0);
 }
 
 .popup-content {
@@ -906,6 +907,7 @@ footer p {
 @media screen and (max-width: 768px) {
   .add-to-home-popup {
     font-size: 14px;
+    width: 90%;
   }
 
   .popup-content {
