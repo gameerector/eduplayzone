@@ -39,9 +39,10 @@ header {
     top: 100px;
 }
 img.EventImg {
-  height: 450px;
+  height: 250px;
   position: absolute;
   top: 35px;
+  
 }
 .FromLogo{
     font-size: 12px;

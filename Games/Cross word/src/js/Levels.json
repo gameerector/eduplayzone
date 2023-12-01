@@ -1,0 +1,258 @@
+[
+    {
+        "activeCells": [
+            { "row": 3, "col": 4, "char": "c", "question": 1 },
+            { "row": 4, "col": 4, "char": "a" },
+            { "row": 5, "col": 4, "char": "t" },
+            { "row": 3, "col": 5, "char": "a" },
+            { "row": 3, "col": 6, "char": "p" },
+            { "row": 5, "col": 2, "char": "b", "question": 2 },
+            { "row": 5, "col": 3, "char": "a" }
+        ],
+        "hints": {
+            "across": [
+                "Animal that mews"
+            ],
+            "down": [
+                "You wear it on your head",
+                "Flying mammal or a sports equipment used to hit a ball"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 3, "col": 4, "char": "d", "question": 1 },
+            { "row": 4, "col": 4, "char": "o" },
+            { "row": 5, "col": 4, "char": "g" },
+            { "row": 4, "col": 2, "char": "f", "question": 2 },
+            { "row": 4, "col": 3, "char": "r" },
+            { "row": 4, "col": 5, "char": "g" }
+        ],
+        "hints": {
+            "across": [
+                "Man's best friend with a wagging tail"
+            ],
+            "down": [
+                "Green, leaping amphibian with big eyes."
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 3, "col": 3, "char": "b", "question": 1 },
+            { "row": 4, "col": 3, "char": "a" },
+            { "row": 5, "col": 3, "char": "l" },
+            { "row": 6, "col": 3, "char": "l" },
+            { "row": 3, "col": 4, "char": "o" },
+            { "row": 3, "col": 5, "char": "a" },
+            { "row": 3, "col": 6, "char": "t" },
+            { "row": 2, "col": 5, "char": "c", "question": 2 },
+            { "row": 4, "col": 5, "char": "r" }
+        ],
+        "hints": {
+            "across": [
+                "Spherical object used in sports and games",
+                "Motorized vehicle for personal transportation on roads"
+            ],
+            "down": [
+                "Watercraft for transportation on lakes and oceans"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 3, "col": 2, "char": "c" },
+            { "row": 3, "col": 3, "char": "r", "question": 1 },
+            { "row": 3, "col": 4, "char": "o" },
+            { "row": 3, "col": 5, "char": "p" },
+            { "row": 4, "col": 3, "char": "u" },
+            { "row": 5, "col": 3, "char": "r" },
+            { "row": 6, "col": 3, "char": "a" },
+            { "row": 7, "col": 3, "char": "l" },
+            { "row": 6, "col": 2, "char": "f", "question": 2 },
+            { "row": 6, "col": 4, "char": "r" },
+            { "row": 6, "col": 5, "char": "m", "question": 3 },
+            { "row": 7, "col": 5, "char": "u" },
+            { "row": 8, "col": 5, "char": "d" }
+        ],
+        "hints": {
+            "across": [
+                "Relating to the countryside, typically with less population and more open spaces",
+                "Wet, soft earth often found on farms, especially after rain"
+            ],
+            "down": [
+                "Farm plants grown for harvest",
+                "A place where crops and livestock are raised for food or other products"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 2, "col": 3, "char": "p", "question": 1 },
+            { "row": 3, "col": 3, "char": "u" },
+            { "row": 4, "col": 3, "char": "p" },
+            { "row": 5, "col": 3, "char": "p", "question": 3 },
+            { "row": 6, "col": 3, "char": "y" },
+            { "row": 2, "col": 3, "char": "p", "question": 1 },
+            { "row": 2, "col": 4, "char": "e" },
+            { "row": 2, "col": 5, "char": "a" },
+            { "row": 2, "col": 6, "char": "c", "question": 2 },
+            { "row": 2, "col": 7, "char": "h" },
+            { "row": 3, "col": 6, "char": "u" },
+            { "row": 4, "col": 6, "char": "b" },
+            { "row": 5, "col": 6, "char": "s" },
+            { "row": 5, "col": 4, "char": "e" },
+            { "row": 5, "col": 5, "char": "t" }
+        ],
+        "hints": {
+            "across": [
+                "What you call a baby dog",
+                "Baby Lions (or young boy Scouts)"
+            ],
+            "down": [
+                "A Yummy pinkish-yellow stone fruit with furry skin",
+                "Cats, dogs, birds, fish, or other animals that become part of a family"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 2, "col": 3, "char": "M", "question": 1 },
+            { "row": 2, "col": 4, "char": "e" },
+            { "row": 2, "col": 5, "char": "n" },
+            { "row": 2, "col": 6, "char": "u" },
+            { "row": 3, "col": 2, "char": "s", "question": 2 },
+            { "row": 3, "col": 3, "char": "a" },
+            { "row": 3, "col": 4, "char": "l" },
+            { "row": 3, "col": 5, "char": "t", "question": 4 },
+            { "row": 4, "col": 3, "char": "g" },
+            { "row": 5, "col": 3, "char": "i" },
+            { "row": 6, "col": 3, "char": "c", "question": 3 },
+            { "row": 6, "col": 4, "char": "h" },
+            { "row": 6, "col": 5, "char": "e" },
+            { "row": 6, "col": 6, "char": "s" },
+            { "row": 6, "col": 7, "char": "s" },
+            { "row": 4, "col": 5, "char": "r" },
+            { "row": 5, "col": 5, "char": "e" },
+            { "row": 6, "col": 5, "char": "e" }
+        ],
+        "hints": {
+            "across": [
+                "5 Letter Word. HEXED. SPELL",
+                "",
+                "",
+                "Large plant with a trunk, branches, and leaves"
+            ],
+            "down": [
+                "A list of food items in a restaurant",
+                "Sprinkle these fine white crystals on food for its taste",
+                "A board game with kings, castles, and pawns"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 3, "col": 3, "char": "J", "question": 1 },
+            { "row": 4, "col": 3, "char": "e" },
+            { "row": 5, "col": 3, "char": "t", "question": 2 },
+            { "row": 3, "col": 4, "char": "o" },
+            { "row": 3, "col": 5, "char": "k" },
+            { "row": 3, "col": 6, "char": "e" },
+            { "row": 5, "col": 4, "char": "o" },
+            { "row": 5, "col": 5, "char": "e" },
+            { "row": 5, "col": 6, "char": "s", "question": 4 },
+            { "row": 6, "col": 6, "char": "n" },
+            { "row": 7, "col": 6, "char": "a" },
+            { "row": 8, "col": 6, "char": "p" },
+            { "row": 1, "col": 6, "char": "b", "question": 3 },
+            { "row": 2, "col": 6, "char": "e" },
+            { "row": 3, "col": 6, "char": "e" }
+        ],
+        "hints": {
+            "across": [
+                "A Fast Plane",
+                "",
+                "Which insects produce honey?",
+                "What Thanos do in Avengers Endgame to half the population"
+            ],
+            "down": [
+                "A short funny tale",
+                "There are 5 of these on each foot"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 1, "col": 3, "char": "l", "question": 1 },
+            { "row": 2, "col": 3, "char": "i", "question": 2 },
+            { "row": 3, "col": 3, "char": "m" },
+            { "row": 4, "col": 3, "char": "e", "question": 3 },
+            { "row": 2, "col": 4, "char": "t" },
+            { "row": 2, "col": 5, "char": "a" },
+            { "row": 2, "col": 6, "char": "l" },
+            { "row": 2, "col": 7, "char": "y" },
+            { "row": 4, "col": 4, "char": "v" },
+            { "row": 4, "col": 5, "char": "e" },
+            { "row": 4, "col": 6, "char": "r", "question": 4 },
+            { "row": 5, "col": 6, "char": "e" },
+            { "row": 6, "col": 6, "char": "e" },
+            { "row": 6, "col": 3, "char": "c", "question": 5 },
+            { "row": 6, "col": 4, "char": "a" },
+            { "row": 6, "col": 5, "char": "r" },
+            { "row": 6, "col": 6, "char": "d" },
+            { "row": 7, "col": 3, "char": "r" },
+            { "row": 8, "col": 3, "char": "o" },
+            { "row": 9, "col": 3, "char": "w" }
+        ],
+        "hints": {
+            "across": [
+                "A citrus fruit having a light green color",
+                "",
+                "",
+                "The color of apples, tomatoes, and blood is?",
+                "A large black bird"
+            ],
+            "down": [
+                "",
+                "Rome is the capital city of this boot-shaped country",
+                "Fairy tales often end 'HAPPILY___AFTER'?",
+                "",
+                "You might write in this and give it to a friend for their birthday"
+            ]
+        }
+    },
+    {
+        "activeCells": [
+            { "row": 2, "col": 2, "char": "b", "question": 1 },
+            { "row": 3, "col": 2, "char": "u" },
+            { "row": 4, "col": 2, "char": "l" },
+            { "row": 5, "col": 2, "char": "l", "question": 2 },
+            { "row": 5, "col": 3, "char": "i" },
+            { "row": 5, "col": 4, "char": "o" },
+            { "row": 5, "col": 5, "char": "n" },
+            { "row": 4, "col": 4, "char": "d", "question": 3 },
+            { "row": 6, "col": 4, "char": "n" },
+            { "row": 7, "col": 4, "char": "k" },
+            { "row": 8, "col": 4, "char": "e" },
+            { "row": 9, "col": 4, "char": "y" },
+            { "row": 8, "col": 4, "char": "e", "question": 4 },
+            { "row": 8, "col": 5, "char": "a" },
+            { "row": 8, "col": 6, "char": "g" },
+            { "row": 8, "col": 7, "char": "l" },
+            { "row": 8, "col": 8, "char": "e" }
+        ],
+        "hints": {
+            "across": [
+                "A big, strong farm animal",
+                "",
+                "It looks like a horse with long ears"
+            ],
+            "down": [
+                "",
+                "A big and very dangerous cat",
+                "",
+                "A raptor whose eyesight is 8x stronger than ours"
+            ]
+        }
+    }
+]
