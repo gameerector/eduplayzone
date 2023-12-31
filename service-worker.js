@@ -1,5 +1,6 @@
-const CACHE_NAME = 'EPZ-cache-v2';
-const offlinePage = 'offlinePage/index.html'; // Added an offline page  cache
+const CACHE_NAME = 'EPZ-cache-v3';
+const offlinePage = 'offlinePage/index.html';
+const offlinePageCss = 'offlinePage/style.css';
 
 const urlsToCache = [
   '/',
@@ -7,6 +8,7 @@ const urlsToCache = [
   'styles.css',
   'script.js',
   offlinePage,
+  offlinePageCss,
   // Add more URLs of your resources to cache
 ];
 
@@ -30,7 +32,10 @@ self.addEventListener('fetch', (event) => {
         return fetch(event.request)
           .then((response) => {
             if (!response || response.status !== 200 || response.type !== 'basic') {
-              return caches.match(offlinePage);
+              // Check if the device is online before serving the offline page
+              if (!navigator.onLine) {
+                return caches.match(offlinePage);
+              }
             }
 
             const responseToCache = response.clone();
@@ -43,8 +48,10 @@ self.addEventListener('fetch', (event) => {
             return response;
           })
           .catch(() => {
-            // Fetch failed, return the offline page
-            return caches.match(offlinePage);
+            // Fetch failed, return the offline page only if the device is offline
+            if (!navigator.onLine) {
+              return caches.match(offlinePage);
+            }
           });
       })
   );
