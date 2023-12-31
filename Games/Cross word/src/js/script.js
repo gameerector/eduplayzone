@@ -1318,6 +1318,7 @@ let isCellCompleted = Array(levels[currentLevel].activeCells.length).fill(false)
 
 // Function to show the "Level Up" UI
 const showLevelUpUI = () => {
+  playWinSound();
   console.log("Level UP");
   LevelUpUI.style.display = "block"; // Show level up Pop Up
 };
@@ -1371,7 +1372,6 @@ const generateCells = () => {
         isCellCompleted[index] = true;
     
         if (isCellCompleted.every((completed) => completed)) {
-          playWinSound();
           console.log("All cells are filled, calling showLevelUpUI");
           // Call the function to show the "Level Up" UI when all cells are filled
           showLevelUpUI();

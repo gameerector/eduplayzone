@@ -26,17 +26,26 @@ header {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #ded5f1;
+  background-color: #d7d7d7;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  
+  /*----- background image ------ */
+
+  background-image: url(https://media.giphy.com/media/VckdmJFH6ARGQsSM2U/giphy-downsized-large.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-blend-mode: darken;
 }
+
 .loadingImg {
     width: 221px;
     position: relative;
-    top: 100px;
+    top: 222px;
 }
 img.EventImg {
   height: 250px;
@@ -54,6 +63,7 @@ img.EventImg {
     align-items: center;
     color: #4f4f4f;
     font-weight: 500;
+    text-shadow: 1px 3px 6px black
 }
 .FromLogo img{
   width: 140px;
@@ -66,7 +76,7 @@ img.EventImg {
     border: 3px solid #F3EEFD;
     overflow: hidden;
     position: relative;
-    top: 94px;
+    top: 214px;
 }
 
 .loading-bar {
@@ -495,6 +505,10 @@ main {
   
   .game-image {
     height: 100px;
+  }
+
+  .loading-screen {
+    background-size: cover;
   }
 }
 
