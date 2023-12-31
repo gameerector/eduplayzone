@@ -473,25 +473,25 @@ window.addEventListener('beforeinstallprompt', (e) => {
   installButton.style.display = 'block';
 });
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('service-worker.js')
+//     .then((registration) => {
+//       console.log('Service Worker registered with scope:', registration.scope);
 
-      // Send a message to the service worker to skip waiting
-      if (registration.waiting) {
-        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-      }
-    })
-    .catch((error) => {
-      console.error('Service Worker registration failed:', error);
-    });
+//       // Send a message to the service worker to skip waiting
+//       if (registration.waiting) {
+//         registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+//       }
+//     })
+//     .catch((error) => {
+//       console.error('Service Worker registration failed:', error);
+//     });
 
-  // Ensure refresh is only called once
-  let refreshing;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (refreshing) return;
-    window.location.reload();
-    refreshing = true;
-  });
-}
+//   // Ensure refresh is only called once
+//   let refreshing;
+//   navigator.serviceWorker.addEventListener('controllerchange', () => {
+//     if (refreshing) return;
+//     window.location.reload();
+//     refreshing = true;
+//   });
+// }
