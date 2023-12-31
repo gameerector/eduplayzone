@@ -1,9 +1,12 @@
-const CACHE_NAME = 'EPZ-cache-v1';
+const CACHE_NAME = 'EPZ-cache-v2';
+const offlinePage = 'offlinePage/index.html'; // Added an offline page  cache
+
 const urlsToCache = [
   '/',
   'index.html',
   'styles.css',
   'script.js',
+  offlinePage,
   // Add more URLs of your resources to cache
 ];
 
@@ -27,7 +30,7 @@ self.addEventListener('fetch', (event) => {
         return fetch(event.request)
           .then((response) => {
             if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
+              return caches.match(offlinePage);
             }
 
             const responseToCache = response.clone();
@@ -38,6 +41,10 @@ self.addEventListener('fetch', (event) => {
               });
 
             return response;
+          })
+          .catch(() => {
+            // Fetch failed, return the offline page
+            return caches.match(offlinePage);
           });
       })
   );

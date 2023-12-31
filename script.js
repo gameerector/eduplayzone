@@ -39,7 +39,7 @@ function hideLoadingScreenWithDelay() {
   const loadingScreen = document.querySelector('.loading-screen');
   setTimeout(() => {
     loadingScreen.style.display = 'none';
-  }, 3500); // 1500 milliseconds = 1.5 seconds
+  }, 4500); // 1500 milliseconds = 1.5 seconds
 }
 
 // Add an event listener to wait for all resources to load
