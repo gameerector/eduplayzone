@@ -2,10 +2,10 @@
 const questions = [
   {
     question: "A for ",
-    options: [ "Apple \u{1F34E}",
-               "Ball \u{26BD}",
-               "Cat \u{1F431}",
-               "Dog \u{1F436}"],
+    options: [ "\u{1F34E} Apple",
+               "\u{26BD} Ball ",
+               "\u{1F431} Cat ",
+               "\u{1F436} Dog "],
     answer: 0
   },
   {
@@ -255,6 +255,17 @@ function preloadAudio() {
 // Call preloadAudio before initializing the quiz
 preloadAudio();
 
+const questionsWithLineBreak = questions.map(question => {
+  const optionsWithLineBreak = question.options.map(option => {
+    const [emoji, text] = option.split(' ');
+    return `<div>${emoji}</div><div>${text}</div>`;
+  });
+
+  return {
+    ...question,
+    options: optionsWithLineBreak
+  };
+});
 
 // Function to initialize the quiz
 function initializeQuiz() {

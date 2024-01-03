@@ -74,8 +74,8 @@ html, body{
     justify-content: center;
     align-items: center;
     background-color: #25C6E3;
-    background: linear-gradient(to bottom, #25C6E3, #25C6E3);
-    background-image: url('../img/bg.png'), linear-gradient(to bottom, #25C6E3, #25C6E3);
+    background: linear-gradient(to bottom, #1b6b7a, #1c4249);
+    background-image: url(../img/bg.png), linear-gradient(to bottom, #00e666, #0036f594);
     overflow: scroll;
 }
 
@@ -195,6 +195,8 @@ html, body{
     caret-color: transparent;
     background-color: rgba(255, 255, 255, 0.507);
     background-image: url(../img/letter.png);
+    background-position: center;
+    background-size: cover;
     width: 100%;
     height: 100%;
     border-radius: 8px;
@@ -203,9 +205,9 @@ html, body{
     position: relative;
     text-transform: uppercase;
     font-weight: bolder;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 0 #55D2FD,
-                0 4px 0 #1882B3;
+    opacity: 0.8;
+    /* font-size: 1.2rem; */
+    /* box-shadow: 0 2px 0 #55D2FD, 0 4px 0 #1882B3; */
 }
 .char-input:focus{
     outline: 3px solid #0077b6;
@@ -213,9 +215,9 @@ html, body{
 
 .question-number-label{
     position: absolute;
-    top:0;
-    left:0;
-    color: #023e8a;
+    right: 2px;
+    bottom: 4px;
+    color: #ffffffdb;
     padding-inline: 4px;
     margin: 2px;
     border-radius: 2px;
@@ -224,7 +226,8 @@ html, body{
 }
 .bg-success{
     background-color: #ffffff;
-    color:rgb(21, 49, 28);
+    color:rgb(255 233 233);
+    opacity: 1;
 }
 .bg-error{
     background-color: #fff;
@@ -350,9 +353,9 @@ button#next-level-btn {
 
     .char-input{
         font-size: 1.6rem;
-        text-shadow: 0 2px 0 rgb(64, 144, 248);
-        box-shadow: 0 4px 0 #55D2FD,
-                    0 6px 0 #1882B3;
+        text-shadow: 0 2px 0 rgb(0, 0, 0);
+        /* box-shadow: 0 4px 0 #55D2FD, */
+                    /* 0 6px 0 #1882B3; */
     }
 }
 

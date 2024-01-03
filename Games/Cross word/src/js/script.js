@@ -1308,6 +1308,30 @@ const levels = [
   // Add more levels as needed
 ];
 
+// Function to get a random background image URL
+function getRandomBackgroundImage() {
+  var images = [
+      'url(./src/img/letter.png)',
+      'url(./src/img/letter2.png)',
+      'url(./src/img/letter3.png)',
+      'url(./src/img/letter4.png)',
+      'url(./src/img/letter5.png)',
+      'url(./src/img/letter6.png)'
+  ];
+  var randomIndex = Math.floor(Math.random() * images.length);
+  return images[randomIndex];
+}
+
+// Function to change the background image of elements with the specified class
+function changeBackgroundImage(className) {
+  var randomImageUrl = getRandomBackgroundImage();
+  var elements = document.getElementsByClassName(className);
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.backgroundImage = randomImageUrl;
+  }
+  console.log("Image"+randomImageUrl )
+}
+
 // Function to save the current level to localStorage
 const saveCurrentLevel = () => {
   localStorage.setItem("currentLevel", currentLevel);
@@ -1386,6 +1410,7 @@ const generateCells = () => {
           charInput.classList.remove("bg-error");
         } 
       }
+
     });
     
     wordCell.style.gridRowStart = cell.col;
@@ -1456,6 +1481,7 @@ const resetToLevel1 = () => {
 };
 
 nextLevelButton.addEventListener("click", () => {
+  changeBackgroundImage('char-input');
   if (currentLevel < levels.length - 1) {
     // Save the current level
     saveCurrentLevel();
@@ -1579,3 +1605,5 @@ const loadSavedLevel = () => {
 
 // Load the saved level when the page loads
 loadSavedLevel();
+
+changeBackgroundImage('char-input');
