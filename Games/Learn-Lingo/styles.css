@@ -588,6 +588,7 @@ p#result {
         font-size: 24px;
     }
     .language-cards{
+        width: 95%;
         align-items: center;
         
     }
@@ -603,6 +604,9 @@ p#result {
 /* Styles for extra-small screens (e.g., smaller smartphones) */
 @media (max-width: 320px) {
     /* Add styles for extra-small screens here */
+    .language-cards{
+        width: 95%;
+    }
 }
 
 @media (max-width: 425px) {
@@ -634,11 +638,17 @@ p#result {
     .language-selection h2{
         font-size: 22px;
     }
+    .language-cards{
+        width: 95%;
+    }
 }
 
 /* Styles for small screens (e.g., smartphones) */
 @media (min-width: 321px) and (max-width: 576px) {
     /* Add styles for small screens here */
+    .language-cards{
+        width: 95%;
+    }
 }
 
 /* Styles for medium screens (e.g., tablets) */
@@ -688,53 +698,101 @@ img.language-selection-img {
 }
 
 .language-cards {
-    display: flex;
-    flex-wrap: wrap; /* Allow cards to wrap to the next line */
-    max-width: 800px; /* Adjust the max-width as needed */
-    gap: 16px; /* Spacing between cards */
-    justify-content: center;
-    align-items: center;
+    padding: 10px 10px;
+    display: -webkit-inline-box;
+    width: 95%;
+    height: fit-content;
+    overflow-y: visible;
+    overflow-x: scroll;
+    gap: 16px;
 }
 
+.language-cards::after{
+    content: "";
+    height: 18%;
+    width: 28px;
+    position: fixed;
+    left: 8px;
+    background: linear-gradient(90deg, #f4e9db, transparent);
+}
+
+.language-cards::before{
+    content: "";
+    height: 18%;
+    width: 28px;
+    position: fixed;
+    right: 8px;
+    background: linear-gradient(90deg, transparent, #f4e9db);
+    z-index: 11;
+}
+
+
 .language-card {
-    width: 120px;
-    height: 125px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    border: 3px solid transparent; /* Add transparent border by default */
+    position: relative;
+    overflow: hidden; 
+    width: 200px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid transparent;
     border-radius: 8px;
     padding: 8px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
-    flex: auto; /* Allow cards to grow and take equal space */
-    box-shadow:  0px 0.9px 2.2px -26px rgba(0, 0, 0, 0.009),  0px 2.2px 5.3px -26px rgba(0, 0, 0, 0.017),
-  0px 4.1px 10px -26px rgba(0, 0, 0, 0.025),
-  0px 7.4px 17.9px -26px rgba(0, 0, 0, 0.033),
-  0px 13.8px 33.4px -26px rgba(0, 0, 0, 0.045),
-  0px 33px 80px -26px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease-in-out, border 0.2s ease-in-out, scale 0.3s ease-in-out;
+    box-shadow: 0px 0.9px 2.2px -26px rgba(0, 0, 0, 0.009), 0px 2.2px 5.3px -26px rgba(0, 0, 0, 0.017), 0px 4.1px 10px -26px rgba(0, 0, 0, 0.025), 0px 7.4px 17.9px -26px rgba(0, 0, 0, 0.033), 0px 13.8px 33.4px -26px rgba(0, 0, 0, 0.045), 0px 33px 80px -26px rgba(0, 0, 0, 0.07);
 }
 
-.language-card:hover {
-    transform: scale(1.05);
+.language-card:hover .languageTextBox{
+    transform: translateY(6px);
+    transition: transform 0.2s ease-in-out;
+}
+
+.language-card:hover .languageTextBox h3{
+    transform: translateY(-10px);
+    filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out ;
+}
+
+
+.language-card:hover img {
+    transform: translateY(-8px);
+    scale: 1.02;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Image shadow for depth */
+    
+    transition: transform 0.3s ease-in-out, border 0.3s ease-in-out, scale 0.3s ease-in-out;
 }
 
 /* Add an outline to the selected card */
 .language-card.selected {
     border-color: #f39c12; /* Yellow outline color */
 }
-
+.languageTextBox{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #99c9f8;
+    border-radius: 40% 40% 0% 0%;
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    /* transition: transform 2s ease-in-out, border 0.2s ease-in-out, scale 0.2s ease-in-out; */
+}
 .language-card h3 {
-    font-size: 24px;
+    font-size: 18px;
     margin-top: 8px;
     color: #333; /* Dark text color */
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out ;
 }
 .ComingL{
     font-size: 22px;
 }
 .language-card img {
-    max-width: 100px; /* Adjust the max-width as needed */
+    position: relative;
+    top: 4%;
+    width: 95%; /* Adjust the max-width as needed */
     height: auto;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); /* Image shadow for depth */
+    transition: transform 0.2s ease-in-out, border 0.2s ease-in-out, scale 0.2s ease-in-out;
 }
 
 .hidden {
