@@ -98,7 +98,7 @@
         <img class="language-selection-img" src="images/gorilla.png" alt="learn Lingo : Language Learning game">    
     </div>
         <div class="language-cards">
-            <div class="language-card" data-language="eng-hindi">
+            <div class="language-card .eng-hindi" data-language="eng-hindi">
                 <img src="images/hinditoenglish.png" alt="Learn Lingo : Hindi-To-English language">
                 <div class="languageTextBox">
                     <h3>Hindi-To-English</h3>
@@ -110,12 +110,7 @@
                     <h3>Odia-To-English</h3>
                 </div>
             </div>
-            <!-- <div class="language-card " data-language="eng-bengali">
-                <img src="" alt="Learn Lingo : Bengali-To-English language">
-                <div class="languageTextBox">
-                    <h3>Bengali-To-English</h3>
-                </div>
-            </div> -->
+
             <div class="language-card " data-language="Day-in-school">
                 <img src="https://img.freepik.com/premium-vector/two-children-going-school-vector-illustration_491934-275.jpg?w=2000" alt="Learn Lingo a language learning game">
                 <div class="languageTextBox">
@@ -125,13 +120,63 @@
             <div class="language-card soonA" data-language="tamil">
                 <h3 style="font-size: 18px;"> <span style="color: #FF5722; font-size: 22px;">10+</span><br>Language</h3>
                 <h4>Coming Soon</h4>
-
             </div>
-
+            
         </div>
-        <button id="startGameButton">Start Game</button>
+        <div class="dot-indicator"></div>
+        <button id="startGameButton">Start Game <span class="material-symbols-outlined">
+            arrow_forward
+            </span></button>
+
+        <div id="snackbar">First Select the level</div>
 </div>
 <script type="module" src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Get necessary elements
+    const slider = document.querySelector('.language-cards');
+    const dotsContainer = document.querySelector('.dot-indicator');
 
+    // Calculate the number of dots based on the number of cards
+    const totalCards = document.querySelectorAll('.language-card').length;
+
+    // Create dots and append them to the dots container
+    for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dotsContainer.appendChild(dot);
+    }
+
+    // Get all cards
+    const cards = document.querySelectorAll('.language-card');
+
+    // Function to update the active dot based on the center of the visible card
+    function updateActiveDot() {
+        const cardWidth = cards[0].offsetWidth; // Assuming all cards have the same width
+        const scrollLeft = slider.scrollLeft;
+        const center = scrollLeft + slider.offsetWidth / 2;
+
+        // Find the index of the nearest card to the center
+        const activeCardIndex = Math.floor(center / cardWidth);
+
+        // Remove active class from all dots
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach(dot => dot.classList.remove('active-dot'));
+
+        // Add active class to the current active dot
+        dots[activeCardIndex].classList.add('active-dot');
+    }
+
+    // Add event listener for the slider scroll
+    slider.addEventListener('scroll', function () {
+        updateActiveDot();
+    });
+
+    // Call the updateActiveDot function on initial load
+    updateActiveDot();
+});
+
+
+</script>
 </body>
 </html>

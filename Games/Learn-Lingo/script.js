@@ -60,7 +60,8 @@ document.getElementById('startGameButton').addEventListener('click', () => {
         // Call the function to load questions
         loadQuestions(jsonFileURL);
     } else {
-        alert('Please select a language.');
+        ToastNOLevelSelect();
+       // alert('Please select a language.');
     }
 });
 
@@ -701,4 +702,9 @@ ShareButton.addEventListener('click', () => {
         alert('Web Share API is not supported in your browser. You can manually share the text.');
       }
 });
-   
+
+function ToastNOLevelSelect() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
