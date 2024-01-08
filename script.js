@@ -305,10 +305,27 @@ if (!savedUsername) {
 
 //---------profile Photo Section-----------
 
+const profileSection = document.getElementById("ProfileSection")
+const profileButton = document.getElementById("ProfileBtn");
+const addProfileButton = document.getElementById("ProfileAddBtn");
+
 // Get the avatar image elements and tooltip
 const avatarImg1 = document.getElementById("avatar1");
 const avatarImg2 = document.getElementById("avatar2");
 const tooltip = document.getElementById("tooltip");
+
+function onClickProfileButton(){
+  profileSection.style.display = "flex";
+  profileSection.style.animation = 'slideIn 0.5s ease-in-out';
+}
+
+function CloseProfileSection(){
+  profileSection.style.animation = 'slideOut 0.5s ease-in-out';
+  setTimeout(function () {
+    profileSection.style.display = 'none';
+    profileSection.style.animation = '';
+  }, 500); // Wait for the animation to complete before hiding the container
+}
 
 function onAvatarClick1() {
   // Create an input element of type 'file'
@@ -338,21 +355,29 @@ function onAvatarClick2() {
 }
 
 // Attach the onAvatarClick functions to the click events of the avatar images
-avatarImg1.addEventListener("click", onAvatarClick1);
+addProfileButton.addEventListener("click", onAvatarClick1);
 avatarImg2.addEventListener("click", onAvatarClick2);
+profileButton.addEventListener("click", onClickProfileButton);
 
 // Load the saved image from local storage, if available
 const savedImage = localStorage.getItem("avatarImage");
 if (savedImage) {
   avatarImg1.src = savedImage;
   avatarImg2.src = savedImage; // Sync the second avatar image
+  ProfileBtn.src = savedImage;
+  const coverImage = document.getElementById("CoverPicture").src = savedImage;
+
 }
 
 // Synchronize image changes between the two avatars
 function synchronizeAvatars(imageData) {
   avatarImg1.src = imageData;
   avatarImg2.src = imageData;
+  ProfileBtn.src = imageData;
+  const coverImage = document.getElementById("CoverPicture").src = imageData;
+
   localStorage.setItem("avatarImage", imageData); // Save to local storage
+
 }
 
 // Function to handle the image selection
@@ -373,22 +398,55 @@ function handleImageSelection(event) {
   reader.readAsDataURL(file);
 }
 
+var zoomedIn = false;
 
-showTooltip(); 
+function toggleZoom() {
+ 
+  if (zoomedIn) {
+    // If already zoomed in, reset to normal size
+    avatarImg1.style.scale = 1;
+    avatarImg1.style.zIndex = 0;
+    avatarImg1.style.position = "relative"
+    avatarImg1.style.top = "2.6px";
+    avatarImg1.style.left = "2.6px";
+    avatarImg1.style.transition = "all 0.5s ease-in-out";
+    avatarImg1.style.transformOrigin= "center center";
+    usernameElement.style.bottom = "-15px"
+    usernameElement.style.transition = "all 0.5s ease-in-out";
 
- function showTooltip() {
-    if(!localStorage.getItem("avatarImage")){
-      tooltip.style.display = "block";
-      setTimeout(() => {
-        tooltip.style.display = "none";
-      }, 5500);
-    }else{
-        tooltip.style.display = "none";
+
+  } else {
+    // If not zoomed in, zoom to 2x
+    avatarImg1.style.scale = 5;
+    avatarImg1.style.zIndex = 22;
+    avatarImg1.style.position = "relative"
+    avatarImg1.style.top = "40px";
+    avatarImg1.style.left = "2.6px";
+    avatarImg1.style.transition = "all 0.5s ease-in-out";
+    avatarImg1.style.transformOrigin= "center center";
+    usernameElement.style.bottom = "-244px"
+    usernameElement.style.transition = "all 0.5s ease-in-out";
+  }
+
+  // Toggle the zoomedIn state
+  zoomedIn = !zoomedIn;
+}
+
+// showTooltip(); 
+
+//  function showTooltip() {
+//     if(!localStorage.getItem("avatarImage")){
+//       tooltip.style.display = "block";
+//       setTimeout(() => {
+//         tooltip.style.display = "none";
+//       }, 5500);
+//     }else{
+//         tooltip.style.display = "none";
       
-    }
-        // Show the tooltip automatically on every 1-minute interval
-    setInterval(showTooltip, 10000); // 10 second in milliseconds
- }  
+//     }
+//         // Show the tooltip automatically on every 1-minute interval
+//     setInterval(showTooltip, 10000); // 10 second in milliseconds
+//  }  
 
 // // Icon set up 
 //     let deferredPrompt; // Initialize the deferredPrompt variable

@@ -8,6 +8,115 @@ body {
   overflow-x: hidden;
 }
 
+.ProfileSection {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 300px;
+  height: 450px;
+  background-color: rgb(255 255 255);
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  box-shadow: 0px 2px 10px rgb(0 0 0 / 30%);
+  overflow: hidden;
+  animation: slideIn 0.5s ease-in-out; /* Animation for opening */
+}
+
+/* Animation keyframes for opening */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Animation keyframes for closing */
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+img#CoverPicture {
+    height: 90px;
+    width: 100%;
+    position: absolute;
+    top: 25px;
+    filter: blur(23px);
+    border: solid 7px #ff6f51;
+}
+  .PheaderTop{
+    width: 100%;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 5px;
+  }
+
+  button.pCloseBtn {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+  .avatar-user{
+    background: whitesmoke;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    position: absolute;
+    top: 36px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .imgDivuser {
+    position: absolute;
+    top: 7px;
+    height: 105px;
+    width: 105px;
+    border-radius: 99px;
+    border: solid 4px #ff6f51;
+    background: whitesmoke;
+  }
+  .avatarImg{
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.profileUserName{
+  position: absolute;
+  bottom: -16px;
+  color: #4d4d4d;
+}
+
+  .pHeaderTitle{
+    font-size: 16px;
+    padding-left: 10px;
+    color: #444;
+  }
+
 header {
  background-color: #f0f0f0;
   padding: 1px 0;
@@ -32,7 +141,7 @@ header {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  
+
   /*----- background image ------ */
 
   background-image: url(https://media.giphy.com/media/VckdmJFH6ARGQsSM2U/giphy-downsized-large.gif);
@@ -110,11 +219,10 @@ h1 {
 }
 
 .avatar-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
-    align-items: center;
-    margin-right: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
 }
 
 .logo img {
@@ -123,18 +231,23 @@ h1 {
     padding: 2px 0; 
 }
 .DotC{
-  position: relative;
-  top: 16px;
-  left: -50px;
+  position: absolute;
+  bottom: 34px;
+  right: 95px;
   background-color: #ff6f51;
-  height: 18px;
-  width: 18px;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
   z-index: 11;
   text-align: center;
-  line-height: 01;
+  line-height: 1.05;
   color: white;
-  font-size: 20px;
+  font-size: 32px;
+}
+
+.DotC .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1.5;
 }
 .DotD{
     position: relative;
@@ -159,16 +272,24 @@ h1 {
   position: relative;
 }
 
+h3#usernameProfile {
+  font-size: 12px;
+  color: darkslategray;
+  padding: 0px;
+  margin: 1px;
+}
+
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-position: center;
   object-fit: cover;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  top : 2.6px;
+  left : 2.6px;
+  transform-origin: center center;
+  transition: all 0.5s ease-in-out;
 }
 .username {
     font-size: clamp(14px, 2.5vw, 20px);
@@ -802,7 +923,7 @@ footer p {
     background: whitesmoke;
     z-index: 5;
     position: relative;
-    left: 45px;
+    left: -10px;
 }
 
 
